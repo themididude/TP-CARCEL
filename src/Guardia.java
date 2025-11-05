@@ -10,7 +10,9 @@ public class Guardia extends Empleado implements Seguridad {
         this.placaPolicial = placaPolicial;
     }
 
-    ///===--- methods ---===///
+
+
+    ///===--- METHODS ---===///
     @Override
     public String generarReporte() {
         return "El Guardia" + getApellido() + " genera un reporte de un incidente Carcelario.";
