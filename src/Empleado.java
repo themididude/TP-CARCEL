@@ -1,4 +1,4 @@
-public class Empleado extends Persona{
+public abstract class Empleado extends Persona{
 
     private int NextID = 0;
     private final int EmpleadoID;

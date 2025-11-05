@@ -1,4 +1,4 @@
-public class Guardia extends Empleado implements Seguridad {
+public class Guardia extends Empleado implements SeguridadReport {
 
     private boolean Activo;
     private String placaPolicial;
