@@ -1,4 +1,4 @@
-public class Sargento extends Seguridad implements Armado {
+public class Sargento extends Seguridad implements Reporteable {
 
     public Sargento(String Nombre, String Apellido, String DNI, int age, boolean bajaLogica, double Salario, int diasLibres, boolean activo, String placaPolicial) {
         super(Nombre, Apellido, DNI, age, bajaLogica, Salario, diasLibres, activo, placaPolicial);
@@ -6,22 +6,8 @@ public class Sargento extends Seguridad implements Armado {
 
     ///===--- methods ---===///
     @Override
-    public String Apuntar() {
-        return "El sargento" + getApellido() + " apunta su Escopeta.";
+    public String generarReporte() {
+        return "El sargento" + getApellido() + " genera un reporte del Cuerpo de Seguridad.";
     }
 
-    @Override
-    public String Disparar() {
-        return "El sargento" + getApellido() + "Dispara su Escopeta. BOOM";
-    }
-
-    @Override
-    public String Recargar() {
-        return "CHK-CHK. El sargento" + getApellido() + "Recarga." ;
-    }
-
-    @Override
-    public String Seguro() {
-        return "CLICK. " + getApellido() + " pone el seguro.";
-    }
 }
