@@ -15,46 +15,28 @@ public class Carcel {
         this.direccion = direccion;
     }
 
+    ///===---  GETTERS Y SETTERS ---===///
     public int getNumCarcel() {
         return numCarcel;
-    }
-
-    public void setNumCarcel(int numCarcel) {
-        this.numCarcel = numCarcel;
     }
 
     public String getProvincia() {
         return provincia;
     }
 
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
-    }
-
     public String getPartido() {
         return partido;
-    }
-
-    public void setPartido(String partido) {
-        this.partido = partido;
     }
 
     public String getLocalidad() {
         return localidad;
     }
 
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
 
     public String getDireccion() {
         return direccion;
     }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
+    ///===--- METODOS ---===///
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
