@@ -1,4 +1,4 @@
-public interface SeguridadReport {
-    String generarReporte(); ///
-    void switchActivo(); ///
+public interface Seguridad {
+    String generarReporte(); ///generar un reporte policial, dependiendo del rango cambia
+    void switchActivo(); ////
 }
