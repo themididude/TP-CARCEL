@@ -21,6 +21,15 @@ public class UserDB {
         return null; /// AUTENTICACION FALLIDA
     }
 
+    public static void agregarUsuario(Usuario u){
+        usuarios.add(u);
+    }
 
-
+    public static void mostrarUsuarios() {
+        System.out.println("────────── LISTA DE USUARIOS ──────────");
+        for (Usuario u : usuarios) {
+            System.out.println("• " + u.getUsername() + "  |  Rol: " + u.getRole());
+        }
+        System.out.println("────────────────────────────────────────");
+    }
 }
