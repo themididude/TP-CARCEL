@@ -3,9 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("────────────────────────────────────────────────────────");
-        System.out.println("︶︶︶︶︶︶ BIENVENIDO A LA GESITON CARCELARIA ︶︶︶︶︶︶");
-        System.out.println("────────────────────────────────────────────────────────");
+
 
 
         Scanner sc = new Scanner(System.in);
@@ -25,21 +23,10 @@ public class Main {
         System.out.println("Bienvenido, " + usuario.getUsername() + "! Rol: " + usuario.getRole());
         System.out.println("────────────────────────────────────────────────────────");
 
-        switch(usuario.getRole()) {
-            case Rol.ADMIN:
-                MenuAdmin(sc);
-                break;
 
-            case USER:
-                break;
-            default:
-                System.out.println("bro wat....");
-                break;
-        }
 
         sc.close();
     }
-
 
     /// ────────────────────────────────────────── ///
     private static void MenuAdmin(Scanner sc)                           //<------- agregar mas funciones
@@ -76,9 +63,9 @@ public class Main {
     {
         while(true){
 
-            System.out.println("─────────== MENU USER ==────────");
+            System.out.println("─────────== MENU USER ==────────");             ////user seria un empleado.
             System.out.println("1. Ver usuarios");
-            System.out.println("2. Mostrar Visitas disponibles");      ////not yet
+            System.out.println("2. Stuff");
             System.out.println("3. Salir");
             System.out.println("> ");
 
@@ -114,9 +101,7 @@ public class Main {
         System.out.print("Rol (ADMIN / SEGURIDAD / USER): ");
         String rolStr = sc.nextLine().toUpperCase();
 
-        Rol nuevoRol = Rol.valueOf(rolStr);
-        Usuario nuevo = new Usuario(nuevoNombre, nuevaPass, nuevoRol);
-        UserDB.agregarUsuario(nuevo);
+
 
         System.out.println("Usuario creado con exito.");
     }
