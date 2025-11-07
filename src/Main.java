@@ -1,3 +1,6 @@
+/// NO ESCRIBAN EN EL MAIN CHAVLES.
+/// SAQUEN ESTO Y PONGANLO EN UNA CLASE ↓↓↓↓↓↓↓↓↓↓
+
 import java.util.Scanner;
 
 public class Main {
