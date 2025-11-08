@@ -1,26 +1,20 @@
-public class Guardia extends Empleado implements Seguridad {
+public class Guardia extends Empleado {
 
-    private boolean Activo;
+    private boolean activo;
     private String placaPolicial;
+    private static RangoPolicial rango;
 
+    // Constante de clase (final + static)
+    private static final Cargo CARGO = Cargo.GUARDIA;
 
-    public Guardia(String Nombre, String Apellido, String DNI, int age, boolean bajaLogica, double Salario, int diasLibres, boolean activo, String placaPolicial) {
-        super(Nombre, Apellido, DNI, age, bajaLogica, Salario, diasLibres);
-        this.Activo = activo;
+    public Guardia(String nombre, String apellido, String DNI, int edad, boolean bajaLogica,
+                   double salario, int diasLibres, boolean activo, String placaPolicial) {
+
+        super(nombre, apellido, DNI, edad, bajaLogica, salario, diasLibres);
+        this.activo = activo;
         this.placaPolicial = placaPolicial;
-    }
 
-
-
-    ///===--- METHODS ---===///
-    @Override
-    public String generarReporte() {
-        return "El Guardia" + getApellido() + " genera un reporte de un incidente Carcelario.";
-    }
-
-    @Override
-    public void switchActivo() {
-
-
+        // si Empleado tiene un atributo cargo, lo asignas
+        super.cargo = CARGO;
     }
 }
