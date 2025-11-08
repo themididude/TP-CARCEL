@@ -3,6 +3,7 @@ public abstract class Empleado extends Persona{
     private int NextID = 0;
     private final int EmpleadoID;
 
+    private Cargo cargo;
     private double Salario;
     private int diasLibres;
 
