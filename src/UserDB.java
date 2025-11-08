@@ -10,7 +10,7 @@ public class UserDB {
     static{
         usuarios.add(new Usuario("Admin-Man", "adminpass", Role.Admin()));
         usuarios.add(new Usuario("Rascal", "enlafarandula123", Role.User()));
-        usuarios.add(new Usuario("NachitoGames", "telaAgito23", Role.Seguridad()));
+    usuarios.add(new Usuario("NachitoGames", "telaAgito23", Role.Seguridad()));
     }
 
     /// login en si

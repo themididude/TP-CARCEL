@@ -4,8 +4,8 @@ public class Recluso extends Persona{
     private final int PrisonerID;
     private int sentencia;
 
-    public Recluso(String Nombre, String Apellido, String DNI, int age, boolean BajaLogica, int sentencia) {
-        super(Nombre, Apellido, DNI, age, BajaLogica);
+    public Recluso(String Nombre, String Apellido, String DNI, int age,  int sentencia) {
+        super(Nombre, Apellido, DNI, age);
         this.PrisonerID = nextID++;
         this.sentencia = sentencia;
     }

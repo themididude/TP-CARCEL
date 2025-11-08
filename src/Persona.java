@@ -4,14 +4,12 @@ public abstract class Persona {
     private String Apellido;
     private String DNI;
     private int Age;
-    boolean BajaLogica;
 
-    public Persona(String Nombre, String Apellido, String DNI, int age, boolean bajaLogica) {
+    public Persona(String Nombre, String Apellido, String DNI, int age) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.DNI = DNI;
         this.Age = age;
-        this.BajaLogica = bajaLogica;
     }
 
     /// get and set
@@ -28,11 +26,5 @@ public abstract class Persona {
     public int getAge() {
         return Age;
     }
-    public boolean isBajaLogica() {
-        return BajaLogica;
-    }
-    ///===---                         ---===///
-    public void setBajaLogica(boolean bajaLogica) {
-        this.BajaLogica = bajaLogica;
-    }
+
 }

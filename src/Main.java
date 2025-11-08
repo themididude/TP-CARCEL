@@ -7,28 +7,6 @@ public class Main {
     public static void main(String[] args) {
 
 
-
-
-        Scanner sc = new Scanner(System.in);
-
-
-        System.out.println(">Ingrese su nombre de usuario: ");
-        String username = sc.nextLine();
-        System.out.println(">Ingrese su contraseña: ");
-        String password = sc.nextLine();
-
-        Usuario usuario = UserDB.AUTENTICAR(username, password);
-        if(usuario == null) {
-            System.out.println("Credenciales Invalidas");
-            return;
-        }
-
-        System.out.println("Bienvenido, " + usuario.getUsername() + "! Rol: " + usuario.getRole());
-        System.out.println("────────────────────────────────────────────────────────");
-
-
-
-        sc.close();
     }
 
     /// ────────────────────────────────────────── ///
