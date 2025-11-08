@@ -1,6 +1,6 @@
 public enum Cargo {
     COCINERO,
+    LIMPIEZA,
     GUARDIA,
-    SARGENTO,
-    ADMINISTRATIVO,
+    RECEPCIONISTA;
 }
