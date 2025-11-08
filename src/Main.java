@@ -6,38 +6,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        Carcel.start();
+
+
 
     }
-
+}
+/*
     /// ────────────────────────────────────────── ///
-    private static void MenuAdmin(Scanner sc)                           //<------- agregar mas funciones
-    {
-        while(true){
-            System.out.println("─────────== MENU ADMIN ==────────");
-            System.out.println("1. Ver usuarios");
-            System.out.println("2. Crear nuevo usuario");
-            System.out.println("3. Salir");
-            System.out.println("> ");
 
-            int opcion = sc.nextInt();
-            sc.nextLine(); ///limpiar buffer :v
-
-            switch(opcion){
-                case 1:
-                    UserDB.mostrarUsuarios();
-                    break;
-                case 2:
-                    crearUsuario(sc);
-                    break;
-                case 3:
-                    System.out.println("Cerrando sesion...");
-                    break;
-                default:
-                    System.out.println("Opcion invalida");
-                    break;
-            }
-        }
-    }
 
     /// ────────────────────────────────────────── ///
     private static void MenuUsuario(Scanner sc)
@@ -86,7 +63,7 @@ public class Main {
 
         System.out.println("Usuario creado con exito.");
     }
-}
+}*/
 
 /*⠀⠀⠀⠀⠀⠀⢀⣀⣀⣠⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⢀⣴⡟⢫⡿⢙⣳⣄⣈⡙⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀

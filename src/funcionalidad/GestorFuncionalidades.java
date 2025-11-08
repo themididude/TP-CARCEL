@@ -1,6 +1,7 @@
 package funcionalidad;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class GestorFuncionalidades {
     private List<Funcionalidad> funcionalidades;
@@ -9,9 +10,9 @@ public class GestorFuncionalidades {
         this.funcionalidades = funcionalidades;
     }
 
-    public void ejecutarFuncionalidades(Role rol) {
+    public void ejecutarFuncionalidades(Role rol, Scanner sc) {
         for (Funcionalidad funcionalidad : funcionalidades) {
-            funcionalidad.ejecutar(rol);
+            funcionalidad.ejecutar(rol,sc);
         }
     }
 }

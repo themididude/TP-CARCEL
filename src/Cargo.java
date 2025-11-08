@@ -6,7 +6,7 @@ public enum Cargo {
     ADMINISTRATIVO,
     BASURERO,
 
-    ////=- CARGO POLICIALES                      (al pedo hacer otro enum para un cargo)
+    ////=- CARGO POLICIALES                      (no hace falta otro enum para cargos exclusivamente de la policia)
     GUARDIA,
     OFICIAL,
     COMISARIO,

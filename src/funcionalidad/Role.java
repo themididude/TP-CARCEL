@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Role {
 
+    private String name;
+
     public static enum PERMISOS {
         ///=--- user level ---==///
         CONSULTAR_PRESOS,
@@ -40,8 +42,10 @@ public class Role {
         return permisos.contains(permiso);
     }
 
+
     ///---CONSTRUCTOR JEJEj
-    private Role(ArrayList<PERMISOS> permisos) {
+    private Role(ArrayList<PERMISOS> permisos, String name) {
+        this.name = name; // asignar el name
         this.permisos = permisos;
     }
 
@@ -53,7 +57,7 @@ public class Role {
         permisos.add(PERMISOS.CONSULTAR_INVENTARIO);
         permisos.add(PERMISOS.MENSAJERIA);
         permisos.add(PERMISOS.GENERAR_REPORTE);
-        return new Role(permisos);
+        return new Role(permisos, "USER");
     }
 
     public static Role Seguridad()
@@ -64,7 +68,7 @@ public class Role {
         permisos.add(PERMISOS.VERIFICAR_UBICACION);
         permisos.add(PERMISOS.CONTROL_COMPUERTAS);
         permisos.add(PERMISOS.REGISTRAR_VISITA);
-        return new Role(permisos);
+        return new Role(permisos, "SEGURIDAD");
     }
 
     public static Role Admin()
@@ -72,7 +76,17 @@ public class Role {
         ArrayList<PERMISOS> permisos = new ArrayList<>();
         permisos.add(PERMISOS.TODOS_LOS_PERMISOS);
 
-        return new Role(permisos);
+        return new Role(permisos, "ADMIN");
     }
 
+    //------------------------------------------------///
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
+

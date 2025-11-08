@@ -1,8 +1,10 @@
 package funcionalidad;
 
+import java.util.Scanner;
+
 public class AccederSistemaMensajeria implements Funcionalidad {
     @Override
-    public void ejecutar(Role rol) {
+    public void ejecutar(Role rol,  Scanner sc) {
         if (rol.tieneAccesoA(Role.PERMISOS.MENSAJERIA)) {
             // LOGICA HERE
             System.out.println("Accediendo al Sistema de Mensajería...");
