@@ -10,6 +10,10 @@ public class Main {
 
 
 
+        Empleado juancito = new Empleado("Juancito", "Perez", "3232332", 30, 15000, 2, Cargo.BASURERO);
+        Empleado pedrito = new Guardia("Juancito", "Perez", "3232332", 30, 15000, 2, Cargo.SARGENTO, true, "32323232");
+
+
     }
 }
 
