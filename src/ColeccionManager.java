@@ -2,6 +2,11 @@ import java.util.*;
 
     public class ColeccionManager<T, K, V> {
 
+        public ColeccionManager() {
+        }
+
+        /// LIST
+
         // Crear una lista genérica
         public List<T> crearLista() {
             return new ArrayList<>();
@@ -19,6 +24,27 @@ import java.util.*;
                 System.out.println("- " + elem);
             }
         }
+
+        // Crear una lista enlazada (LinkedList)
+        public LinkedList<T> crearLinkedList() {
+            return new LinkedList<>();
+        }
+
+        // (Opcional) Agregar un elemento a la lista enlazada
+        public void agregarALinkedList(LinkedList<T> listaEnlazada, T elemento) {
+            listaEnlazada.add(elemento);
+        }
+
+        // (Opcional) Mostrar los elementos de la lista enlazada
+        public void mostrarLinkedList(LinkedList<T> listaEnlazada) {
+            System.out.println("Elementos en la LinkedList:");
+            for (T elem : listaEnlazada) {
+                System.out.println("- " + elem);
+            }
+        }
+
+
+        /// SET
 
         // Crear un conjunto (Set)
         public Set<T> crearConjunto() {
@@ -38,6 +64,9 @@ import java.util.*;
             }
         }
 
+
+        ///  MAP
+
         // Crear un mapa genérico
         public Map<K, V> crearMapa() {
             return new HashMap<>();
@@ -50,9 +79,9 @@ import java.util.*;
 
         // Mostrar mapa
         public void mostrarMapa(Map<K, V> mapa) {
-            System.out.println("Elementos en el mapa:");
+            System.out.println("Elementos en el mapa:\n");
             for (Map.Entry<K, V> entry : mapa.entrySet()) {
-                System.out.println(entry.getKey() + " -> " + entry.getValue());
+                System.out.println(entry.getKey() + " key-> " + entry.getValue()+"\n");
             }
         }
     }

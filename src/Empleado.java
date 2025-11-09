@@ -7,8 +7,8 @@ public class Empleado extends Persona{
 
     protected Cargo cargo;
 
-    public Empleado(String Nombre, String Apellido, String DNI, int age, double Salario, int diasLibres, Cargo cargo) {
-        super(Nombre, Apellido, DNI, age);
+    public Empleado(String Nombre, String Apellido, String DNI, int age, double Salario, int diasLibres, Cargo cargo, Genero genero) {
+        super(Nombre, Apellido, DNI, age, genero);
         EmpleadoID = NextID++;
         this.Salario = Salario;
         this.diasLibres = diasLibres;

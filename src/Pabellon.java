@@ -8,23 +8,38 @@ public class Pabellon {
     private LinkedList<Guardia> guardias;
     private Genero genero;
 
-    public Pabellon(Sector sector, Map<Recluso, Integer> presos, LinkedList<Guardia> guardias, Genero genero) {
+
+    //Constructores
+    public Pabellon(Sector sector, Genero genero) {
+        ColeccionManager<Guardia,Recluso,Integer> manager = new ColeccionManager<>();
+        this.guardias=manager.crearLinkedList();
+        this.presos=manager.crearMapa();
         this.sector = sector;
-        this.presos = presos;
-        this.guardias = guardias;
         this.genero = genero;
     }
 
-    public Pabellon() {
+
+    //getters y setters
+
+    public Map<Recluso, Integer> getPresos() {
+        return presos;
+    }
+
+
+    //otros metodos
+    public void mostrarReclusos (Map<Recluso, Integer> reclusos){
+        ColeccionManager <Object,Recluso,Integer> manager = new ColeccionManager<>();
+       manager.mostrarMapa(reclusos);
     }
 
     public void agregarRecluso(Recluso recluso) {
         if (recluso.getGenero()!=this.genero){
-            this.presos.put(recluso, recluso.getPrisonerID());
-            System.out.println("recluso encarcelado");
+            System.out.println("Este recluso no es "+ this.genero);
         }
         else{
-            System.out.println("Este recluso no es "+ this.genero);
+            this.presos.put(recluso, recluso.getPrisonerID());
+            System.out.println("recluso encarcelado\n");
+
         }
 
     }

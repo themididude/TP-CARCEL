@@ -6,11 +6,12 @@ public abstract class Persona {
     private int Age;
     private Genero Genero;
 
-    public Persona(String Nombre, String Apellido, String DNI, int age) {
+    public Persona(String Nombre, String Apellido, String DNI, int age, Genero genero) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.DNI = DNI;
         this.Age = age;
+        this.Genero = genero;
     }
 
     /// get and set
