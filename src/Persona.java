@@ -4,6 +4,7 @@ public abstract class Persona {
     private String Apellido;
     private String DNI;
     private int Age;
+    private Genero Genero;
 
     public Persona(String Nombre, String Apellido, String DNI, int age) {
         this.Nombre = Nombre;
@@ -26,5 +27,5 @@ public abstract class Persona {
     public int getAge() {
         return Age;
     }
-
+    public Genero getGenero() { return Genero;}
 }
