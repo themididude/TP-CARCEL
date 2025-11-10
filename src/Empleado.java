@@ -15,4 +15,8 @@ public class Empleado extends Persona{
         this.cargo = cargo;
     }
 
+    public void aumentarSalario(double Salario, double porcentaje) {
+        this.Salario = Salario+Salario*porcentaje;
+    }
+
 }

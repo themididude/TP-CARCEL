@@ -24,12 +24,19 @@ public class Pabellon {
     public Map<Recluso, Integer> getPresos() {
         return presos;
     }
+    public LinkedList<Guardia> getGuardias() {
+        return guardias;
+    }
 
 
     //otros metodos
     public void mostrarReclusos (Map<Recluso, Integer> reclusos){
         ColeccionManager <Object,Recluso,Integer> manager = new ColeccionManager<>();
        manager.mostrarMapa(reclusos);
+    }
+    public void mostrarGuardias (Map<Recluso, Integer> reclusos){
+        ColeccionManager <Guardia,Object,Object> manager = new ColeccionManager<>();
+        manager.mostrarLinkedList(this.guardias);
     }
 
     public void agregarRecluso(Recluso recluso) {
@@ -44,9 +51,21 @@ public class Pabellon {
 
     }
     public void agregarGuardia(Guardia guardia) {
+
         this.guardias.add(guardia);
     }
 
+    public void quitarRecluso(Recluso recluso) {
+        this.presos.remove(recluso);
+    }
+    public void quitarGuardia(Guardia guardia) {
+        this.guardias.remove(guardia);
+    }
+
+    public void moverRecluso(Recluso recluso, Pabellon otroPabellon) {
+        quitarRecluso(recluso);
+        otroPabellon.agregarRecluso(recluso);
+    }
 
 }
 
