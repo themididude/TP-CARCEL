@@ -1,5 +1,4 @@
 import funcionalidad.CrearUsuario;
-import funcionalidad.Role;
 
 import java.util.Scanner;
 
@@ -12,7 +11,7 @@ public class Menu {
         throw new IllegalStateException("Clase de utilidad, no debe ser instanciada");
     }
 
-    public static void Welcome()
+    public static void Welcome(Scanner sc)
     {
         System.out.println("────────────────────────────────────────────────────────");
         System.out.println("︶︶︶︶︶︶ BIENVENIDO A LA GESITON CARCELARIA ︶︶︶︶︶︶");
@@ -21,8 +20,8 @@ public class Menu {
     }
 
 
-public static void showLoginMenu(){
-    try (Scanner sc = new Scanner(System.in)) {
+public static void showLoginMenu(Scanner sc){
+    try {
 
         System.out.println(">Ingrese su nombre de usuario: ");
         String username = sc.nextLine();
@@ -52,7 +51,7 @@ public static void showLoginMenu(){
 }
 
 
-public static void showMenu() {
+public static void showMenu(Scanner sc) {
     Scanner sc = new Scanner(System.in);
     String rolNombre = UsuarioActual.getRole().getName();
 
