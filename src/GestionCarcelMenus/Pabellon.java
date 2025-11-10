@@ -1,3 +1,8 @@
+package GestionCarcelMenus;
+
+import PersonasEmpleadoUsuario.Genero;
+import PersonasEmpleadoUsuario.Guardia;
+import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.JSONConvertible;
 import funcionalidad.JsonManager;
 import org.json.JSONArray;
@@ -26,21 +31,21 @@ public class Pabellon implements JSONConvertible {
 
     public Pabellon(JSONObject json) {
 
-        this.sector = json.getEnum(Sector.class,"Sector");
-        this.genero = json.getEnum(Genero.class,"Genero");
+        this.sector = json.getEnum(Sector.class,"GestionCarcelMenus.Sector");
+        this.genero = json.getEnum(Genero.class,"PersonasEmpleadoUsuario.Genero");
 
         this.presos = new HashMap<>();
         JSONObject presosJson = json.getJSONObject("Presos");
         for (String key : presosJson.keySet()) {
             Integer id = Integer.parseInt(key);                     // Claves Integer
-            Recluso r = new Recluso(presosJson.getJSONObject(key)); // Crear Recluso desde JSON
+            Recluso r = new Recluso(presosJson.getJSONObject(key)); // Crear PersonasEmpleadoUsuario.Recluso desde JSON
             this.presos.put(id, r);
         }
 
         this.guardias = new LinkedList<>();
         JSONArray guardiasArray = json.getJSONArray("Guardias");
         for (int i = 0; i < guardiasArray.length(); i++) {
-            this.guardias.add(new Guardia(guardiasArray.getJSONObject(i))); // Crear Guardia desde JSON
+            this.guardias.add(new Guardia(guardiasArray.getJSONObject(i))); // Crear PersonasEmpleadoUsuario.Guardia desde JSON
         }
     }
 
@@ -112,8 +117,8 @@ public class Pabellon implements JSONConvertible {
             guardiasArray.put(g.toJSONObject());
         }
         json.put("Guardias", guardiasArray);
-        json.put("Genero", genero);
-        json.put("Sector", sector);
+        json.put("PersonasEmpleadoUsuario.Genero", genero);
+        json.put("GestionCarcelMenus.Sector", sector);
 
         return json;
     }

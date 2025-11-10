@@ -18,7 +18,7 @@ public class CrearUsuario implements Funcionalidad {
 
             System.out.print("Rol (ADMIN / SEGURIDAD / USER): ");
             String rolStr = sc.nextLine().toUpperCase();
-            System.out.println("Usuario creado con exito.");
+            System.out.println("PersonasEmpleadoUsuario.Usuario creado con exito.");
 
         } else {
             System.out.println("No tiene permiso para agregar usuarios.");

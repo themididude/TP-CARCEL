@@ -1,3 +1,5 @@
+package PersonasEmpleadoUsuario;
+
 public enum Cargo {
     ///=- CARGOS NORMALES
     COCINERO,

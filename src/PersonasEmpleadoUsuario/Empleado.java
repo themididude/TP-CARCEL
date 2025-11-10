@@ -1,3 +1,5 @@
+package PersonasEmpleadoUsuario;
+
 import org.json.JSONObject;
 
 public class Empleado extends Persona{
@@ -46,7 +48,7 @@ public class Empleado extends Persona{
         json.put("Salario", Salario);
         json.put("diasLibres", diasLibres);
         json.put("EmpleadoID", EmpleadoID);
-        json.put("Cargo", cargo);
+        json.put("PersonasEmpleadoUsuario.Cargo", cargo);
         return json;
     }
 }

@@ -1,3 +1,5 @@
+package PersonasEmpleadoUsuario;
+
 import funcionalidad.Role;
 
 public class Usuario {

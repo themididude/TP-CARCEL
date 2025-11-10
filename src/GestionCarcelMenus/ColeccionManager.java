@@ -1,3 +1,5 @@
+package GestionCarcelMenus;
+
 import java.util.*;
 
     public class ColeccionManager<T, K, V> {

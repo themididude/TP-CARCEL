@@ -1,3 +1,5 @@
+package GestionCarcelMenus;
+
 public enum Sector {
     A ("Nivel de seguridad: bajo"),
     B ("Nivel de seguridad: intermedio"),

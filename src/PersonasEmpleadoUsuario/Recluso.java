@@ -1,3 +1,5 @@
+package PersonasEmpleadoUsuario;
+
 import funcionalidad.JSONConvertible;
 import org.json.JSONObject;
 

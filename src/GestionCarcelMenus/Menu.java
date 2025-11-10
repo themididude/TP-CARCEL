@@ -1,3 +1,7 @@
+package GestionCarcelMenus;
+
+import PersonasEmpleadoUsuario.UserDB;
+import PersonasEmpleadoUsuario.Usuario;
 import funcionalidad.CrearUsuario;
 
 import java.util.Scanner;
@@ -113,7 +117,7 @@ public static void showMenu(Scanner sc) {
         {
 
             System.out.println("─────────== BIENVENIDO, " + UsuarioActual.getUsername() + " ==────────");
-            System.out.println("----->Menu de SEGURIDAD.");
+            System.out.println("----->GestionCarcelMenus.Menu de SEGURIDAD.");
             System.out.println("1. Registrar Ronda");
             System.out.println("2. Registrar Incidente");
             System.out.println("3. Control Compuertas");
@@ -149,12 +153,12 @@ public static void showMenu(Scanner sc) {
 
         while(true){
             System.out.println("─────────== BIENVENIDO, " + UsuarioActual.getUsername() + " ==────────");
-            System.out.println("Menu de ADMIN.");
+            System.out.println("GestionCarcelMenus.Menu de ADMIN.");
             System.out.println("---------| MANEJO DE USUARIOS | ---------");
             System.out.println(">");
             System.out.println("0. Mostrar Usuarios");
-            System.out.println("1. Agregar Usuario");
-            System.out.println("1. Eliminar Usuario");
+            System.out.println("1. Agregar PersonasEmpleadoUsuario.Usuario");
+            System.out.println("1. Eliminar PersonasEmpleadoUsuario.Usuario");
             System.out.println("2. Reestablecer Constraseñas");
             System.out.println("3. Asignar Roles");
             System.out.println("4. Modificar Horarios");

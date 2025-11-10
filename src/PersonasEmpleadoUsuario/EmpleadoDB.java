@@ -1,4 +1,4 @@
-import funcionalidad.Role;
+package PersonasEmpleadoUsuario;
 
 import java.util.ArrayList;
 import java.util.List;
