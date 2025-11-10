@@ -23,6 +23,7 @@ public class Empleado extends Persona{
         this.Salario = json.getDouble("Salario");
         this.diasLibres = json.getInt("diasLibres");
         this.EmpleadoID = json.getInt("EmpleadoID");
+        this.cargo = json.getEnum(Cargo.class, "cargo");
     }
 
     public Empleado(String nombre, String apellido, String dni, int age, double salario, int diasLibres, Genero genero) {
@@ -45,6 +46,7 @@ public class Empleado extends Persona{
         json.put("Salario", Salario);
         json.put("diasLibres", diasLibres);
         json.put("EmpleadoID", EmpleadoID);
+        json.put("Cargo", cargo);
         return json;
     }
 }

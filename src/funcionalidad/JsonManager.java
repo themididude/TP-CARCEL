@@ -56,21 +56,47 @@ public class JsonManager {
     // -----------------------------
     // Mapas
     // -----------------------------
-    public static void guardarMapa(String ruta, Map<String, Object> mapa) throws IOException {
+    public static void guardarMapaStr(String ruta, Map<String, Object> mapa) throws IOException {
         JSONObject json = new JSONObject(mapa);
         Files.writeString(Paths.get(ruta), json.toString(4));
     }
+    public static <T extends JSONConvertible> void guardarMapaInt(String ruta, Map<Integer, T> mapa) throws IOException {
+        JSONObject json = mapDeObjetosAJSONObjectInt(mapa);
+        Files.writeString(Paths.get(ruta), json.toString(4));
+    }
 
-    public static Map<String, Object> leerMapa(String ruta) throws IOException, org.json.JSONException {
+
+    public static Map<String, Object> leerMapaStr(String ruta) throws IOException, org.json.JSONException {
         String contenido = Files.readString(Paths.get(ruta));
         JSONObject json = new JSONObject(contenido);
         return json.toMap();
     }
+    public static <T> Map<Integer, T> leerMapaInt(String ruta, Function<JSONObject, T> creador) throws IOException, org.json.JSONException {
+        String contenido = Files.readString(Paths.get(ruta));
+        JSONObject json = new JSONObject(contenido);
 
-    public static <T extends JSONConvertible> JSONObject mapDeObjetosAJSONObject(Map<String, T> mapa) {
+        Map<Integer, T> mapa = new HashMap<>();
+        for (String key : json.keySet()) {
+            Integer intKey = Integer.parseInt(key);                  // Convertir la clave a Integer
+            T value = creador.apply(json.getJSONObject(key));       // Crear objeto usando el creador
+            mapa.put(intKey, value);
+        }
+
+        return mapa;
+    }
+
+
+    public static <T extends JSONConvertible> JSONObject mapDeObjetosAJSONObjectStr(Map<String, T> mapa) {
         JSONObject json = new JSONObject();
         for (Map.Entry<String, T> e : mapa.entrySet()) {
             json.put(e.getKey(), e.getValue().toJSONObject());
+        }
+        return json;
+    }
+    public static <T extends JSONConvertible> JSONObject mapDeObjetosAJSONObjectInt(Map<Integer, T> mapa) {
+        JSONObject json = new JSONObject();
+        for (Map.Entry<Integer, T> e : mapa.entrySet()) {
+            json.put(String.valueOf(e.getKey()), e.getValue().toJSONObject());
         }
         return json;
     }
@@ -82,7 +108,6 @@ public class JsonManager {
         }
         return mapa;
     }
-
 }
 
 

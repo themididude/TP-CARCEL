@@ -27,6 +27,9 @@ public abstract class Persona implements JSONConvertible {
 
     }
 
+    public Persona() {
+    }
+
     /// get and set
     public String getNombre() {
         return Nombre;

@@ -13,6 +13,7 @@ public class Guardia extends Empleado implements JSONConvertible {
         super(json);
        this.activo = json.optBoolean("activo");
        this.placaPolicial = json.optString("placaPolicial");
+       this.rango=json.getEnum(Cargo.class, "rango");
     }
 
     public Guardia(String Nombre, String Apellido, String DNI, int age, double Salario, int diasLibres, boolean activo, String placaPolicial, Genero genero, Cargo rango) {
@@ -27,9 +28,9 @@ public class Guardia extends Empleado implements JSONConvertible {
     public JSONObject toJSONObject() {
         JSONObject json = super.toJSONObject();
 
-        json.put("activo", this.activo);
-        json.put("placaPolicial", this.placaPolicial);
-        json.put("rango", this.rango);
+        json.put("activo", activo);
+        json.put("placaPolicial", placaPolicial);
+        json.put("rango", rango);
         return json;
     }
 }

@@ -1,30 +1,63 @@
+import funcionalidad.JSONConvertible;
+import funcionalidad.JsonManager;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class Pabellon {
+public class Pabellon implements JSONConvertible {
 
     private Sector sector;
-    private Map <Recluso, Integer> presos;
+    private Map <Integer,Recluso> presos;
     private LinkedList<Guardia> guardias;
     private Genero genero;
 
 
     //Constructores
     public Pabellon(Sector sector, Genero genero) {
-        ColeccionManager<Guardia,Recluso,Integer> manager = new ColeccionManager<>();
+        ColeccionManager<Guardia,Integer,Recluso> manager = new ColeccionManager<>();
         this.guardias=manager.crearLinkedList();
         this.presos=manager.crearMapa();
         this.sector = sector;
         this.genero = genero;
     }
 
+    public Pabellon(JSONObject json) {
+
+        this.sector = json.getEnum(Sector.class,"Sector");
+        this.genero = json.getEnum(Genero.class,"Genero");
+
+        this.presos = new HashMap<>();
+        JSONObject presosJson = json.getJSONObject("Presos");
+        for (String key : presosJson.keySet()) {
+            Integer id = Integer.parseInt(key);                     // Claves Integer
+            Recluso r = new Recluso(presosJson.getJSONObject(key)); // Crear Recluso desde JSON
+            this.presos.put(id, r);
+        }
+
+        this.guardias = new LinkedList<>();
+        JSONArray guardiasArray = json.getJSONArray("Guardias");
+        for (int i = 0; i < guardiasArray.length(); i++) {
+            this.guardias.add(new Guardia(guardiasArray.getJSONObject(i))); // Crear Guardia desde JSON
+        }
+    }
+
+
 
     //getters y setters
 
-    public Map<Recluso, Integer> getPresos() {
-        return presos;
+    public Map<Integer,Recluso> getPresos() {
+        return this.presos;
     }
+
+    public void setPresos(Map<Integer, Recluso> presos) {
+        this.presos = presos;
+    }
+
     public LinkedList<Guardia> getGuardias() {
+
         return guardias;
     }
 
@@ -44,7 +77,7 @@ public class Pabellon {
             System.out.println("Este recluso no es "+ this.genero);
         }
         else{
-            this.presos.put(recluso, recluso.getPrisonerID());
+            this.presos.put(recluso.getPrisonerID(),recluso);
             System.out.println("recluso encarcelado\n");
 
         }
@@ -67,5 +100,22 @@ public class Pabellon {
         otroPabellon.agregarRecluso(recluso);
     }
 
+
+    @Override
+    public JSONObject toJSONObject() {
+        JSONObject json = new JSONObject();
+
+        json.put("Presos", JsonManager.mapDeObjetosAJSONObjectInt(presos));
+
+        JSONArray guardiasArray = new JSONArray();
+        for (Guardia g : guardias) {
+            guardiasArray.put(g.toJSONObject());
+        }
+        json.put("Guardias", guardiasArray);
+        json.put("Genero", genero);
+        json.put("Sector", sector);
+
+        return json;
+    }
 }
 

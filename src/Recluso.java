@@ -21,6 +21,9 @@ public class Recluso extends Persona implements JSONConvertible {
 
     }
 
+    public Recluso() {
+    }
+
     ///===---       get set           ---===///
     public int getPrisonerID() {
         return PrisonerID;
