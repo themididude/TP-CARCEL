@@ -52,7 +52,7 @@ public static void showLoginMenu(Scanner sc){
 
 
 public static void showMenu(Scanner sc) {
-    Scanner sc = new Scanner(System.in);
+
     String rolNombre = UsuarioActual.getRole().getName();
 
    switch (rolNombre) {
