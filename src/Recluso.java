@@ -1,4 +1,7 @@
-public class Recluso extends Persona{
+import funcionalidad.JSONConvertible;
+import org.json.JSONObject;
+
+public class Recluso extends Persona implements JSONConvertible {
 
     private static int nextId = 0;
     private int PrisonerID;
@@ -9,6 +12,13 @@ public class Recluso extends Persona{
         nextId++;
         this.PrisonerID = nextId;
         this.sentencia = sentencia;
+    }
+    public Recluso(JSONObject json) {
+        super(json);
+        nextId++;
+        this.PrisonerID = nextId;
+        this.sentencia = json.getInt("sentencia");
+
     }
 
     ///===---       get set           ---===///
@@ -27,4 +37,13 @@ public class Recluso extends Persona{
 
         return sb.toString();
     }
+
+    @Override
+    public JSONObject toJSONObject() {
+        JSONObject json = super.toJSONObject();
+        json.put("prisonerID", this.PrisonerID);
+        json.put("sentencia", this.sentencia);
+        return json;
+    }
+
 }
