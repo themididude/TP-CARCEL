@@ -10,5 +10,5 @@ public enum Cargo {
     GUARDIA,
     OFICIAL,
     COMISARIO,
-    SARGENTO
+    SARGENTO;
 }
