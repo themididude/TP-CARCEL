@@ -18,11 +18,11 @@ public abstract class Persona implements JSONConvertible {
     }
 
     public Persona(JSONObject json) {
-        this.Nombre = toJSONObject().getString("Nombre");
-        this.Apellido = toJSONObject().getString("Apellido");
-        this.DNI = toJSONObject().getString("DNI");
-        this.Age = toJSONObject().getInt("Age");
-        this.Genero = toJSONObject().getEnum(Genero.class, "Genero");
+        this.Nombre = json.getString("Nombre");
+        this.Apellido = json.getString("Apellido");
+        this.DNI = json.getString("DNI");
+        this.Age = json.getInt("Age");
+        this.Genero = json.getEnum(Genero.class, "Genero");
 
 
     }
