@@ -76,12 +76,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
 
     public static void MenuUsuario(Scanner sc)
     {
-        /*
-        CONSULTAR_PRESOS,
-        CONSULTAR_INVENTARIO,
-        ,
-        GENERAR_REPORTE,
-        */
+
         while(true){
             System.out.println("─────────== BIENVENIDO, User ==────────");
             System.out.println("1. Consultar Presos");
@@ -175,7 +170,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             int opcion = sc.nextInt();
             sc.nextLine();
 
-            switch(opcion){       /// /////// ya sabeis que hacer
+            switch (opcion) {       /// /////// ya sabeis que hacer
                 case 0:
                     break;
                 case 1:
@@ -203,6 +198,14 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 12:
                     break;
                 case 13:
+                    break;
+                case 14:
+                    break;
+                case 15:
+                    break;
+                case 16:
+                    break;
+                case 17:
                     return;
                 default:
                     System.out.println("Opcion invalida.");
