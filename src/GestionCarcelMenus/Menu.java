@@ -154,13 +154,13 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             System.out.println("3. Eliminar Personas");
             System.out.println("4. Reestablecer Contraseñas");
             System.out.println("5. Asignar Roles");
-            System.out.println("6. Modificar Horarios");
+            System.out.println("6. Modificar Horarios");             ///<-------- cancelada
             System.out.println("7. Generar Informe Financiero");
             System.out.println("---------| MANEJO DE SEGURIDAD |---------");
             System.out.println("8. Registrar Ronda");
             System.out.println("9. Registrar Incidente");
             System.out.println("10. Verificar Ubicación");
-            System.out.println("11. Registrar Visita");
+            System.out.println("11. Registrar Visita");             ///<-------- cancelada
             System.out.println("12. Trasladar Preso (Cambio de sector)");
             System.out.println("---------| TAREAS DE USUARIO |---------");
             System.out.println("13. Mostrar Presos");
