@@ -1,13 +1,10 @@
 package GestionCarcelMenus;
-
-import PersonasEmpleadoUsuario.UserDB;
-import PersonasEmpleadoUsuario.Usuario;
+import funcionalidad.Autenticacion;
+import funcionalidad.Rol;
 
 import java.util.Scanner;
 
 public class Menu {
-
-    public static Usuario UsuarioActual;
 
     private Menu()
     {
@@ -26,47 +23,50 @@ public class Menu {
 public static void showLoginMenu(Scanner sc){
     try {
 
-        System.out.println(">Ingrese su nombre de usuario: ");
-        String username = sc.nextLine();
-        System.out.println(">Ingrese su contraseña: ");
-        String password = sc.nextLine();
+        System.out.println("Ingrese su rol: ");
+        System.out.println("1. USER");
+        System.out.println("2. SEGURIDAD");
+        System.out.println("3. ADMIN");
+        System.out.print("> ");
+        String opcionUsuario = sc.nextLine();
 
-        try {
+        Rol rolElegido = Rol.fromString(opcionUsuario);
+        if (rolElegido != null) {
 
-            Usuario usuario = UserDB.AUTENTICAR(username, password);
-            if (usuario == null) {
-                System.out.println("Credenciales Invalidas");
-                return;
+            if (rolElegido.equals(Rol.USER)) {
+                Autenticacion.Login(Rol.USER, null);
+                showMenu(sc, Rol.USER);
+            } else {
+
+                System.out.println(">Ingrese su contraseña: ");
+                String password = sc.nextLine();
+
+                if (Autenticacion.Login(rolElegido, password)) {
+                    Autenticacion.LoginExitoso(rolElegido);
+                    showMenu(sc, rolElegido);
+                } else {
+                    System.out.println("ERROR: CONTRASEÑA INCORRECTA.");
+                }
             }
-
-            System.out.println("Bienvenido, " + usuario.getUsername() + "! Rol: " + usuario.getRole().getName());
-            UsuarioActual = usuario;
-            System.out.println("──────────────────────────");
-
-        } catch (Exception e) {
-
-            System.err.println("Error de autenticacion! No se pudo verificar el usuario debido a un problema interno.");
-            System.err.println("Detalles:" + e.getMessage());
         }
-    } catch (java.util.NoSuchElementException e) {
-        System.err.println("No se pudo leer el nombre de usuario.");
+    } catch (IllegalArgumentException e) {
+        System.out.println("Error: Opcion de rol no reconocida o no valida.");
+    } catch (Exception e) {
+        System.out.println("Ha ocurrido un error inesperado. Saliendo del Menu...");
     }
 }
 
 
-public static void showMenu(Scanner sc) {
+public static void showMenu(Scanner sc, Rol rolElegido) {
 
-    String rolNombre = UsuarioActual.getRole().getName();
-
-   switch (rolNombre) {
-
-       case "USER":
+   switch (rolElegido){
+       case Rol.USER:
            MenuUsuario(sc);
            break;
-       case "SEGURIDAD":
+       case Rol.SEGURIDAD:
            MenuSeguridad(sc);
            break;
-       case "ADMIN":
+       case Rol.ADMIN:
            MenuAdmin(sc);
            break;
    }
@@ -83,7 +83,7 @@ public static void showMenu(Scanner sc) {
         GENERAR_REPORTE,
         */
         while(true){
-            System.out.println("─────────== BIENVENIDO, " + UsuarioActual.getUsername() + " ==────────");
+            System.out.println("─────────== BIENVENIDO, User ==────────");
             System.out.println("1. Consultar Presos");
             System.out.println("2. Consultar Inventario");
             System.out.println("3. Generar Reporte");
@@ -115,8 +115,7 @@ public static void showMenu(Scanner sc) {
         while (true)
         {
 
-            System.out.println("─────────== BIENVENIDO, " + UsuarioActual.getUsername() + " ==────────");
-            System.out.println("----->GestionCarcelMenus.Menu de SEGURIDAD.");
+            System.out.println("─────────== BIENVENIDO, SEGURIDAD ==────────");
             System.out.println("1. Registrar Ronda");
             System.out.println("2. Registrar Incidente");
             System.out.println("3. Control Compuertas");
@@ -151,8 +150,7 @@ public static void showMenu(Scanner sc) {
     {
 
         while(true){
-            System.out.println("─────────== BIENVENIDO, " + UsuarioActual.getUsername() + " ==────────");
-            System.out.println("Menu de ADMIN.");
+            System.out.println("─────────== BIENVENIDO, ADMIN ==────────");
             System.out.println("---------| MANEJO DE USUARIOS | ---------");
             System.out.println("1. Mostrar Empleados");
             System.out.println("2. Agregar Personas");
@@ -179,7 +177,6 @@ public static void showMenu(Scanner sc) {
 
             switch(opcion){       /// /////// ya sabeis que hacer
                 case 0:
-                    UserDB.mostrarUsuarios();                      ////<----- ejemplo
                     break;
                 case 1:
                     break;

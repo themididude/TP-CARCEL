@@ -10,7 +10,7 @@ public class GestorFuncionalidades {
         this.funcionalidades = funcionalidades;
     }
 
-    public void ejecutarFuncionalidades(Role rol, Scanner sc) {
+    public void ejecutarFuncionalidades(Rol rol, Scanner sc) {
         for (Funcionalidad funcionalidad : funcionalidades) {
             funcionalidad.ejecutar(rol,sc);
         }

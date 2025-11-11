@@ -8,12 +8,11 @@ public class Carcel {
 
     public static void start() {
 Scanner sc = new Scanner(System.in);
-        ///=---------- AAAAAAAAAAA
+
+        ///=---------- MENU -----------------=//
         Menu.Welcome(sc);
+        Menu.showLoginMenu(sc); ///de aca desembocan los demas paneles
 
-        Menu.showLoginMenu(sc); ///-----> de aca desembocan los demas paneles
-
-        Menu.showMenu(sc);
 
     }
 }

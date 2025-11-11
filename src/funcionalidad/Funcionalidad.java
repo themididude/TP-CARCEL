@@ -2,5 +2,5 @@ package funcionalidad;
 import java.util.Scanner;
 
 public interface Funcionalidad {
-    void ejecutar(Role rol, Scanner sc);
+    void ejecutar(Rol rol, Scanner sc);
 }

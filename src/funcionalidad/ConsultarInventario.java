@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public class ConsultarInventario implements Funcionalidad {
     @Override
-    public void ejecutar(Role rol, Scanner sc) {
-        if (rol.tieneAccesoA(Role.PERMISOS.CONSULTAR_INVENTARIO)) {
-            // Logica para consultar inventario lololololo
+    public void ejecutar(Rol rol, Scanner sc) {
+        if (rol == Rol.USER || rol == Rol.ADMIN) {
+            
+            // LOGICA
+
+
             System.out.println("Consultando Inventario de Recursos...");
         } else {
             System.out.println("No tiene permiso para consultar inventario.");
