@@ -8,18 +8,22 @@ public class Recluso extends Persona implements JSONConvertible {
     private static int nextId = 0;
     private int PrisonerID;
     private int sentencia;
+    private int Celda;
+    private String causaSimple; ///<--- una descripcion simple de lo que hizo, de forma que salga al consultar el expediente.
 
-    public Recluso(String Nombre, String Apellido, String DNI, int age,  int sentencia,Genero genero) {
+    public Recluso(String Nombre, String Apellido, String DNI, int age,  int sentencia,Genero genero, int Celda) {
         super(Nombre, Apellido, DNI, age, genero);
         nextId++;
         this.PrisonerID = nextId;
         this.sentencia = sentencia;
+        this.Celda = Celda;
     }
     public Recluso(JSONObject json) {
         super(json);
         nextId++;
         this.PrisonerID = nextId;
         this.sentencia = json.getInt("sentencia");
+        this.Celda = json.getInt("Celda");
 
     }
 
@@ -39,6 +43,7 @@ public class Recluso extends Persona implements JSONConvertible {
         sb.append("DNI: "+getDNI()+"\n");
         sb.append("Prisoner ID: "+PrisonerID+"\n");
         sb.append("Sentencia: "+sentencia+"\n");
+        sb.append("Celda: "+Celda+"\n");
 
         return sb.toString();
     }
@@ -48,6 +53,7 @@ public class Recluso extends Persona implements JSONConvertible {
         JSONObject json = super.toJSONObject();
         json.put("prisonerID", this.PrisonerID);
         json.put("sentencia", this.sentencia);
+        json.put("Celda", this.Celda);
         return json;
     }
 

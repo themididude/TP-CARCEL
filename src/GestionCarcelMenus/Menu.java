@@ -2,6 +2,7 @@ package GestionCarcelMenus;
 import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.Autenticacion;
 import funcionalidad.Rol;
+import funcionalidad.Tareas.Consultas;
 
 import java.util.Scanner;
 
@@ -214,6 +215,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 13:
                     break;
                 case 14:
+                    Consultas.consultarExpediente();
                     break;
                 case 15:
                     break;
