@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Carcel {
 
-    public static final String RUTA_JSON = "data/carcel.json";
+    public static final String RUTA_JSON = "carcel.json";
 
     public static void start() {
         //--| algunos atributos| --//
@@ -24,22 +24,24 @@ public class Carcel {
 
             if(carcel.getInt("first_time") == 1)
             {
+                System.out.println("────────────────────────────────────────");
                 System.out.println("Bienvenido a su Carcel! Ingrese los datos antes de continuar:");
 
                 System.out.println("Nombre de su Carcel: ");
-                carcel.put("nombre_carcel", sc.next());
+                carcel.put("nombre_carcel", sc.nextLine());
 
                 System.out.println("Localidad: ");
-                carcel.put("localidad", sc.next());
+                carcel.put("localidad", sc.nextLine());
 
                 System.out.println("Provincia: ");
-                carcel.put("provincia", sc.next());
+                carcel.put("provincia", sc.nextLine());
 
                 System.out.println("Codigo Postal: ");
-                carcel.put("codigo_postal", sc.next());
+                carcel.put("codigo_postal", sc.nextLine());
 
                 System.out.println("Capacidad: ");
                 carcel.put("capacidad", sc.nextDouble());
+                sc.nextLine(); //resetear buffer
 
                 System.out.println("Configurando. . . . . . ");
 
@@ -47,9 +49,12 @@ public class Carcel {
 
                 Files.write(Paths.get(RUTA_JSON), carcel.toString(4).getBytes());
                 System.out.println("Carcel guardada con exito!");
+                System.out.println("────────────────────────────────────────");
             } else {
 
-                System.out.println("Iniciando Carcel" + carcel.getString("nombre_carcel" + "!"));
+                System.out.println("────────────────────────────────────────");
+                System.out.println("Iniciando Carcel " + carcel.getString("nombre_carcel") + "!");
+                System.out.println("────────────────────────────────────────");
             }
 
 
