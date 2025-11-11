@@ -204,8 +204,8 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                     sc.nextLine();
                     System.out.println("a que pabellon se traslada?");
                     String nom=sc.nextLine();
-                    Pabellon p=PabellonDB.getPabellonDelPrisionero(id);
-                    Recluso r= PabellonDB.buscarPrisionero(id);
+                    Pabellon p=PabellonDB.getPabellonDelRecluso(id);
+                    Recluso r= PabellonDB.buscarReclusoDB(id);
                     Pabellon p2= PabellonDB.buscarPabellon(nom);
                     if(r!=null&&p2!=null&&p!=null){
 

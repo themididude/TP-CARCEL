@@ -1,4 +1,5 @@
 package GestionCarcelMenus;
+import PersonasEmpleadoUsuario.Guardia;
 import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.JSONConvertible;
 import org.json.JSONArray;
@@ -63,7 +64,8 @@ public class PabellonDB implements JSONConvertible {
         return null;
     }
 
-    public static Recluso buscarPrisionero(int id) {
+    //metodos de prisionero
+    public static Recluso buscarReclusoDB(int id) {
         int i;
         for (i=0;i<p.size();i++) {
             if(p.get(i).getPresos().containsKey(id)){
@@ -73,7 +75,7 @@ public class PabellonDB implements JSONConvertible {
         System.out.println("Prisionero no existe");
         return null;
     }
-    public static Pabellon getPabellonDelPrisionero (int id)
+    public static Pabellon getPabellonDelRecluso(int id)
     {
         int i;
         for (i=0;i<p.size();i++) {
@@ -85,11 +87,33 @@ public class PabellonDB implements JSONConvertible {
         return null;
     }
 
-    public static void quitarPrisonero(int id) {
-        PabellonDB.buscarPrisionero(id);
 
+    //metodos de guardia
+    public static Guardia buscarGuardiaDB(int id) {
+        int i;
+        for (i=0;i<p.size();i++) {
+            if(p.get(i).getGuardias().contains(id)){
+                return p.get(i).buscarGuardia(id);
+            }
+        }
+        System.out.println("Guardia no existe");
+        return null;
+    }
+    public static Pabellon  getPabellonDelGuardia(int id)
+    {
+        int i;
+        for (i=0;i<p.size();i++) {
+            if(p.get(i).getGuardias().contains(id)){
+                return p.get(i);
+            }
+        }
+        System.out.println("Guardia no existe");
+        return null;
     }
 
+
+
+    //toJson
     @Override
     public JSONObject toJSONObject() {
         JSONObject json = new JSONObject();
