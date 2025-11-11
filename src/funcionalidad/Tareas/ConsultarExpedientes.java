@@ -1,12 +1,13 @@
-package funcionalidad;
+package funcionalidad.Tareas;
 
 
-import javax.management.relation.Role;
+import funcionalidad.Rol;
+
 import java.util.Scanner;
 
 public class ConsultarExpedientes implements Funcionalidad {
     @Override
-    public void ejecutar(Rol rol,  Scanner sc) {
+    public void ejecutar(Rol rol, Scanner sc) {
         if (rol == Rol.USER || rol == Rol.ADMIN ) {
 
             //LOGICA
