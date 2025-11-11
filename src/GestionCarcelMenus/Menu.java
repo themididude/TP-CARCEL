@@ -2,7 +2,6 @@ package GestionCarcelMenus;
 
 import PersonasEmpleadoUsuario.UserDB;
 import PersonasEmpleadoUsuario.Usuario;
-import funcionalidad.CrearUsuario;
 
 import java.util.Scanner;
 
@@ -153,26 +152,27 @@ public static void showMenu(Scanner sc) {
 
         while(true){
             System.out.println("─────────== BIENVENIDO, " + UsuarioActual.getUsername() + " ==────────");
-            System.out.println("GestionCarcelMenus.Menu de ADMIN.");
+            System.out.println("Menu de ADMIN.");
             System.out.println("---------| MANEJO DE USUARIOS | ---------");
-            System.out.println(">");
-            System.out.println("0. Mostrar Usuarios");
-            System.out.println("1. Agregar PersonasEmpleadoUsuario.Usuario");
-            System.out.println("1. Eliminar PersonasEmpleadoUsuario.Usuario");
-            System.out.println("2. Reestablecer Constraseñas");
-            System.out.println("3. Asignar Roles");
-            System.out.println("4. Modificar Horarios");
-            System.out.println("5. Generar Informe Financiero");
+            System.out.println("1. Mostrar Empleados");
+            System.out.println("2. Agregar Personas");
+            System.out.println("3. Eliminar Personas");
+            System.out.println("4. Reestablecer Contraseñas");
+            System.out.println("5. Asignar Roles");
+            System.out.println("6. Modificar Horarios");
+            System.out.println("7. Generar Informe Financiero");
             System.out.println("---------| MANEJO DE SEGURIDAD |---------");
-            System.out.println("6. Registrar Ronda");
-            System.out.println("7. Registrar Incidente");
-            System.out.println("8. Verificar Ubicacion");
-            System.out.println("9. Registrar Visita");
+            System.out.println("8. Registrar Ronda");
+            System.out.println("9. Registrar Incidente");
+            System.out.println("10. Verificar Ubicación");
+            System.out.println("11. Registrar Visita");
+            System.out.println("12. Trasladar Preso (Cambio de sector)");
             System.out.println("---------| TAREAS DE USUARIO |---------");
-            System.out.println("10. Consultar Presos");
-            System.out.println("11. Consultar Inventario");
-            System.out.println("12. Generar Reporte");
-            System.out.println("13. Salir");
+            System.out.println("13. Mostrar Presos");
+            System.out.println("14. Buscar Preso (y mostrar)");
+            System.out.println("15. Consultar Inventario");
+            System.out.println("16. Generar Reporte");
+            System.out.println("17. Salir");
 
             int opcion = sc.nextInt();
             sc.nextLine();
@@ -182,8 +182,6 @@ public static void showMenu(Scanner sc) {
                     UserDB.mostrarUsuarios();                      ////<----- ejemplo
                     break;
                 case 1:
-                    CrearUsuario creation = new CrearUsuario();
-                    creation.ejecutar(UsuarioActual.getRole(), sc);
                     break;
                 case 2:
                     break;
