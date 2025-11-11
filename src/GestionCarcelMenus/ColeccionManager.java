@@ -19,6 +19,8 @@ import java.util.*;
             lista.add(elemento);
         }
 
+        public void removerElemento(List<T> lista, T elemento) {lista.remove(elemento);}
+
         // Mostrar todos los elementos de la lista
         public void mostrarLista(List<T> lista) {
             System.out.println("Elementos en la lista:");
@@ -26,6 +28,7 @@ import java.util.*;
                 System.out.println("- " + elem);
             }
         }
+
 
         // Crear una lista enlazada (LinkedList)
         public LinkedList<T> crearLinkedList() {
