@@ -1,0 +1,77 @@
+[
+    {
+        "Sector": "B",
+        "Genero": "HOMBRE",
+        "Presos": {
+            "1": {
+                "Nombre": "pepe",
+                "Genero": "HOMBRE",
+                "prisonerID": 1,
+                "Apellido": "ramirez",
+                "sentencia": 999,
+                "DNI": "6742069",
+                "Age": 12
+            },
+            "2": {
+                "Nombre": "juan",
+                "Genero": "HOMBRE",
+                "prisonerID": 2,
+                "Apellido": "troll",
+                "sentencia": 9998,
+                "DNI": "123456",
+                "Age": 30
+            }
+        },
+        "Guardias": []
+    },
+    {
+        "Sector": "A",
+        "Genero": "HOMBRE",
+        "Presos": {
+            "1": {
+                "Nombre": "coscu",
+                "Genero": "HOMBRE",
+                "prisonerID": 3,
+                "Apellido": "nashe",
+                "sentencia": 999,
+                "DNI": "111111",
+                "Age": 666
+            },
+            "2": {
+                "Nombre": "lucho",
+                "Genero": "HOMBRE",
+                "prisonerID": 4,
+                "Apellido": "xdd",
+                "sentencia": 9998,
+                "DNI": "77777",
+                "Age": 43
+            }
+        },
+        "Guardias": []
+    },
+    {
+        "Sector": "A",
+        "Genero": "HOMBRE",
+        "Presos": {
+            "1": {
+                "Nombre": "diddy",
+                "Genero": "HOMBRE",
+                "prisonerID": 5,
+                "Apellido": "blud",
+                "sentencia": 0,
+                "DNI": "111111",
+                "Age": 80085
+            },
+            "2": {
+                "Nombre": "gere",
+                "Genero": "HOMBRE",
+                "prisonerID": 6,
+                "Apellido": "god",
+                "sentencia": 1,
+                "DNI": "9876",
+                "Age": 420
+            }
+        },
+        "Guardias": []
+    }
+]

@@ -24,7 +24,7 @@ public abstract class Persona implements JSONConvertible {
         this.Apellido = json.getString("Apellido");
         this.DNI = json.getString("DNI");
         this.Age = json.getInt("Age");
-        this.Genero = json.getEnum(Genero.class, "PersonasEmpleadoUsuario.Genero");
+        this.Genero = json.getEnum(Genero.class, "Genero");
 
 
     }
@@ -59,7 +59,7 @@ public abstract class Persona implements JSONConvertible {
         json.put("Apellido", Apellido);
         json.put("DNI", DNI);
         json.put("Age", Age);
-        json.put("PersonasEmpleadoUsuario.Genero", Genero);
+        json.put("Genero", Genero);
 
         return json;
     }
