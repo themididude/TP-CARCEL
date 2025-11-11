@@ -1,14 +1,68 @@
 package GestionCarcelMenus;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Carcel {
 
+    public static final String RUTA_JSON = "data/carcel.json";
+
     public static void start() {
+        //--| algunos atributos| --//
         boolean salir = false;
         Scanner sc = new Scanner(System.in);
 
 
+        ///───────────────────────────────────────| PRIMER START  |──────────────────────────────────────────────///
+        try{
+            String contenido = new String(Files.readAllBytes(Paths.get(RUTA_JSON)));
+            JSONObject carcel = new JSONObject(contenido);
+
+            if(carcel.getInt("first_time") == 1)
+            {
+                System.out.println("Bienvenido a su Carcel! Ingrese los datos antes de continuar:");
+
+                System.out.println("Nombre de su Carcel: ");
+                carcel.put("nombre_carcel", sc.next());
+
+                System.out.println("Localidad: ");
+                carcel.put("localidad", sc.next());
+
+                System.out.println("Provincia: ");
+                carcel.put("provincia", sc.next());
+
+                System.out.println("Codigo Postal: ");
+                carcel.put("codigo_postal", sc.next());
+
+                System.out.println("Capacidad: ");
+                carcel.put("capacidad", sc.nextDouble());
+
+                System.out.println("Configurando. . . . . . ");
+
+                carcel.put("first_time", 0);
+
+                Files.write(Paths.get(RUTA_JSON), carcel.toString(4).getBytes());
+                System.out.println("Carcel guardada con exito!");
+            } else {
+
+                System.out.println("Iniciando Carcel" + carcel.getString("nombre_carcel" + "!"));
+            }
+
+
+
+
+        } catch (IOException e)
+        {
+            System.out.println("Error al leer o escribir el archivo JSON: " + e.getMessage());
+        }
+
+
+
+        ///───────────────────────────────────────|  LOOP  PRINCIPAL  |─────────────────────────────────────────///
         while (!salir) {
             ///=---------- MENU -----------------=//
             Menu.Welcome(sc);
@@ -36,6 +90,8 @@ public class Carcel {
                 sc.close();
                 salir = true;
             }
+
+            ///───────────────────────────────────────|  END  |─────────────────────────────────────────///
         }
     }
 
