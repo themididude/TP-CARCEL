@@ -8,7 +8,6 @@ import java.util.*;
         }
 
         /// LIST
-
         // Crear una lista genérica
         public List<T> crearLista() {
             return new ArrayList<>();
@@ -47,7 +46,6 @@ import java.util.*;
 
 
         /// SET
-
         // Crear un conjunto (Set)
         public Set<T> crearConjunto() {
             return new HashSet<>();
@@ -68,7 +66,6 @@ import java.util.*;
 
 
         ///  MAP
-
         // Crear un mapa genérico
         public Map<K, V> crearMapa() {
             return new HashMap<>();
