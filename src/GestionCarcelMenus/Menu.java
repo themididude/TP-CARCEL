@@ -76,9 +76,9 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
 
     public static void MenuUsuario(Scanner sc)
     {
-
+        System.out.println("─────────== BIENVENIDO, User ==────────");
         while(true){
-            System.out.println("─────────== BIENVENIDO, User ==────────");
+
             System.out.println("1. Consultar Presos");
             System.out.println("2. Consultar Inventario");
             System.out.println("3. Generar Reporte");
@@ -93,9 +93,10 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 2:
                     break;
                 case 3:
-                    System.out.println("Cerrando sesion...");
+
                     break;
                 case 4:
+                    System.out.println("Cerrando sesion...");
                     return;
                 default:
                     System.out.println("Opcion invalida");
@@ -106,11 +107,11 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
 
     public static void MenuSeguridad(Scanner sc)
     {
+        System.out.println("─────────== BIENVENIDO, SEGURIDAD ==────────");
 
         while (true)
         {
 
-            System.out.println("─────────== BIENVENIDO, SEGURIDAD ==────────");
             System.out.println("1. Registrar Ronda");
             System.out.println("2. Registrar Incidente");
             System.out.println("3. Control Compuertas");
@@ -144,8 +145,8 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
     public static void MenuAdmin(Scanner sc)
     {
 
+        System.out.println("─────────== BIENVENIDO, ADMIN ==────────");
         while(true){
-            System.out.println("─────────== BIENVENIDO, ADMIN ==────────");
             System.out.println("---------| MANEJO DE USUARIOS | ---------");
             System.out.println("1. Mostrar Empleados");
             System.out.println("2. Agregar Personas");
@@ -170,7 +171,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             int opcion = sc.nextInt();
             sc.nextLine();
 
-            switch (opcion) {       /// /////// ya sabeis que hacer
+            switch (opcion) {       ////////// ya sabeis que hacer
                 case 0:
                     break;
                 case 1:
