@@ -104,6 +104,10 @@ public class Pabellon implements JSONConvertible {
         quitarRecluso(recluso);
         otroPabellon.agregarRecluso(recluso);
     }
+    public void MoverGuardia(Guardia guardia, Pabellon otroPabellon) {
+        quitarGuardia(guardia);
+        otroPabellon.agregarGuardia(guardia);
+    }
 
 
     @Override
