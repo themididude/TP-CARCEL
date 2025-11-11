@@ -11,91 +11,100 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.EnumMap;
 
 public class Pabellon implements JSONConvertible {
 
     private Sector sector;
-    private Map <Integer,Recluso> presos;
+    private Map<Integer, Recluso> presos;
     private LinkedList<Guardia> guardias;
     private Genero genero;
+    private int id;
 
+    // Contador independiente por sector
+    private static EnumMap<Sector, Integer> contadoresPorSector = new EnumMap<>(Sector.class);
 
-    //Constructores
+    static {
+        for (Sector s : Sector.values()) {
+            contadoresPorSector.put(s, 1); // Inicializamos todos los contadores en 1
+        }
+    }
+
+    // Constructores
     public Pabellon(Sector sector, Genero genero) {
-        ColeccionManager<Guardia,Integer,Recluso> manager = new ColeccionManager<>();
-        this.guardias=manager.crearLinkedList();
-        this.presos=manager.crearMapa();
+        ColeccionManager<Guardia, Integer, Recluso> manager = new ColeccionManager<>();
+        this.guardias = manager.crearLinkedList();
+        this.presos = manager.crearMapa();
         this.sector = sector;
         this.genero = genero;
+
+        // Asignar id según contador del sector
+        this.id = contadoresPorSector.get(sector);
+        contadoresPorSector.put(sector, this.id + 1); // Incrementar contador
     }
 
     public Pabellon(JSONObject json) {
+        this.sector = json.getEnum(Sector.class, "Sector");
+        this.genero = json.getEnum(Genero.class, "Genero");
 
-        this.sector = json.getEnum(Sector.class,"GestionCarcelMenus.Sector");
-        this.genero = json.getEnum(Genero.class,"PersonasEmpleadoUsuario.Genero");
+        // Asignar id según contador del sector
+        this.id = contadoresPorSector.get(this.sector);
+        contadoresPorSector.put(this.sector, this.id + 1);
 
+        // Inicializar presos
         this.presos = new HashMap<>();
         JSONObject presosJson = json.getJSONObject("Presos");
         for (String key : presosJson.keySet()) {
-            Integer id = Integer.parseInt(key);                     // Claves Integer
-            Recluso r = new Recluso(presosJson.getJSONObject(key)); // Crear PersonasEmpleadoUsuario.Recluso desde JSON
+            Integer id = Integer.parseInt(key);
+            Recluso r = new Recluso(presosJson.getJSONObject(key));
             this.presos.put(id, r);
         }
 
+        // Inicializar guardias
         this.guardias = new LinkedList<>();
         JSONArray guardiasArray = json.getJSONArray("Guardias");
         for (int i = 0; i < guardiasArray.length(); i++) {
-            this.guardias.add(new Guardia(guardiasArray.getJSONObject(i))); // Crear PersonasEmpleadoUsuario.Guardia desde JSON
+            this.guardias.add(new Guardia(guardiasArray.getJSONObject(i)));
         }
     }
 
+    // Getters y setters
+    public Map<Integer, Recluso> getPresos() { return this.presos; }
+    public void setPresos(Map<Integer, Recluso> presos) { this.presos = presos; }
 
+    public LinkedList<Guardia> getGuardias() { return guardias; }
+    public void setGuardias(LinkedList<Guardia> guardias) { this.guardias = guardias; }
 
-    //getters y setters
+    public Sector getSector() { return sector; }
 
-    public Map<Integer,Recluso> getPresos() {
-        return this.presos;
+    // Métodos
+    public void mostrarReclusos(Map<Recluso, Integer> reclusos) {
+        ColeccionManager<Object, Recluso, Integer> manager = new ColeccionManager<>();
+        manager.mostrarMapa(reclusos);
     }
 
-    public void setPresos(Map<Integer, Recluso> presos) {
-        this.presos = presos;
-    }
-
-    public LinkedList<Guardia> getGuardias() {
-
-        return guardias;
-    }
-
-
-    //otros metodos
-    public void mostrarReclusos (Map<Recluso, Integer> reclusos){
-        ColeccionManager <Object,Recluso,Integer> manager = new ColeccionManager<>();
-       manager.mostrarMapa(reclusos);
-    }
-    public void mostrarGuardias (Map<Recluso, Integer> reclusos){
-        ColeccionManager <Guardia,Object,Object> manager = new ColeccionManager<>();
+    public void mostrarGuardias(Map<Recluso, Integer> reclusos) {
+        ColeccionManager<Guardia, Object, Object> manager = new ColeccionManager<>();
         manager.mostrarLinkedList(this.guardias);
     }
 
     public void agregarRecluso(Recluso recluso) {
-        if (recluso.getGenero()!=this.genero){
-            System.out.println("Este recluso no es "+ this.genero);
+        if (recluso.getGenero() != this.genero) {
+            System.out.println("Este recluso no es " + this.genero);
+        } else {
+            this.presos.put(recluso.getPrisonerID(), recluso);
+            System.out.println("Recluso encarcelado\n");
         }
-        else{
-            this.presos.put(recluso.getPrisonerID(),recluso);
-            System.out.println("recluso encarcelado\n");
-
-        }
-
     }
-    public void agregarGuardia(Guardia guardia) {
 
+    public void agregarGuardia(Guardia guardia) {
         this.guardias.add(guardia);
     }
 
     public void quitarRecluso(Recluso recluso) {
         this.presos.remove(recluso);
     }
+
     public void quitarGuardia(Guardia guardia) {
         this.guardias.remove(guardia);
     }
@@ -104,11 +113,20 @@ public class Pabellon implements JSONConvertible {
         quitarRecluso(recluso);
         otroPabellon.agregarRecluso(recluso);
     }
-    public void MoverGuardia(Guardia guardia, Pabellon otroPabellon) {
+
+    public void moverGuardia(Guardia guardia, Pabellon otroPabellon) {
         quitarGuardia(guardia);
         otroPabellon.agregarGuardia(guardia);
     }
 
+    public Recluso buscarRecluso(int id) {
+        if (this.presos.containsKey(id)) {
+            return this.presos.get(id);
+        } else {
+            System.out.println("Recluso no encontrado en este pabellon\n");
+            return null;
+        }
+    }
 
     @Override
     public JSONObject toJSONObject() {
@@ -121,10 +139,19 @@ public class Pabellon implements JSONConvertible {
             guardiasArray.put(g.toJSONObject());
         }
         json.put("Guardias", guardiasArray);
-        json.put("PersonasEmpleadoUsuario.Genero", genero);
-        json.put("GestionCarcelMenus.Sector", sector);
+        json.put("Genero", genero);
+        json.put("Sector", sector);
 
         return json;
     }
+
+    @Override
+    public String toString() {
+        return "Pabellon " + id + sector;
+    }
 }
+
+
+
+
 

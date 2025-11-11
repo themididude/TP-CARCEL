@@ -1,4 +1,5 @@
 package GestionCarcelMenus;
+import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.Autenticacion;
 import funcionalidad.Rol;
 import funcionalidad.Tareas.Consultas;
@@ -154,14 +155,14 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             System.out.println("3. Eliminar Personas");
             System.out.println("4. Reestablecer Contraseñas");
             System.out.println("5. Asignar Roles");
-            System.out.println("6. Modificar Horarios");             ///<-------- cancelada
+            System.out.println("6. Modificar Horarios");
             System.out.println("7. Generar Informe Financiero");
             System.out.println("---------| MANEJO DE SEGURIDAD |---------");
             System.out.println("8. Registrar Ronda");
             System.out.println("9. Registrar Incidente");
             System.out.println("10. Verificar Ubicación");
-            System.out.println("11. Registrar Visita");             ///<-------- cancelada
-            System.out.println("12. Trasladar Preso (Cambio de sector)");
+            System.out.println("11. Registrar Visita");
+            System.out.println("12. Trasladar Preso (Cambio de Pabellon)");
             System.out.println("---------| TAREAS DE USUARIO |---------");
             System.out.println("13. Mostrar Presos");
             System.out.println("14. Buscar Preso (y mostrar)");
@@ -198,6 +199,18 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 11:
                     break;
                 case 12:
+                    System.out.println("Ingrese el id del prisionero");
+                    int id=sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("a que pabellon se traslada?");
+                    String nom=sc.nextLine();
+                    Pabellon p=PabellonDB.getPabellonDelPrisionero(id);
+                    Recluso r= PabellonDB.buscarPrisionero(id);
+                    Pabellon p2= PabellonDB.buscarPabellon(nom);
+                    if(r!=null&&p2!=null&&p!=null){
+
+                        p.moverRecluso(r,p2);
+                    }
                     break;
                 case 13:
                     break;
