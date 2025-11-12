@@ -21,7 +21,6 @@ public class PabellonDB implements JSONConvertible {
         if (pabellonesArray != null) {
             for (int i = 0; i < pabellonesArray.length(); i++) {
                 JSONObject pabJson = pabellonesArray.getJSONObject(i);
-                // Suponiendo que Pabellon tiene un constructor desde JSONObject
                 Pabellon pab = new Pabellon(pabJson);
                 this.agregarPabellon(pab);
             }
@@ -60,7 +59,7 @@ public class PabellonDB implements JSONConvertible {
                 return p.get(i);
             }
         }
-        System.out.println("No existe el pabellon con el sector "+nom);
+        System.out.println("No existe el pabellon "+nom);
         return null;
     }
 

@@ -101,7 +101,7 @@ public class Pabellon implements JSONConvertible {
     }
 
     public void quitarRecluso(Recluso recluso) {
-        this.presos.remove(recluso);
+        this.presos.remove(recluso.getPrisonerID());
     }
     public void quitarGuardia(Guardia guardia) {
         this.guardias.remove(guardia);
@@ -151,7 +151,7 @@ public class Pabellon implements JSONConvertible {
 
     @Override
     public String toString() {
-        return "Pabellon " + id + sector;
+        return "" + id + sector;
     }
 }
 

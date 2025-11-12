@@ -21,6 +21,7 @@ public class Carcel {
         try {
             pdb.setP((java.util.ArrayList<Pabellon>) JsonManager.leerLista("Pabellones.json",Pabellon::new));
             System.out.println(pdb.toString());
+            System.out.println(PabellonDB.getP().get(2).toString());
         } catch (IOException e) {
             System.out.println("no se pudo acceder a la base de datos");
             throw new RuntimeException(e);
