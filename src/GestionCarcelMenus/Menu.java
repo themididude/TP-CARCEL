@@ -213,33 +213,16 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 11:
                     break;
                 case 12:
-                    System.out.println("Ingrese el id del prisionero");
-                    int id=sc.nextInt();
-                    sc.nextLine();
-
-                    Pabellon p=PabellonDB.getPabellonDelRecluso(id);
-                    Recluso r= PabellonDB.buscarReclusoDB(id);
-                    System.out.println(r.toString()+"del pabellon "+p.toString());
-
-                    System.out.println("a que pabellon se traslada?");
-                    String nom=sc.nextLine();
-                    Pabellon p2= PabellonDB.buscarPabellon(nom);
-                    p.moverRecluso(r,p2);
-
-                    System.out.println("\nPresiona ENTER para continuar...");
-                    sc.nextLine();
-                    try {
-                        JsonManager.guardarLista("Pabellones.json",Carcel.pdb.getP());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    Funcion.MoverPreso(sc);
                     break;
                 case 13:
                     gestor.mostrarInformesPorTipo(Informe.Tipo.POLICIAL);
                     break;
                 case 14:
+                    Funcion.MostrarPresos(sc);
                     break;
                 case 15:
+                    Funcion.MostrarPreso(sc);
                     break;
                 case 16:
                     newInforme = Paperwork.generarInforme(sc, Informe.Tipo.GENERAL);

@@ -78,12 +78,12 @@ public class Pabellon implements JSONConvertible {
     public Sector getSector() { return sector; }
 
     // Métodos
-    public void mostrarReclusos(Map<Recluso, Integer> reclusos) {
-        ColeccionManager<Object, Recluso, Integer> manager = new ColeccionManager<>();
-        manager.mostrarMapa(reclusos);
+    public void mostrarReclusos() {
+        ColeccionManager<Object, Integer, Recluso> manager = new ColeccionManager<>();
+        manager.mostrarMapa(this.presos);
     }
 
-    public void mostrarGuardias(Map<Recluso, Integer> reclusos) {
+    public void mostrarGuardias() {
         ColeccionManager<Guardia, Object, Object> manager = new ColeccionManager<>();
         manager.mostrarLinkedList(this.guardias);
     }

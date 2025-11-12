@@ -39,6 +39,7 @@ public class Recluso extends Persona implements JSONConvertible {
         sb.append("Nombre y apellido: "+getNombre()+" "+getApellido()+"\n");
         sb.append("DNI: "+getDNI()+"\n");
         sb.append("Prisoner ID: "+PrisonerID+"\n");
+        sb.append("Sentencia: "+sentencia+"\n");
 
         return sb.toString();
     }
