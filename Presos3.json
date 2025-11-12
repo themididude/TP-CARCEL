@@ -1,0 +1,20 @@
+{
+    "1": {
+        "Nombre": "diddy",
+        "Genero": "HOMBRE",
+        "prisonerID": 5,
+        "Apellido": "blud",
+        "sentencia": 0,
+        "DNI": "111111",
+        "Age": 80085
+    },
+    "2": {
+        "Nombre": "gere",
+        "Genero": "HOMBRE",
+        "prisonerID": 6,
+        "Apellido": "god",
+        "sentencia": 1,
+        "DNI": "9876",
+        "Age": 420
+    }
+}

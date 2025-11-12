@@ -1,3 +1,4 @@
+/*
 package funcionalidad.Tareas;
 
 import GestionCarcelMenus.Pabellon;
@@ -23,4 +24,4 @@ public class Consultas {
     }
 
 
-}
+}*/

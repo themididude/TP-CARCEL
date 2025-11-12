@@ -96,7 +96,6 @@ public class Pabellon implements JSONConvertible {
             System.out.println("Recluso encarcelado\n");
         }
     }
-
     public void agregarGuardia(Guardia guardia) {
         this.guardias.add(guardia);
     }
@@ -104,7 +103,6 @@ public class Pabellon implements JSONConvertible {
     public void quitarRecluso(Recluso recluso) {
         this.presos.remove(recluso);
     }
-
     public void quitarGuardia(Guardia guardia) {
         this.guardias.remove(guardia);
     }
@@ -113,7 +111,6 @@ public class Pabellon implements JSONConvertible {
         quitarRecluso(recluso);
         otroPabellon.agregarRecluso(recluso);
     }
-
     public void moverGuardia(Guardia guardia, Pabellon otroPabellon) {
         quitarGuardia(guardia);
         otroPabellon.agregarGuardia(guardia);
@@ -126,6 +123,13 @@ public class Pabellon implements JSONConvertible {
             System.out.println("Recluso no encontrado en este pabellon\n");
             return null;
         }
+    }
+    public Guardia buscarGuardia(int id) {
+        if (this.guardias.contains(id)) {
+            return this.guardias.get(id);
+        }
+        System.out.println("Guardia no encontrado en este pabellon\n");
+        return null;
     }
 
     @Override

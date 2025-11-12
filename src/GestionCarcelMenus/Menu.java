@@ -2,11 +2,8 @@ package GestionCarcelMenus;
 import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.Autenticacion;
 import funcionalidad.Rol;
-import funcionalidad.Tareas.Consultas;
 import funcionalidad.Tareas.GenerarInforme;
 
-
-import java.awt.print.Paper;
 import java.util.Scanner;
 
 public class Menu {
@@ -211,16 +208,14 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 11:
                     break;
                 case 12:
-                    System.out.println("Ingrese el ID del prisionero");
-                    int id = sc.nextInt();
+                    System.out.println("Ingrese el id del prisionero");
+                    int id=sc.nextInt();
                     sc.nextLine();
-
-                    System.out.println("A que pabellon se translada?");
-                    String nom = sc.nextLine();
-
-                    Pabellon p = PabellonDB.getPabellonDelPrisionero(id);
-                    Recluso r = PabellonDB.buscarPrisionero(id);
-                    Pabellon p2 = PabellonDB.buscarPabellon(nom);
+                    System.out.println("a que pabellon se traslada?");
+                    String nom=sc.nextLine();
+                    Pabellon p=PabellonDB.getPabellonDelRecluso(id);
+                    Recluso r= PabellonDB.buscarReclusoDB(id);
+                    Pabellon p2= PabellonDB.buscarPabellon(nom);
                     if(r!=null&&p2!=null&&p!=null){
 
                         p.moverRecluso(r,p2);
@@ -248,6 +243,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             }
         }
     }
+
 }
 
 
