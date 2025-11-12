@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class PabellonDB implements JSONConvertible {
 
-    private static  ArrayList<Pabellon> p= new ArrayList<>();
+    private  ArrayList<Pabellon> p= new ArrayList<>();
 
 
     //constructores
@@ -29,15 +29,15 @@ public class PabellonDB implements JSONConvertible {
 
 
     //get/set
-    public static ArrayList<Pabellon> getP() {
+    public ArrayList<Pabellon> getP() {
         return p;
     }
 
-    public static void setP(ArrayList<Pabellon> p) {PabellonDB.p = p;
+    public void setP(ArrayList<Pabellon> p) {this.p = p;
     }
 
     /// metodos
-    public static void buscarPorSector(Sector sector) {
+    public void buscarPorSector(Sector sector) {
         int i;
         for (i=0;i<p.size();i++) {
             if (p.get(i).getSector().equals(sector)) {
@@ -52,7 +52,7 @@ public class PabellonDB implements JSONConvertible {
     }
 
 
-    public static Pabellon buscarPabellon (String nom){
+    public  Pabellon buscarPabellon (String nom){
         int i;
         for (i=0;i<p.size();i++) {
             if(nom.equals(p.get(i).toString())){
@@ -64,7 +64,7 @@ public class PabellonDB implements JSONConvertible {
     }
 
     //metodos de prisionero
-    public static Recluso buscarReclusoDB(int id) {
+    public Recluso buscarReclusoDB(int id) {
         int i;
         for (i=0;i<p.size();i++) {
             if(p.get(i).getPresos().containsKey(id)){
@@ -74,7 +74,7 @@ public class PabellonDB implements JSONConvertible {
         System.out.println("Prisionero no existe");
         return null;
     }
-    public static Pabellon getPabellonDelRecluso(int id)
+    public  Pabellon getPabellonDelRecluso(int id)
     {
         int i;
         for (i=0;i<p.size();i++) {
@@ -88,7 +88,7 @@ public class PabellonDB implements JSONConvertible {
 
 
     //metodos de guardia
-    public static Guardia buscarGuardiaDB(int id) {
+    public  Guardia buscarGuardiaDB(int id) {
         int i;
         for (i=0;i<p.size();i++) {
             if(p.get(i).getGuardias().contains(id)){
@@ -98,7 +98,7 @@ public class PabellonDB implements JSONConvertible {
         System.out.println("Guardia no existe");
         return null;
     }
-    public static Pabellon  getPabellonDelGuardia(int id)
+    public  Pabellon  getPabellonDelGuardia(int id)
     {
         int i;
         for (i=0;i<p.size();i++) {

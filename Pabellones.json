@@ -2,26 +2,15 @@
     {
         "Sector": "B",
         "Genero": "HOMBRE",
-        "Presos": {
-            "1": {
-                "Nombre": "pepe",
-                "Genero": "HOMBRE",
-                "prisonerID": 1,
-                "Apellido": "ramirez",
-                "sentencia": 999,
-                "DNI": "6742069",
-                "Age": 12
-            },
-            "4": {
-                "Nombre": "agustin",
-                "Genero": "HOMBRE",
-                "prisonerID": 4,
-                "Apellido": "nacho",
-                "sentencia": 727379969,
-                "DNI": "737",
-                "Age": 12
-            }
-        },
+        "Presos": {"1": {
+            "Nombre": "agustin",
+            "Genero": "HOMBRE",
+            "prisonerID": 1,
+            "Apellido": "nacho",
+            "sentencia": 727379969,
+            "DNI": "737",
+            "Age": 12
+        }},
         "Guardias": []
     },
     {
@@ -29,22 +18,22 @@
         "Genero": "HOMBRE",
         "Presos": {
             "2": {
-                "Nombre": "juan",
+                "Nombre": "pepe",
                 "Genero": "HOMBRE",
                 "prisonerID": 2,
-                "Apellido": "troll",
-                "sentencia": 9998,
-                "DNI": "123456",
-                "Age": 30
+                "Apellido": "ramirez",
+                "sentencia": 999,
+                "DNI": "6742069",
+                "Age": 12
             },
             "3": {
-                "Nombre": "coscu",
+                "Nombre": "agustin",
                 "Genero": "HOMBRE",
                 "prisonerID": 3,
-                "Apellido": "nashe",
-                "sentencia": 999,
-                "DNI": "111111",
-                "Age": 666
+                "Apellido": "nacho",
+                "sentencia": 727379969,
+                "DNI": "737",
+                "Age": 12
             }
         },
         "Guardias": []
@@ -53,19 +42,19 @@
         "Sector": "A",
         "Genero": "HOMBRE",
         "Presos": {
-            "5": {
-                "Nombre": "agustin",
+            "4": {
+                "Nombre": "juan",
                 "Genero": "HOMBRE",
-                "prisonerID": 5,
-                "Apellido": "nacho",
-                "sentencia": 727379969,
-                "DNI": "737",
-                "Age": 12
+                "prisonerID": 4,
+                "Apellido": "troll",
+                "sentencia": 9998,
+                "DNI": "123456",
+                "Age": 30
             },
-            "6": {
+            "5": {
                 "Nombre": "gere",
                 "Genero": "HOMBRE",
-                "prisonerID": 6,
+                "prisonerID": 5,
                 "Apellido": "god",
                 "sentencia": 1,
                 "DNI": "9876",

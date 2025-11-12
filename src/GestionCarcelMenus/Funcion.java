@@ -14,13 +14,13 @@ public class Funcion {
         int id=sc.nextInt();
         sc.nextLine();
 
-        Pabellon p=PabellonDB.getPabellonDelRecluso(id);
-        Recluso r= PabellonDB.buscarReclusoDB(id);
+        Pabellon p=Carcel.pdb.getPabellonDelRecluso(id);
+        Recluso r= Carcel.pdb.buscarReclusoDB(id);
         System.out.println(r.toString()+"del pabellon "+p.toString());
 
         System.out.println("a que pabellon se traslada?");
         String nom=sc.nextLine();
-        Pabellon p2= PabellonDB.buscarPabellon(nom);
+        Pabellon p2= Carcel.pdb.buscarPabellon(nom);
         p.moverRecluso(r,p2);
 
         try {
@@ -35,8 +35,7 @@ public class Funcion {
     public static Pabellon  BuscarPab(Scanner sc){
         System.out.println("que pabellon desea mostrar?");
         String nom=sc.nextLine();
-        Pabellon p=PabellonDB.buscarPabellon(nom);
-        return p;
+        return Carcel.pdb.buscarPabellon(nom);
     }
     public static void MostrarPresos(Scanner sc){
         Pabellon p=Funcion.BuscarPab(sc);
@@ -56,8 +55,8 @@ public class Funcion {
         System.out.println("Ingrese el id del prisionero que busca");
         int id=sc.nextInt();
         sc.nextLine();
-        Pabellon p=PabellonDB.getPabellonDelRecluso(id);
-        Recluso r= PabellonDB.buscarReclusoDB(id);
+        Pabellon p=Carcel.pdb.getPabellonDelRecluso(id);
+        Recluso r= Carcel.pdb.buscarReclusoDB(id);
         System.out.println(r.toString()+"del pabellon "+p.toString());
         System.out.println("\nPresiona ENTER para continuar...");
         sc.nextLine();

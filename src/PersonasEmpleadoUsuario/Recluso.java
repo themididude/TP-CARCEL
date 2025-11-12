@@ -62,7 +62,7 @@ public class Recluso extends Persona implements JSONConvertible {
     public JSONObject toJSONObject() {
         JSONObject json = super.toJSONObject();
         json.put("prisonerID", this.PrisonerID);
-        json.put("sentencia", this.sentencia);
+        json.put("sentencia", this.sentencia+" años");
 
         return json;
     }

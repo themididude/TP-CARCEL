@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Carcel {
@@ -19,9 +20,8 @@ public class Carcel {
         Scanner sc = new Scanner(System.in);
         //--------------------------------------------------------------------------------------------------------------//
         try {
-            pdb.setP((java.util.ArrayList<Pabellon>) JsonManager.leerLista("Pabellones.json",Pabellon::new));
+            pdb.setP((ArrayList<Pabellon>) JsonManager.leerLista("Pabellones.json", Pabellon::new));
             System.out.println(pdb.toString());
-            System.out.println(PabellonDB.getP().get(2).toString());
         } catch (IOException e) {
             System.out.println("no se pudo acceder a la base de datos");
             throw new RuntimeException(e);
