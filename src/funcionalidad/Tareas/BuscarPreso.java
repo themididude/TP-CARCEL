@@ -1,3 +1,4 @@
+/*
 package funcionalidad.Tareas;
 
 import GestionCarcelMenus.Pabellon;
@@ -26,3 +27,4 @@ public class BuscarPreso {
     }
 
 }
+*/

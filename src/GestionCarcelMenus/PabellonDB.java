@@ -1,14 +1,43 @@
 package GestionCarcelMenus;
+import PersonasEmpleadoUsuario.Guardia;
 import PersonasEmpleadoUsuario.Recluso;
+import funcionalidad.JSONConvertible;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Map;
 
-public class PabellonDB {
+public class PabellonDB implements JSONConvertible {
 
-    private static ArrayList<Pabellon> p;
+    private static  ArrayList<Pabellon> p= new ArrayList<>();
 
+
+    //constructores
+    public PabellonDB() {
+    }
+
+    public PabellonDB(JSONObject json) {
+        JSONArray pabellonesArray = json.optJSONArray("Pabellones");
+        if (pabellonesArray != null) {
+            for (int i = 0; i < pabellonesArray.length(); i++) {
+                JSONObject pabJson = pabellonesArray.getJSONObject(i);
+                // Suponiendo que Pabellon tiene un constructor desde JSONObject
+                Pabellon pab = new Pabellon(pabJson);
+                this.agregarPabellon(pab);
+            }
+        }
+    }
+
+
+    //get/set
+    public static ArrayList<Pabellon> getP() {
+        return p;
+    }
+
+    public static void setP(ArrayList<Pabellon> p) {PabellonDB.p = p;
+    }
+
+    /// metodos
     public static void buscarPorSector(Sector sector) {
         int i;
         for (i=0;i<p.size();i++) {
@@ -17,6 +46,12 @@ public class PabellonDB {
             }
         }
     }
+
+    public void agregarPabellon(Pabellon pabellon) {
+        ColeccionManager<Pabellon,Object,Object> cm = new ColeccionManager<>();
+        cm.agregarALista(this.p,pabellon);
+    }
+
 
     public static Pabellon buscarPabellon (String nom){
         int i;
@@ -29,7 +64,8 @@ public class PabellonDB {
         return null;
     }
 
-    public static Recluso buscarPrisionero(int id) {
+    //metodos de prisionero
+    public static Recluso buscarReclusoDB(int id) {
         int i;
         for (i=0;i<p.size();i++) {
             if(p.get(i).getPresos().containsKey(id)){
@@ -39,7 +75,7 @@ public class PabellonDB {
         System.out.println("Prisionero no existe");
         return null;
     }
-    public static Pabellon getPabellonDelPrisionero (int id)
+    public static Pabellon getPabellonDelRecluso(int id)
     {
         int i;
         for (i=0;i<p.size();i++) {
@@ -51,18 +87,48 @@ public class PabellonDB {
         return null;
     }
 
-    public static void quitarPrisonero(int id) {
-        PabellonDB.buscarPrisionero(id);
 
-    }
-
-    public static JSONArray toJSONArray(ArrayList<Pabellon> p) {
-        JSONArray jsonArray = new JSONArray();
-        for (Pabellon pab : p) {
-            jsonArray.put(pab.toJSONObject());
+    //metodos de guardia
+    public static Guardia buscarGuardiaDB(int id) {
+        int i;
+        for (i=0;i<p.size();i++) {
+            if(p.get(i).getGuardias().contains(id)){
+                return p.get(i).buscarGuardia(id);
+            }
         }
-        return jsonArray;
+        System.out.println("Guardia no existe");
+        return null;
     }
+    public static Pabellon  getPabellonDelGuardia(int id)
+    {
+        int i;
+        for (i=0;i<p.size();i++) {
+            if(p.get(i).getGuardias().contains(id)){
+                return p.get(i);
+            }
+        }
+        System.out.println("Guardia no existe");
+        return null;
+    }
+
+
+
+    //toJson
+    @Override
+    public JSONObject toJSONObject() {
+        JSONObject json = new JSONObject();
+        JSONArray pabellonesArray = new JSONArray();
+
+        if (p != null) {
+            for (Pabellon pab : p) {
+                pabellonesArray.put(pab.toJSONObject());
+            }
+        }
+
+        json.put("Pabellones", pabellonesArray);
+        return json;
+    }
+
 }
 
 

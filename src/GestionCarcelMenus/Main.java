@@ -1,9 +1,18 @@
 package GestionCarcelMenus;
 
+import PersonasEmpleadoUsuario.Genero;
+import PersonasEmpleadoUsuario.Recluso;
+import funcionalidad.JsonManager;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args) {
 
-        Carcel.start();
+        //Carcel.start();
 
     }
 }
