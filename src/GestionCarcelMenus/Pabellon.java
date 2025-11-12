@@ -77,6 +77,10 @@ public class Pabellon implements JSONConvertible {
 
     public Sector getSector() { return sector; }
 
+    public String getClave (){
+        return"" + id + sector;
+    }
+
     // Métodos
     public void mostrarReclusos() {
         ColeccionManager<Object, Integer, Recluso> manager = new ColeccionManager<>();
@@ -151,7 +155,7 @@ public class Pabellon implements JSONConvertible {
 
     @Override
     public String toString() {
-        return "" + id + sector;
+        return "Pabellon de "+genero+"S" + id + sector;
     }
 }
 

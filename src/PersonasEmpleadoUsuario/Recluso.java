@@ -39,7 +39,7 @@ public class Recluso extends Persona implements JSONConvertible {
         sb.append("Nombre y apellido: "+getNombre()+" "+getApellido()+"\n");
         sb.append("DNI: "+getDNI()+"\n");
         sb.append("Prisoner ID: "+PrisonerID+"\n");
-        sb.append("Sentencia: "+sentencia+"\n");
+        sb.append("Sentencia: "+sentencia+" Años\n");
 
         return sb.toString();
     }
@@ -62,7 +62,7 @@ public class Recluso extends Persona implements JSONConvertible {
     public JSONObject toJSONObject() {
         JSONObject json = super.toJSONObject();
         json.put("prisonerID", this.PrisonerID);
-        json.put("sentencia", this.sentencia+" años");
+        json.put("sentencia", this.sentencia);
 
         return json;
     }
