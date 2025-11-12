@@ -112,6 +112,9 @@ public class PabellonDB implements JSONConvertible {
     }
 
 
+    public String toString() {
+        return "Pabellones{" + "Pabellones=" + p + '}';
+    }
 
     //toJson
     @Override

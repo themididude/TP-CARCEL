@@ -1,9 +1,11 @@
 package GestionCarcelMenus;
 import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.Autenticacion;
+import funcionalidad.JsonManager;
 import funcionalidad.Rol;
 //import funcionalidad.Tareas.Consultas;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
@@ -12,6 +14,7 @@ public class Menu {
     {
         throw new IllegalStateException("Clase de utilidad, no debe ser instanciada");
     }
+
 
     public static void Welcome(Scanner sc)
     {
@@ -204,12 +207,18 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                     sc.nextLine();
                     System.out.println("a que pabellon se traslada?");
                     String nom=sc.nextLine();
+
                     Pabellon p=PabellonDB.getPabellonDelRecluso(id);
                     Recluso r= PabellonDB.buscarReclusoDB(id);
                     Pabellon p2= PabellonDB.buscarPabellon(nom);
-                    if(r!=null&&p2!=null&&p!=null){
 
+                    if(r!=null&&p2!=null&&p!=null){
                         p.moverRecluso(r,p2);
+                    }
+                    try {
+                        JsonManager.guardarLista("Pabellones.json",Carcel.pdb.getP());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
                     }
                     break;
                 case 13:

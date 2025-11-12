@@ -1,5 +1,6 @@
 package GestionCarcelMenus;
 
+import funcionalidad.JsonManager;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -10,11 +11,20 @@ import java.util.Scanner;
 public class Carcel {
 
     public static final String RUTA_JSON = "carcel.json";
+    public static PabellonDB pdb=new PabellonDB();
 
     public static void start() {
         //--| algunos atributos| --//
         boolean salir = false;
         Scanner sc = new Scanner(System.in);
+        //--------------------------------------------------------------------------------------------------------------//
+        try {
+            pdb.setP((java.util.ArrayList<Pabellon>) JsonManager.leerLista("Pabellones.json",Pabellon::new));
+            System.out.println(pdb.toString());
+        } catch (IOException e) {
+            System.out.println("no se pudo acceder a la base de datos");
+            throw new RuntimeException(e);
+        }
 
 
         ///───────────────────────────────────────| PRIMER START  |──────────────────────────────────────────────///
@@ -69,6 +79,7 @@ public class Carcel {
 
         ///───────────────────────────────────────|  LOOP  PRINCIPAL  |─────────────────────────────────────────///
         while (!salir) {
+
             ///=---------- MENU -----------------=//
             Menu.Welcome(sc);
             Menu.showLoginMenu(sc); ///de aca desembocan los demas paneles
