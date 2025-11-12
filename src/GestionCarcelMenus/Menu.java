@@ -3,7 +3,7 @@ import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.Autenticacion;
 import funcionalidad.JsonManager;
 import funcionalidad.Rol;
-//import funcionalidad.Tareas.Consultas;
+import funcionalidad.Tareas.GenerarInforme;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -149,34 +149,38 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
 
     public static void MenuAdmin(Scanner sc)
     {
+        Paperwork gestor = Paperwork.getInstancia();
+        Informe newInforme = null;
+
 
         System.out.println("─────────== BIENVENIDO, ADMIN ==────────");
         while(true){
             System.out.println("---------| MANEJO DE USUARIOS | ---------");
             System.out.println("1. Mostrar Empleados");
-            System.out.println("2. Agregar Personas");
-            System.out.println("3. Eliminar Personas");
-            System.out.println("4. Reestablecer Contraseñas");
-            System.out.println("5. Asignar Roles");
-            System.out.println("6. Modificar Horarios");
-            System.out.println("7. Generar Informe Financiero");
+            System.out.println("2. Agregar Empleados");
+            System.out.println("3. Despedir Empleados");
+            System.out.println("4. Agregar Personas");
+            System.out.println("5. Eliminar Personas");
+            System.out.println("6. Generar Informe Financiero");
+            System.out.println("7. Mostrar todos los Informes");
             System.out.println("---------| MANEJO DE SEGURIDAD |---------");
             System.out.println("8. Registrar Ronda");
-            System.out.println("9. Registrar Incidente");
+            System.out.println("9. Registrar Incidente Policial");
             System.out.println("10. Verificar Ubicación");
             System.out.println("11. Registrar Visita");
             System.out.println("12. Trasladar Preso (Cambio de Pabellon)");
+            System.out.println("13. Mostrar informes de tipo POLICIAL)");
             System.out.println("---------| TAREAS DE USUARIO |---------");
-            System.out.println("13. Mostrar Presos");
-            System.out.println("14. Buscar Preso (y mostrar)");
-            System.out.println("15. Consultar Inventario");
-            System.out.println("16. Generar Reporte");
-            System.out.println("17. Salir");
+            System.out.println("14. Mostrar Presos");
+            System.out.println("15. Buscar Preso (y mostrar)");
+            System.out.println("16. Generar Reporte General");
+            System.out.println("17. Mostrar Informes Generales");
+            System.out.println("18. Salir");
 
             int opcion = sc.nextInt();
             sc.nextLine();
 
-            switch (opcion) {       ////////// ya sabeis que hacer
+            switch (opcion) {
                 case 0:
                     break;
                 case 1:
@@ -190,12 +194,17 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 5:
                     break;
                 case 6:
+                    newInforme = Paperwork.generarInforme(sc, Informe.Tipo.FINANCIERO);
+                    gestor.agregarInforme(newInforme);
                     break;
                 case 7:
+                    gestor.mostrarTodosLosInformes();
                     break;
                 case 8:
                     break;
                 case 9:
+                    newInforme = Paperwork.generarInforme(sc, Informe.Tipo.POLICIAL);
+                    gestor.agregarInforme(newInforme);
                     break;
                 case 10:
                     break;
@@ -222,15 +231,20 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                     }
                     break;
                 case 13:
+                    gestor.mostrarInformesPorTipo(Informe.Tipo.POLICIAL);
                     break;
                 case 14:
-                    //Consultas.consultarExpediente();
                     break;
                 case 15:
                     break;
                 case 16:
+                    newInforme = Paperwork.generarInforme(sc, Informe.Tipo.GENERAL);
+                    gestor.agregarInforme(newInforme);
                     break;
                 case 17:
+                    gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL);
+                    break;
+                case 18:
                     return;
                 default:
                     System.out.println("Opcion invalida.");
@@ -238,6 +252,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             }
         }
     }
+
 }
 
 
