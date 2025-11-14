@@ -120,7 +120,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             System.out.println("1. Registrar Ronda");
             System.out.println("2. Registrar Incidente");
             System.out.println("3. Control Compuertas");
-            System.out.println("4. Registrar Visita"); // <--- Opción 4
+            System.out.println("4. Registrar Visita");
             System.out.println("5. Verificar Ubicacion");
             System.out.println("6. Salir");
 
@@ -135,7 +135,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 3:
                     break;
                 case 4:
-                    Funcion.registrarVisita(sc); // <--- Llamada a la función
+                    Funcion.registrarVisita(sc);
                     break;
                 case 5:
                     break;
