@@ -88,14 +88,14 @@ public static void MenuUsuario(Scanner sc)
         System.out.println("1. Consultar Presos");
         System.out.println("2. Consultar Inventario");
         System.out.println("3. Generar Reporte");
-        System.out.println("4. Registrar Visita (Nuevo)"); // <--- NUEVA OPCIÓN
-        System.out.println("5. Salir"); // <--- Opción Salir movida al 5
+        System.out.println("4. Registrar Visita");
+        System.out.println("5. Salir");
 
         int opcion = -1;
         if (sc.hasNextInt()) {
             opcion = sc.nextInt();
         }
-        sc.nextLine(); // Consumir el salto de línea
+        sc.nextLine();
 
         switch(opcion){
             case 1:
