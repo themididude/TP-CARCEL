@@ -11,6 +11,13 @@ import java.util.Scanner;
 
 public class Funcion {
 
+    private static void pause() {
+        System.out.println("\nPresione ENTER para continuar...");
+        try {
+            System.in.read();
+        } catch (IOException e) {
+        }
+    }
 
     public static void MoverPreso(Scanner sc) {
         System.out.println("Ingrese el id del prisionero");
@@ -31,8 +38,7 @@ public class Funcion {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("\nPresiona ENTER para continuar...");
-        sc.nextLine();
+        pause();
     }
 
     public static Pabellon BuscarPab(Scanner sc) {
@@ -44,16 +50,14 @@ public class Funcion {
     public static void MostrarPresos(Scanner sc) {
         Pabellon p = Funcion.BuscarPab(sc);
         p.mostrarReclusos();
-        System.out.println("\nPresiona ENTER para continuar...");
-        sc.nextLine();
+        pause();
 
     }
 
     public static void MostrarGuardias(Scanner sc) {
         Pabellon p = Funcion.BuscarPab(sc);
         p.mostrarGuardias();
-        System.out.println("\nPresiona ENTER para continuar...");
-        sc.nextLine();
+        pause();
     }
 
     public static void MostrarPreso(Scanner sc) {
@@ -63,8 +67,7 @@ public class Funcion {
         Pabellon p = Carcel.pdb.getPabellonDelRecluso(id);
         Recluso r = Carcel.pdb.buscarReclusoDB(id);
         System.out.println(r.toString() + "del pabellon " + p.toString());
-        System.out.println("\nPresiona ENTER para continuar...");
-        sc.nextLine();
+        pause();
 
     }
     public static void mostrarGuardia(Scanner sc) {
@@ -74,8 +77,7 @@ public class Funcion {
         Guardia g = Carcel.pdb.buscarGuardiaDB(placa);
 
         System.out.println(g.toString() + "del guardia " + p.toString());
-        System.out.println("\nPresiona ENTER para continuar...");
-        sc.nextLine();
+        pause();
     }
 
     public static void registrarVisita(Scanner sc) {
@@ -122,8 +124,7 @@ public class Funcion {
             System.out.println("ERROR: Prisionero con ID " + id + "no encontrado en ningun pabellon");
         }
 
-        System.out.println("\nPresiona ENTER para continuar...");
-        sc.nextLine();
+        pause();
     }
 
     public static void quitarPreso(Scanner sc) {
@@ -146,8 +147,7 @@ public class Funcion {
                     p.quitarRecluso(r);
                     JsonManager.guardarLista("Pabellones.json", Carcel.pdb.getP());
                     System.out.println("Prisionero quitado");
-                    System.out.println("\nPresiona ENTER para continuar...");
-                    sc.nextLine();
+                    pause();
                 } catch (IOException e) {
                     System.out.println("Error al quitar el prisionero: " + e.getMessage());
                     throw new RuntimeException(e);
@@ -155,12 +155,12 @@ public class Funcion {
                 return;
             } else {
                 System.out.println("Operacion Cancelada");
-                System.out.println("\nPresiona ENTER para continuar...");
-                sc.nextLine();
+                pause();
                 return;
             }
         } else {
             System.out.println("El prisionero " + id + " no existe");
+            pause();
             return;
         }
     }
@@ -207,6 +207,7 @@ public class Funcion {
             p.agregarRecluso(r);
             JsonManager.guardarLista("Pabellones.json", Carcel.pdb.getP());
             System.out.println("Prisionero agregado");
+            pause();
         } catch (IOException e) {
             System.out.println("Error al agregar el prisionero: " + e.getMessage());
             throw new RuntimeException(e);
@@ -299,6 +300,7 @@ public class Funcion {
             p.agregarGuardia(g);
             JsonManager.guardarLista("Pabellones.json", Carcel.pdb.getP());
             System.out.println("Guardia agregado");
+            pause();
         } catch (IOException e) {
             System.out.println("Error al agregar el guardia: " + e.getMessage());
             throw new RuntimeException(e);

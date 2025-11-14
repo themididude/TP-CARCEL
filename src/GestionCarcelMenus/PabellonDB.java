@@ -55,7 +55,7 @@ public class PabellonDB implements JSONConvertible {
     public  Pabellon buscarPabellon (String nom){
         int i;
         for (i=0;i<p.size();i++) {
-            if(nom.equals(p.get(i).getClave())){
+            if(nom.equalsIgnoreCase(p.get(i).getClave())){
                 return p.get(i);
             }
         }
