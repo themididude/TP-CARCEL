@@ -88,27 +88,31 @@ public class PabellonDB implements JSONConvertible {
 
 
     //metodos de guardia
-    public  Guardia buscarGuardiaDB(int id) {
-        int i;
-        for (i=0;i<p.size();i++) {
-            if(p.get(i).getGuardias().contains(id)){
-                return p.get(i).buscarGuardia(id);
+    public Guardia buscarGuardiaDB(String id) {
+        for (Pabellon pab : p) {
+            Guardia g = pab.buscarGuardia(id);
+            if (g != null) {
+                return g;
             }
         }
+
         System.out.println("Guardia no existe");
         return null;
     }
-    public  Pabellon  getPabellonDelGuardia(int id)
-    {
-        int i;
-        for (i=0;i<p.size();i++) {
-            if(p.get(i).getGuardias().contains(id)){
-                return p.get(i);
+
+    public Pabellon getPabellonDelGuardia(String id) {
+        for (Pabellon pab : p) {
+            for (Guardia g : pab.getGuardias()) {
+                if (g.getPlacaPolicial().equals(id)) {
+                    return pab; // ← este es el pabellón del guardia
+                }
             }
         }
+
         System.out.println("Guardia no existe");
         return null;
     }
+
 
 
     public String toString() {

@@ -214,18 +214,22 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             System.out.println("6. Generar Informe Financiero");
             System.out.println("7. Mostrar todos los Informes");
 
+            System.out.println("8. Agregar Guardia");
+            System.out.println("9. Buscar y mostrar Guardia");
+            System.out.println("10. Mostrar Guardias");
+
             System.out.println("---------| MANEJO DE SEGURIDAD |---------");
-            System.out.println("8. Registrar Incidente Policial");
-            System.out.println("9. Registrar Visita");
-            System.out.println("10. Trasladar Preso (Cambio de Pabellon)");
-            System.out.println("11. Mostrar informes de tipo POLICIAL)");
+            System.out.println("11. Registrar Incidente Policial");
+            System.out.println("12. Registrar Visita");
+            System.out.println("13. Trasladar Preso (Cambio de Pabellon)");
+            System.out.println("14. Mostrar informes de tipo POLICIAL)");
 
             System.out.println("---------| TAREAS DE USUARIO |---------");
-            System.out.println("12. Mostrar Presos");
-            System.out.println("13. Buscar Preso (y mostrar)");
-            System.out.println("14. Generar Reporte General");
-            System.out.println("15. Mostrar Informes Generales");
-            System.out.println("16. Salir");
+            System.out.println("15. Mostrar Presos");
+            System.out.println("16. Buscar Preso (y mostrar)");
+            System.out.println("17. Generar Reporte General");
+            System.out.println("18. Mostrar Informes Generales");
+            System.out.println("19. Salir");
 
             int opcion = sc.nextInt();
             sc.nextLine();
@@ -273,48 +277,57 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                     clearScreen();
                     break;
                 case 8:
+                    Funcion.agregarGuardia(sc);
+                    break;
+                case 9:
+                    Funcion.mostrarGuardia(sc);
+                    break;
+                case 10:
+                    Funcion.MostrarGuardias(sc);
+
+                case 11:
                     newInforme = Paperwork.generarInforme(sc, Informe.Tipo.POLICIAL);
                     gestor.agregarInforme(newInforme);
                     pause();
                     clearScreen();
                     break;
-                case 9:
+                case 12:
                     Funcion.registrarVisita(sc);
                     pause();
                     clearScreen();
                     break;
-                case 10:
+                case 13:
                     Funcion.MoverPreso(sc);
                     pause();
                     clearScreen();
                     break;
-                case 11:
+                case 14:
                     gestor.mostrarInformesPorTipo(Informe.Tipo.POLICIAL);
                     pause();
                     clearScreen();
                     break;
-                case 12:
+                case 15:
                     Funcion.MostrarPresos(sc);
                     pause();
                     clearScreen();
                     break;
-                case 13:
+                case 16:
                     Funcion.MostrarPreso(sc);
                     pause();
                     clearScreen();
                     break;
-                case 14:
+                case 17:
                     newInforme = Paperwork.generarInforme(sc, Informe.Tipo.GENERAL);
                     gestor.agregarInforme(newInforme);
                     pause();
                     clearScreen();
                     break;
-                case 15:
+                case 18:
                     gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL);
                     pause();
                     clearScreen();
                     break;
-                case 16:
+                case 19:
                     return;
                 default:
                     System.out.println("Opcion invalida.");

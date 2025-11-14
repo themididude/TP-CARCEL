@@ -25,6 +25,9 @@ public class Guardia extends Empleado implements JSONConvertible {
         this.rango = rango;
     }
 
+    public String getPlacaPolicial() {
+        return placaPolicial;
+    }
 
     @Override
     public JSONObject toJSONObject() {

@@ -47,9 +47,17 @@ public class Pabellon implements JSONConvertible {
         this.sector = json.getEnum(Sector.class, "Sector");
         this.genero = json.getEnum(Genero.class, "Genero");
 
-        // Asignar id según contador del sector
-        this.id = contadoresPorSector.get(this.sector);
-        contadoresPorSector.put(this.sector, this.id + 1);
+        // Leer ID desde JSON si existe, sino usar contador
+        if (json.has("id")) {
+            this.id = json.getInt("id");
+            // Asegurarnos de que el contador por sector no sea menor que el id cargado
+            contadoresPorSector.put(this.sector,
+                    Math.max(contadoresPorSector.get(this.sector), this.id + 1));
+        } else {
+            // Asignar id según contador del sector
+            this.id = contadoresPorSector.get(this.sector);
+            contadoresPorSector.put(this.sector, this.id + 1);
+        }
 
         // Inicializar presos
         this.presos = new HashMap<>();
@@ -78,7 +86,7 @@ public class Pabellon implements JSONConvertible {
     public Sector getSector() { return sector; }
 
     public String getClave (){
-        return"" + id + sector;
+        return "" + id + sector;
     }
 
     // Métodos
@@ -93,14 +101,14 @@ public class Pabellon implements JSONConvertible {
     }
 
     public void agregarRecluso(Recluso recluso) {
-        if (recluso.getGenero().equals(this.genero)||recluso.getGenero().equals(Genero.OTRO)) {
-
+        if(recluso.getGenero().equals(this.genero) || recluso.getGenero().equals(Genero.OTRO)) {
             this.presos.put(recluso.getPrisonerID(), recluso);
             System.out.println("Recluso encarcelado\n");
         } else {
             System.out.println("Este recluso no es " + this.genero);
         }
     }
+
     public void agregarGuardia(Guardia guardia) {
         this.guardias.add(guardia);
     }
@@ -108,6 +116,7 @@ public class Pabellon implements JSONConvertible {
     public void quitarRecluso(Recluso recluso) {
         this.presos.remove(recluso.getPrisonerID());
     }
+
     public void quitarGuardia(Guardia guardia) {
         this.guardias.remove(guardia);
     }
@@ -116,6 +125,7 @@ public class Pabellon implements JSONConvertible {
         quitarRecluso(recluso);
         otroPabellon.agregarRecluso(recluso);
     }
+
     public void moverGuardia(Guardia guardia, Pabellon otroPabellon) {
         quitarGuardia(guardia);
         otroPabellon.agregarGuardia(guardia);
@@ -129,11 +139,14 @@ public class Pabellon implements JSONConvertible {
             return null;
         }
     }
-    public Guardia buscarGuardia(int id) {
-        if (this.guardias.contains(id)) {
-            return this.guardias.get(id);
+
+    public Guardia buscarGuardia(String id) {
+        for (Guardia g : guardias) {
+            if (g.getPlacaPolicial().equals(id)) {
+                return g;
+            }
         }
-        System.out.println("Guardia no encontrado en este pabellon\n");
+        System.out.println("Guardia no encontrado en este pabellón");
         return null;
     }
 
@@ -151,16 +164,14 @@ public class Pabellon implements JSONConvertible {
         json.put("Genero", genero);
         json.put("Sector", sector);
 
+        // Guardamos el id del pabellón
+        json.put("id", id);
+
         return json;
     }
 
     @Override
     public String toString() {
-        return "Pabellon de "+genero+"S " + id + sector;
+        return "Pabellon de " + genero + "S " + id + sector;
     }
 }
-
-
-
-
-

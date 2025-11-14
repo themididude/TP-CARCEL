@@ -1,6 +1,8 @@
 package GestionCarcelMenus;
 
+import PersonasEmpleadoUsuario.Cargo;
 import PersonasEmpleadoUsuario.Genero;
+import PersonasEmpleadoUsuario.Guardia;
 import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.JsonManager;
 
@@ -64,6 +66,16 @@ public class Funcion {
         System.out.println("\nPresiona ENTER para continuar...");
         sc.nextLine();
 
+    }
+    public static void mostrarGuardia(Scanner sc) {
+        System.out.println("ingrese la placa policial del guardia");
+        String placa = sc.nextLine();
+        Pabellon p = Carcel.pdb.getPabellonDelGuardia(placa);
+        Guardia g = Carcel.pdb.buscarGuardiaDB(placa);
+
+        System.out.println(g.toString() + "del guardia " + p.toString());
+        System.out.println("\nPresiona ENTER para continuar...");
+        sc.nextLine();
     }
 
     public static void registrarVisita(Scanner sc) {
@@ -197,6 +209,98 @@ public class Funcion {
             System.out.println("Prisionero agregado");
         } catch (IOException e) {
             System.out.println("Error al agregar el prisionero: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+    }
+    public static void agregarGuardia (Scanner sc) {
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Apellido: ");
+        String apellido = sc.nextLine();
+
+        System.out.print("DNI: ");
+        String dni = sc.nextLine();
+
+        System.out.print("Edad: ");
+        int edad = Integer.parseInt(sc.nextLine());
+
+        System.out.print("Salario: ");
+        double salario = Double.parseDouble(sc.nextLine());
+
+        System.out.print("Días libres: ");
+        int diasLibres = Integer.parseInt(sc.nextLine());
+
+        System.out.print("¿Está activo? (true/false): ");
+        boolean activo = Boolean.parseBoolean(sc.nextLine());
+
+        System.out.print("Placa policial: ");
+        String placaPolicial = sc.nextLine();
+
+        // === Selección de género ===
+        System.out.println("Seleccione género:");
+        System.out.println("1. MASCULINO");
+        System.out.println("2. FEMENINO");
+        System.out.println("3. OTRO");
+
+        Genero genero;
+        int opcionGenero = Integer.parseInt(sc.nextLine());
+
+        switch (opcionGenero) {
+            case 1 -> genero = Genero.HOMBRE;
+            case 2 -> genero = Genero.MUJER;
+            case 3 -> genero = Genero.OTRO;
+            default -> {
+                System.out.println("Opción no válida. Se asigna OTRO.");
+                genero = Genero.OTRO;
+            }
+        }
+
+        // === Selección de rango del guardia ===
+        System.out.println("Seleccione rango del guardia:");
+        for (Cargo c : Cargo.values()) {
+            System.out.println("- " + c);
+        }
+
+        Cargo rango;
+
+        while (true) {
+            try {
+                System.out.print("Ingrese rango exacto: ");
+                rango = Cargo.valueOf(sc.nextLine().toUpperCase());
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Rango inválido. Intente nuevamente.");
+            }
+        }
+
+        // Crear el objeto Guardia
+        Guardia g = new Guardia(
+                nombre,
+                apellido,
+                dni,
+                edad,
+                salario,
+                diasLibres,
+                activo,
+                placaPolicial,
+                genero,
+                rango
+        );
+
+        System.out.println("\nGuardia creado exitosamente:");
+        System.out.println("Placa policial: " + g.getPlacaPolicial());
+
+        System.out.println("A que Pabellon se agrega el prisionero?");
+        String nom =sc.nextLine();
+        Pabellon p=Carcel.pdb.buscarPabellon(nom);
+        try {
+            p.agregarGuardia(g);
+            JsonManager.guardarLista("Pabellones.json", Carcel.pdb.getP());
+            System.out.println("Guardia agregado");
+        } catch (IOException e) {
+            System.out.println("Error al agregar el guardia: " + e.getMessage());
             throw new RuntimeException(e);
         }
 
