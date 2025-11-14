@@ -255,10 +255,10 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                     clearScreen();
                     break;
                 case 4:
-                    /// SOLAMENTE FALTAN ESTAS 2
+                    Funcion.agregarPreso(sc);
                     break;
                 case 5:
-                    /// YEP YEP YEP
+                    Funcion.quitarPreso(sc);
                     break;
                 case 6:
                     newInforme = Paperwork.generarInforme(sc, Informe.Tipo.FINANCIERO);

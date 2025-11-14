@@ -16,7 +16,7 @@ public class Recluso extends Persona implements JSONConvertible {
 
 
 
-    public Recluso(String Nombre, String Apellido, String DNI, int age,  int sentencia,Genero genero, int Celda) {
+    public Recluso(String Nombre, String Apellido, String DNI, int age,  int sentencia,Genero genero) {
         super(Nombre, Apellido, DNI, age, genero);
         nextId++;
         this.PrisonerID = nextId;

@@ -93,11 +93,12 @@ public class Pabellon implements JSONConvertible {
     }
 
     public void agregarRecluso(Recluso recluso) {
-        if (recluso.getGenero() != this.genero) {
-            System.out.println("Este recluso no es " + this.genero);
-        } else {
+        if (recluso.getGenero().equals(this.genero)||recluso.getGenero().equals(Genero.OTRO)) {
+
             this.presos.put(recluso.getPrisonerID(), recluso);
             System.out.println("Recluso encarcelado\n");
+        } else {
+            System.out.println("Este recluso no es " + this.genero);
         }
     }
     public void agregarGuardia(Guardia guardia) {
