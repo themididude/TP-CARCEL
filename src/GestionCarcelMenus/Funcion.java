@@ -86,7 +86,7 @@ public class Funcion {
 
        System.out.println("\n¿Desea registrar la visita? (S/N)");
        String confirmar = sc.nextLine().trim().toUpperCase();
-       if(confirmar.equals("S")) {
+       if(confirmar.equalsIgnoreCase("S")) {
            if (recluso.registrarVisita()) {
                System.out.println("Visita registrada con exito para el ID: " + id);
            }
