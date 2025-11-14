@@ -18,18 +18,23 @@
     {
         "Sector": "A",
         "Genero": "HOMBRE",
+        "Presos": {"2": {
+            "Nombre": "pepe",
+            "ultimoMesVisita": "11/2025",
+            "Genero": "HOMBRE",
+            "prisonerID": 2,
+            "Apellido": "ramirez",
+            "sentencia": 999,
+            "DNI": "6742069",
+            "Age": 12,
+            "visitasRestantes": 3
+        }},
+        "Guardias": []
+    },
+    {
+        "Sector": "A",
+        "Genero": "HOMBRE",
         "Presos": {
-            "2": {
-                "Nombre": "pepe",
-                "ultimoMesVisita": "11/2025",
-                "Genero": "HOMBRE",
-                "prisonerID": 2,
-                "Apellido": "ramirez",
-                "sentencia": 999,
-                "DNI": "6742069",
-                "Age": 12,
-                "visitasRestantes": 3
-            },
             "3": {
                 "Nombre": "agustin",
                 "ultimoMesVisita": "11/2025",
@@ -39,15 +44,8 @@
                 "sentencia": 727379969,
                 "DNI": "737",
                 "Age": 12,
-                "visitasRestantes": 3
-            }
-        },
-        "Guardias": []
-    },
-    {
-        "Sector": "A",
-        "Genero": "HOMBRE",
-        "Presos": {
+                "visitasRestantes": 2
+            },
             "4": {
                 "Nombre": "juan",
                 "ultimoMesVisita": "11/2025",

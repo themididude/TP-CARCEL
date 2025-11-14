@@ -155,7 +155,7 @@ public class Pabellon implements JSONConvertible {
 
     @Override
     public String toString() {
-        return "Pabellon de "+genero+"S" + id + sector;
+        return "Pabellon de "+genero+"S " + id + sector;
     }
 }
 

@@ -16,7 +16,7 @@ public class Funcion {
 
         Pabellon p=Carcel.pdb.getPabellonDelRecluso(id);
         Recluso r= Carcel.pdb.buscarReclusoDB(id);
-        System.out.println(r.toString()+"del pabellon "+p.toString());
+        System.out.println(r.toString()+"del "+p.toString());
 
         System.out.println("a que pabellon se traslada?");
         String nom=sc.nextLine();

@@ -212,6 +212,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 10:
                     break;
                 case 11:
+                    Funcion.registrarVisita(sc);
                     break;
                 case 12:
                     Funcion.MoverPreso(sc);
