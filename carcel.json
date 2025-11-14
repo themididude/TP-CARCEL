@@ -1,8 +1,8 @@
 {
-    "nombre_carcel": "Joseadito",
-    "codigo_postal": "7600",
-    "first_time": 0,
-    "localidad": "Batan",
-    "provincia": "Buenos aires",
-    "capacidad": 500
+    "nombre_carcel":"",
+    "codigo_postal": "",
+    "first_time": 1,
+    "localidad": "",
+    "provincia": "",
+    "capacidad": 0
 }
