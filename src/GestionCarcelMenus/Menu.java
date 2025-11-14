@@ -19,7 +19,7 @@ public class Menu {
     public static void Welcome(Scanner sc)
     {
         System.out.println("────────────────────────────────────────────────────────");
-        System.out.println("︶︶︶︶︶︶ BIENVENIDO A LA GESITON CARCELARIA ︶︶︶︶︶︶");
+        System.out.println("︶︶︶︶︶︶ BIENVENIDO A LA GESTION CARCELARIA ︶︶︶︶︶︶");
         System.out.println("────────────────────────────────────────────────────────");
 
     }
@@ -178,7 +178,8 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             System.out.println("15. Buscar Preso (y mostrar)");
             System.out.println("16. Generar Reporte General");
             System.out.println("17. Mostrar Informes Generales");
-            System.out.println("18. Salir");
+            System.out.println("18. Buscar y mostrar Guardia");
+            System.out.println("19. Salir");
 
             int opcion = sc.nextInt();
             sc.nextLine();
@@ -234,6 +235,8 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                     gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL);
                     break;
                 case 18:
+                    break;
+                case 19:
                     return;
                 default:
                     System.out.println("Opcion invalida.");
