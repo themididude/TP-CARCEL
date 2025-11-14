@@ -216,17 +216,16 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
 
             System.out.println("---------| MANEJO DE SEGURIDAD |---------");
             System.out.println("8. Registrar Incidente Policial");
-            System.out.println("9. Verificar Ubicación");
-            System.out.println("10. Registrar Visita");
-            System.out.println("11. Trasladar Preso (Cambio de Pabellon)");
-            System.out.println("12. Mostrar informes de tipo POLICIAL)");
+            System.out.println("9. Registrar Visita");
+            System.out.println("10. Trasladar Preso (Cambio de Pabellon)");
+            System.out.println("11. Mostrar informes de tipo POLICIAL)");
 
             System.out.println("---------| TAREAS DE USUARIO |---------");
-            System.out.println("13. Mostrar Presos");
-            System.out.println("14. Buscar Preso (y mostrar)");
-            System.out.println("15. Generar Reporte General");
-            System.out.println("16. Mostrar Informes Generales");
-            System.out.println("17. Salir");
+            System.out.println("12. Mostrar Presos");
+            System.out.println("13. Buscar Preso (y mostrar)");
+            System.out.println("14. Generar Reporte General");
+            System.out.println("15. Mostrar Informes Generales");
+            System.out.println("16. Salir");
 
             int opcion = sc.nextInt();
             sc.nextLine();
@@ -256,9 +255,13 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                     break;
                 case 4:
                     Funcion.agregarPreso(sc);
+                    pause();
+                    clearScreen();
                     break;
                 case 5:
                     Funcion.quitarPreso(sc);
+                    pause();
+                    clearScreen();
                     break;
                 case 6:
                     newInforme = Paperwork.generarInforme(sc, Informe.Tipo.FINANCIERO);
@@ -276,44 +279,42 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                     clearScreen();
                     break;
                 case 9:
-                    break;
-                case 10:
                     Funcion.registrarVisita(sc);
                     pause();
                     clearScreen();
                     break;
-                case 11:
+                case 10:
                     Funcion.MoverPreso(sc);
                     pause();
                     clearScreen();
                     break;
-                case 12:
+                case 11:
                     gestor.mostrarInformesPorTipo(Informe.Tipo.POLICIAL);
                     pause();
                     clearScreen();
                     break;
-                case 13:
+                case 12:
                     Funcion.MostrarPresos(sc);
                     pause();
                     clearScreen();
                     break;
-                case 14:
+                case 13:
                     Funcion.MostrarPreso(sc);
                     pause();
                     clearScreen();
                     break;
-                case 15:
+                case 14:
                     newInforme = Paperwork.generarInforme(sc, Informe.Tipo.GENERAL);
                     gestor.agregarInforme(newInforme);
                     pause();
                     clearScreen();
                     break;
-                case 16:
+                case 15:
                     gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL);
                     pause();
                     clearScreen();
                     break;
-                case 17:
+                case 16:
                     return;
                 default:
                     System.out.println("Opcion invalida.");
