@@ -51,4 +51,36 @@ public class Empleado extends Persona{
         json.put("PersonasEmpleadoUsuario.Cargo", cargo);
         return json;
     }
+
+    @Override
+    public String toString() {
+        return  "Empleado {" +
+                "ID=" + EmpleadoID +
+                ", Nombre='" + getNombre() + " " + getApellido() + '\'' +
+                ", DNI='" + getDNI() + '\'' +
+                ", Edad=" + getAge() +
+                ", Salario=" + Salario +
+                ", Días libres=" + diasLibres +
+                ", Cargo=" + cargo +
+                '}';
+    }
+    public int getNextID() {
+        return NextID;
+    }
+
+    public int getEmpleadoID() {
+        return EmpleadoID;
+    }
+
+    public double getSalario() {
+        return Salario;
+    }
+
+    public int getDiasLibres() {
+        return diasLibres;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
 }

@@ -1,4 +1,6 @@
 package GestionCarcelMenus;
+import PersonasEmpleadoUsuario.Empleado;
+import PersonasEmpleadoUsuario.EmpleadoDB;
 import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.Autenticacion;
 import funcionalidad.JsonManager;
@@ -207,8 +209,8 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             System.out.println("1. Mostrar Empleados");
             System.out.println("2. Agregar Empleados");
             System.out.println("3. Despedir Empleados");
-            System.out.println("4. Agregar Personas");
-            System.out.println("5. Eliminar Personas");
+            System.out.println("4. Agregar Reclusos");
+            System.out.println("5. Eliminar Reclusos");
             System.out.println("6. Generar Informe Financiero");
             System.out.println("7. Mostrar todos los Informes");
 
@@ -231,14 +233,32 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
 
             switch (opcion) {
                 case 1:
+                    EmpleadoDB.mostrarEmpleados();
+                    pause();
+                    clearScreen();
                     break;
                 case 2:
+                    System.out.println("==------------- AGREGAR EMPLEADO -------------==");
+                    Empleado nuevo = EmpleadoDB.crearEmpleadoDesdeConsola(sc);
+                    EmpleadoDB.agregarEmpleado(nuevo);
+                    System.out.println("Empleado agregado:");
+                    System.out.println(nuevo);
+                    pause();
+                    clearScreen();
                     break;
                 case 3:
+                    System.out.println("Ingrese el ID del Empleado a despedir");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+                    EmpleadoDB.eliminarEmpleado(id);
+                    pause();
+                    clearScreen();
                     break;
                 case 4:
+                    /// SOLAMENTE FALTAN ESTAS 2
                     break;
                 case 5:
+                    /// YEP YEP YEP
                     break;
                 case 6:
                     newInforme = Paperwork.generarInforme(sc, Informe.Tipo.FINANCIERO);
