@@ -4,12 +4,14 @@
         "Genero": "HOMBRE",
         "Presos": {"1": {
             "Nombre": "agustin",
+            "ultimoMesVisita": "11/2025",
             "Genero": "HOMBRE",
             "prisonerID": 1,
             "Apellido": "nacho",
             "sentencia": 727379969,
             "DNI": "737",
-            "Age": 12
+            "Age": 12,
+            "visitasRestantes": 3
         }},
         "Guardias": []
     },
@@ -19,21 +21,25 @@
         "Presos": {
             "2": {
                 "Nombre": "pepe",
+                "ultimoMesVisita": "11/2025",
                 "Genero": "HOMBRE",
                 "prisonerID": 2,
                 "Apellido": "ramirez",
                 "sentencia": 999,
                 "DNI": "6742069",
-                "Age": 12
+                "Age": 12,
+                "visitasRestantes": 3
             },
             "3": {
                 "Nombre": "agustin",
+                "ultimoMesVisita": "11/2025",
                 "Genero": "HOMBRE",
                 "prisonerID": 3,
                 "Apellido": "nacho",
                 "sentencia": 727379969,
                 "DNI": "737",
-                "Age": 12
+                "Age": 12,
+                "visitasRestantes": 3
             }
         },
         "Guardias": []
@@ -44,21 +50,25 @@
         "Presos": {
             "4": {
                 "Nombre": "juan",
+                "ultimoMesVisita": "11/2025",
                 "Genero": "HOMBRE",
                 "prisonerID": 4,
                 "Apellido": "troll",
                 "sentencia": 9998,
                 "DNI": "123456",
-                "Age": 30
+                "Age": 30,
+                "visitasRestantes": 3
             },
             "5": {
                 "Nombre": "gere",
+                "ultimoMesVisita": "11/2025",
                 "Genero": "HOMBRE",
                 "prisonerID": 5,
                 "Apellido": "god",
                 "sentencia": 1,
                 "DNI": "9876",
-                "Age": 420
+                "Age": 420,
+                "visitasRestantes": 2
             }
         },
         "Guardias": []
