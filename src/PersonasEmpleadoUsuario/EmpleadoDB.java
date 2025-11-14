@@ -9,7 +9,7 @@ public class EmpleadoDB {
     private static final List<Empleado> empleados = new ArrayList<>();
 
     static {
-                /// para precargar
+        /// para precargar
     }
 
     public static Empleado crearEmpleadoDesdeConsola(Scanner sc) {
@@ -53,8 +53,9 @@ public class EmpleadoDB {
         String generoStr = sc.nextLine().toUpperCase();
         Genero genero = Genero.valueOf(generoStr);
 
+        /// arreglar constructor
         // crear empleado en si
-        return new Empleado(
+        /*return new Empleado(
                 nombre,
                 apellido,
                 dni,
@@ -64,7 +65,8 @@ public class EmpleadoDB {
                 cargo,
                 genero,
                 0
-        );
+        );*/
+        return null;
     }
 
     public static void agregarEmpleado(Empleado emp) {
