@@ -16,21 +16,29 @@ public class Recluso extends Persona implements JSONConvertible {
 
 
 
-    public Recluso(String Nombre, String Apellido, String DNI, int age,  int sentencia,Genero genero) {
-        super(Nombre, Apellido, DNI, age, genero);
-        nextId++;
-        this.PrisonerID = nextId;
+    public Recluso(String nombre, String apellido, String DNI, int age, int sentencia, Genero genero) {
+        super(nombre, apellido, DNI, age, genero);
+
+        this.PrisonerID = nextId++;   // ASÍ NO CAMBIAN LOS ID VIEJOS
         this.sentencia = sentencia;
         this.visitasRestantes = MAX_VISITAS_MENSUALES;
         this.ultimoMesVisita = obtenerMesActual();
     }
+
     public Recluso(JSONObject json) {
         super(json);
-        nextId++;
-        this.PrisonerID = nextId;
+
+        // Recuperamos el ID original del JSON
+        this.PrisonerID = json.getInt("prisonerID");
+
+        // Actualizamos nextId solo si este ID es mayor
+        if (this.PrisonerID >= nextId) {
+            nextId = this.PrisonerID + 1;
+        }
+
         this.sentencia = json.getInt("sentencia");
-         this.visitasRestantes = json.optInt("visitasRestantes", MAX_VISITAS_MENSUALES);
-         this.ultimoMesVisita = json.optString("ultimoMesVisita", obtenerMesActual());
+        this.visitasRestantes = json.optInt("visitasRestantes", MAX_VISITAS_MENSUALES);
+        this.ultimoMesVisita = json.optString("ultimoMesVisita", obtenerMesActual());
     }
 
     public Recluso() {
