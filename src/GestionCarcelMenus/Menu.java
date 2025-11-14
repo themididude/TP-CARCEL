@@ -79,46 +79,36 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
 }
 ///==------------------------------------------------------------------------------------------==////
 
-public static void MenuUsuario(Scanner sc)
-{
-    System.out.println("─────────== BIENVENIDO, User ==────────");
-    while(true){
+    public static void MenuUsuario(Scanner sc)
+    {
+        System.out.println("─────────== BIENVENIDO, User ==────────");
+        while(true){
 
-        // Menú actualizado con la nueva opción 4
-        System.out.println("1. Consultar Presos");
-        System.out.println("2. Consultar Inventario");
-        System.out.println("3. Generar Reporte");
-        System.out.println("4. Registrar Visita");
-        System.out.println("5. Salir");
+            System.out.println("1. Consultar Presos");
+            System.out.println("2. Consultar Inventario");
+            System.out.println("3. Generar Reporte");
+            System.out.println("4. Salir");
 
-        int opcion = -1;
-        if (sc.hasNextInt()) {
-            opcion = sc.nextInt();
-        }
-        sc.nextLine();
+            int opcion = sc.nextInt();
+            sc.nextLine();
 
-        switch(opcion){
-            case 1:
-                Funcion.MostrarPresos(sc);
-                break;
-            case 2:
-                System.out.println("Consultando Inventario...");
-                break;
-            case 3:
-                System.out.println("Generando Reporte...");
-                break;
-            case 4:
-                Funcion.registrarVisita(sc);
-                break;
-            case 5:
-                System.out.println("Cerrando sesion...");
-                return;
-            default:
-                System.out.println("Opción inválida");
-                break;
+            switch(opcion){
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+                    System.out.println("Cerrando sesion...");
+                    return;
+                default:
+                    System.out.println("Opcion invalida");
+                    break;
+            }
         }
     }
-}
 
     public static void MenuSeguridad(Scanner sc)
     {
@@ -130,7 +120,7 @@ public static void MenuUsuario(Scanner sc)
             System.out.println("1. Registrar Ronda");
             System.out.println("2. Registrar Incidente");
             System.out.println("3. Control Compuertas");
-            System.out.println("4. Registrar Visita");
+            System.out.println("4. Registrar Visita"); // <--- Opción 4
             System.out.println("5. Verificar Ubicacion");
             System.out.println("6. Salir");
 
@@ -145,6 +135,7 @@ public static void MenuUsuario(Scanner sc)
                 case 3:
                     break;
                 case 4:
+                    Funcion.registrarVisita(sc); // <--- Llamada a la función
                     break;
                 case 5:
                     break;
