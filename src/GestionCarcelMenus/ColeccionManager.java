@@ -9,8 +9,7 @@ import java.util.*;
 
         /// LIST
         // Crear una lista genérica
-        public List<T> crearLista() {
-            return new ArrayList<>();
+        public List<T> crearLista() {return new ArrayList<>();
         }
 
         // Agregar un elemento a la lista
@@ -83,7 +82,7 @@ import java.util.*;
         public void mostrarMapa(Map<K, V> mapa) {
             System.out.println("Elementos en el mapa:\n");
             for (Map.Entry<K, V> entry : mapa.entrySet()) {
-                System.out.println(entry.getKey() + " key-> \n" + entry.getValue()+"\n");
+                System.out.println(entry.getKey() + " key-> \n" + entry.getValue());
             }
         }
     }

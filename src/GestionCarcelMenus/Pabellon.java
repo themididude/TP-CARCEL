@@ -5,6 +5,7 @@ import PersonasEmpleadoUsuario.Guardia;
 import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.JSONConvertible;
 import funcionalidad.JsonManager;
+import funcionalidad.WrongGenderException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -89,6 +90,10 @@ public class Pabellon implements JSONConvertible {
         return "" + id + sector;
     }
 
+    public Genero getGenero() {
+        return genero;
+    }
+
     // Métodos
     public void mostrarReclusos() {
         ColeccionManager<Object, Integer, Recluso> manager = new ColeccionManager<>();
@@ -100,12 +105,12 @@ public class Pabellon implements JSONConvertible {
         manager.mostrarLinkedList(this.guardias);
     }
 
-    public void agregarRecluso(Recluso recluso) {
+    public void agregarRecluso(Recluso recluso) throws WrongGenderException {
         if(recluso.getGenero().equals(this.genero) || recluso.getGenero().equals(Genero.OTRO)) {
             this.presos.put(recluso.getPrisonerID(), recluso);
             System.out.println("Recluso encarcelado\n");
         } else {
-            System.out.println("Este recluso no es " + this.genero);
+            throw new WrongGenderException("El recluso no es "+this.genero+"\n");
         }
     }
 
@@ -123,7 +128,12 @@ public class Pabellon implements JSONConvertible {
 
     public void moverRecluso(Recluso recluso, Pabellon otroPabellon) {
         quitarRecluso(recluso);
-        otroPabellon.agregarRecluso(recluso);
+
+        try {
+            otroPabellon.agregarRecluso(recluso);
+        } catch (WrongGenderException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void moverGuardia(Guardia guardia, Pabellon otroPabellon) {
