@@ -66,6 +66,25 @@ import java.util.*;
             }
         }
 
+        // Crear un LinkedHashSet
+        public LinkedHashSet<T> crearLinkedHashSet() {
+            return new LinkedHashSet<>();
+        }
+
+        // Agregar un elemento al LinkedHashSet
+        public void agregarALinkedHashSet(LinkedHashSet<T> conjunto, T elemento) {
+            conjunto.add(elemento);
+        }
+
+        // Mostrar los elementos del LinkedHashSet
+        public void mostrarLinkedHashSet(LinkedHashSet<T> conjunto) {
+            System.out.println("Elementos en el LinkedHashSet:");
+            for (T elem : conjunto) {
+                System.out.println("- " + elem);
+            }
+        }
+
+
 
         ///  MAP
         // Crear un mapa genérico

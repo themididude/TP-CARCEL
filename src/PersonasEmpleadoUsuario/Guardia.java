@@ -3,6 +3,8 @@ package PersonasEmpleadoUsuario;
 import funcionalidad.JSONConvertible;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 public class Guardia extends Empleado implements JSONConvertible {
 
     private boolean activo;
@@ -47,5 +49,15 @@ public class Guardia extends Empleado implements JSONConvertible {
         json.put("Rango", rango.name());
 
         return json;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Guardia guardia)) return false;
+        return activo == guardia.activo && Objects.equals(placaPolicial, guardia.placaPolicial) && rango == guardia.rango;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(activo, placaPolicial, rango);
     }
 }

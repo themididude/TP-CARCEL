@@ -9,16 +9,13 @@ import funcionalidad.WrongGenderException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.EnumMap;
+import java.util.*;
 
 public class Pabellon implements JSONConvertible {
 
     private Sector sector;
     private Map<Integer, Recluso> presos;
-    private LinkedList<Guardia> guardias;
+    private LinkedHashSet<Guardia> guardias;
     private Genero genero;
     private int id;
 
@@ -34,7 +31,7 @@ public class Pabellon implements JSONConvertible {
     // Constructores
     public Pabellon(Sector sector, Genero genero) {
         ColeccionManager<Guardia, Integer, Recluso> manager = new ColeccionManager<>();
-        this.guardias = manager.crearLinkedList();
+        this.guardias = manager.crearLinkedHashSet();
         this.presos = manager.crearMapa();
         this.sector = sector;
         this.genero = genero;
@@ -70,7 +67,7 @@ public class Pabellon implements JSONConvertible {
         }
 
         // Inicializar guardias
-        this.guardias = new LinkedList<>();
+        this.guardias = new LinkedHashSet<>();
         JSONArray guardiasArray = json.getJSONArray("Guardias");
         for (int i = 0; i < guardiasArray.length(); i++) {
             this.guardias.add(new Guardia(guardiasArray.getJSONObject(i)));
@@ -81,8 +78,8 @@ public class Pabellon implements JSONConvertible {
     public Map<Integer, Recluso> getPresos() { return this.presos; }
     public void setPresos(Map<Integer, Recluso> presos) { this.presos = presos; }
 
-    public LinkedList<Guardia> getGuardias() { return guardias; }
-    public void setGuardias(LinkedList<Guardia> guardias) { this.guardias = guardias; }
+    public LinkedHashSet<Guardia> getGuardias() { return guardias; }
+    public void setGuardias(LinkedHashSet<Guardia> guardias) { this.guardias = guardias; }
 
     public Sector getSector() { return sector; }
 
@@ -102,7 +99,7 @@ public class Pabellon implements JSONConvertible {
 
     public void mostrarGuardias() {
         ColeccionManager<Guardia, Object, Object> manager = new ColeccionManager<>();
-        manager.mostrarLinkedList(this.guardias);
+        manager.mostrarLinkedHashSet(this.guardias);
     }
 
     public void agregarRecluso(Recluso recluso) throws WrongGenderException {
