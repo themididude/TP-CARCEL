@@ -224,7 +224,7 @@ public class Funcion {
             }
 
         }
-        Recluso r = new Recluso(nombre, apellido, dni, edad, sentencia, genero);
+        Recluso r = new Recluso(nombre, apellido, dni, edad, sentencia, genero,true);
         System.out.println("A que Pabellon se agrega el prisionero?");
 
         boolean loop = true;

@@ -1,5 +1,7 @@
 package GestionCarcelMenus;
 
+import funcionalidad.Tareas.Activable;
+
 import java.util.*;
 
     public class ColeccionManager<T, K, V> {
@@ -7,33 +9,37 @@ import java.util.*;
         public ColeccionManager() {
         }
 
-        /// LIST
-        // Crear una lista genérica
+        ///=>----------- LO BASICO -------------<=////
+        //--------> crear listas
         public List<T> crearLista() {return new ArrayList<>();
         }
-
-        // Agregar un elemento a la lista
-        public void agregarALista(List<T> lista, T elemento) {
-            lista.add(elemento);
-        }
-
-        public void removerElemento(List<T> lista, T elemento) {lista.remove(elemento);}
-
-        // Mostrar todos los elementos de la lista
-        public void mostrarLista(List<T> lista) {
-            System.out.println("Elementos en la lista:");
-            for (T elem : lista) {
-                System.out.println("- " + elem);
-            }
-        }
-
-
-        // Crear una lista enlazada (LinkedList)
         public LinkedList<T> crearLinkedList() {
             return new LinkedList<>();
         }
 
-        // (Opcional) Agregar un elemento a la lista enlazada
+
+        public void agregarALista(List<T> lista, T elemento) {
+            lista.add(elemento);
+        }
+
+        public <T extends Activable> void removerElemento(List<T> lista, T elemento)
+        {
+            elemento.setActivo(false);
+        }
+
+        public <T extends Activable> void recuperarElemento(List<T> lista, T elemento)
+        {
+            elemento.setActivo(true);
+        }
+
+        /// Mostrar todos los elementos (activos).
+        public<T extends Activable> void mostrarLista(List<T> lista) {
+            System.out.println("Elementos en la lista:");
+            for (T elem : lista) {
+                if(elem.isActivo()) System.out.println("- " + elem);
+            }
+        }
+
         public void agregarALinkedList(LinkedList<T> listaEnlazada, T elemento) {
             listaEnlazada.add(elemento);
         }
@@ -45,8 +51,6 @@ import java.util.*;
                 System.out.println("- " + elem);
             }
         }
-
-
         /// SET
         // Crear un conjunto (Set)
         public Set<T> crearConjunto() {

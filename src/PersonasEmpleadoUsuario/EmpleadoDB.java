@@ -52,20 +52,6 @@ public class EmpleadoDB {
         System.out.print("Elige un género: ");
         String generoStr = sc.nextLine().toUpperCase();
         Genero genero = Genero.valueOf(generoStr);
-
-        /// arreglar constructor
-        // crear empleado en si
-        /*return new Empleado(
-                nombre,
-                apellido,
-                dni,
-                edad,
-                salario,
-                diasLibres,
-                cargo,
-                genero,
-                0
-        );*/
         return null;
     }
 
@@ -100,7 +86,7 @@ public class EmpleadoDB {
 
         System.out.println("==----------- LISTA DE EMPLEADOS -----------==");
         for (Empleado e : empleados) {
-            System.out.println(e.toString());
+            if(e.isActivo())    System.out.println(e.toString());
         }
         System.out.println("==-----------....................-----------==");
 

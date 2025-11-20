@@ -6,6 +6,7 @@ import funcionalidad.Autenticacion;
 import funcionalidad.JsonManager;
 import funcionalidad.Rol;
 import funcionalidad.Tareas.GenerarInforme;
+import funcionalidad.Tareas.LoginInvalidoException;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -27,9 +28,20 @@ public class Menu {
         }
     }
 
-    private static void clearScreen() {
-        System.out.print("\033[H\033[2J"); ///<----- es un quilombo explicar esto pero mueve el cursor
-        System.out.flush();                 ///<----- NOTA PARA EL QUE LEA: EL FLUSH NO FUNCIONA EN INTELLIJ, PERO SI EN TERMINALES REALES
+    private static void clearScreen() { /// ahora si
+        try {
+            if (System.getProperty("os.name").startsWith("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception ignored) {}
+    }
+
+    private static void ending(){ //para simplificar un poco
+        pause();
+        clearScreen();
     }
     /// =--------------------------......................------------------------= ///
 
@@ -45,7 +57,6 @@ public class Menu {
 
 public static void showLoginMenu(Scanner sc){
     try {
-
         System.out.println("Escriba su rol: ");
         System.out.println("> USER");
         System.out.println("> SEGURIDAD");
@@ -71,10 +82,10 @@ public static void showLoginMenu(Scanner sc){
                 }
             }
         }
-    } catch (IllegalArgumentException e) {
+    } catch (LoginInvalidoException e) {
         System.out.println("Error: Opcion de rol no reconocida o no valida.");
     } catch (Exception e) {
-        System.out.println("Ha ocurrido un error inesperado. Saliendo del Menu...");
+        System.out.println("Ha ocurrido un error inesperado. Saliendo del Menu..." + e.getMessage());
     }
 }
 
@@ -116,8 +127,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             switch(opcion){
                 case 1:
                     Funcion.MostrarPresos(sc);
-                    pause();
-                    clearScreen();
+                    ending();
                     break;
                 case 2:
                     Funcion.MostrarPreso(sc);
@@ -127,13 +137,11 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 3:
                     newInforme = Paperwork.generarInforme(sc, Informe.Tipo.GENERAL);
                     gestor.agregarInforme(newInforme);
-                    pause();
-                    clearScreen();
+                    ending();
                     break;
                 case 4:
                     gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL);
-                    pause();
-                    clearScreen();
+                    ending();
                     break;
                 case 0:
                     System.out.println("Cerrando sesion...");
@@ -167,24 +175,20 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 1:
                     newInforme = Paperwork.generarInforme(sc, Informe.Tipo.POLICIAL);
                     gestor.agregarInforme(newInforme);
-                    pause();
-                    clearScreen();
+                    ending();
                     break;
                 case 2:
                     Funcion.registrarVisita(sc);
-                    pause();
-                    clearScreen();
+                    ending();
                     break;
                 case 3:
                     Funcion.MoverPreso(sc);
-                    pause();
-                    clearScreen();
+                    ending();
                     break;
                 case 4:
-                    newInforme = Paperwork.generarInforme(sc, Informe.Tipo.POLICIAL);
-                    gestor.agregarInforme(newInforme);
-                    pause();
-                    clearScreen();
+                    Paperwork gestor1 = Paperwork.getInstancia();
+                    gestor.mostrarInformesPorTipo(Informe.Tipo.POLICIAL);
+                    ending();
                     break;
                 case 0:
                     return;
@@ -224,29 +228,29 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                         System.out.print("Seleccione una opción: ");
                         int opcion = sc.nextInt();
                         sc.nextLine();
-                        clearScreen();
+                        ending();
 
                         switch (opcion) {
-                            case 1 -> { EmpleadoDB.mostrarEmpleados(); pause(); clearScreen(); }
+                            case 1 -> { EmpleadoDB.mostrarEmpleados(); ending();}
                             case 2 -> {
                                 System.out.println("==------------- AGREGAR EMPLEADO -------------==");
                                 Empleado nuevo = EmpleadoDB.crearEmpleadoDesdeConsola(sc);
                                 EmpleadoDB.agregarEmpleado(nuevo);
                                 System.out.println("Empleado agregado:\n" + nuevo);
-                                pause(); clearScreen();
+                                ending();
                             }
                             case 3 -> {
                                 System.out.print("Ingrese el ID del Empleado a despedir: ");
                                 int id = sc.nextInt();
                                 sc.nextLine();
                                 EmpleadoDB.eliminarEmpleado(id);
-                                pause(); clearScreen();
+                                ending();
                             }
                             case 4 -> Funcion.agregarGuardia(sc);
                             case 5 -> Funcion.mostrarGuardia(sc);
                             case 6 -> Funcion.MostrarGuardias(sc);
                             case 0 -> {
-                                clearScreen();
+                                ending();
                                 break; // salir al menú principal
                             }
                             default -> System.out.println("Opción inválida.");
@@ -273,20 +277,20 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                         clearScreen();
 
                         switch (opcion) {
-                            case 1 -> { Funcion.agregarPreso(sc); pause(); clearScreen(); }
-                            case 2 -> { Funcion.quitarPreso(sc); pause(); clearScreen(); }
+                            case 1 -> { Funcion.agregarPreso(sc); ending(); }
+                            case 2 -> { Funcion.quitarPreso(sc); ending(); }
                             case 3 -> {
                                 newInforme = Paperwork.generarInforme(sc, Informe.Tipo.POLICIAL);
                                 gestor.agregarInforme(newInforme);
-                                pause(); clearScreen();
+                                ending();
                             }
-                            case 4 -> { Funcion.registrarVisita(sc); pause(); clearScreen(); }
-                            case 5 -> { Funcion.MoverPreso(sc); pause(); clearScreen(); }
-                            case 6 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.POLICIAL); pause(); clearScreen(); }
-                            case 7 -> { Funcion.MostrarPresos(sc); pause(); clearScreen(); }
-                            case 8 -> { Funcion.MostrarPreso(sc); pause(); clearScreen(); }
+                            case 4 -> { Funcion.registrarVisita(sc); ending(); }
+                            case 5 -> { Funcion.MoverPreso(sc); ending(); }
+                            case 6 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.POLICIAL); ending(); }
+                            case 7 -> { Funcion.MostrarPresos(sc); ending(); }
+                            case 8 -> { Funcion.MostrarPreso(sc); ending(); }
                             case 0 -> {
-                                clearScreen();
+                                ending();
                                 break; // volver al menú principal
                             }
                             default -> System.out.println("Opción inválida.");
@@ -306,7 +310,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                         System.out.print("Seleccione una opción: ");
                         int opcion = sc.nextInt();
                         sc.nextLine();
-                        clearScreen();
+                        ending();
 
                         switch (opcion) {
                             case 1 -> {
@@ -317,8 +321,8 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                                 newInforme = Paperwork.generarInforme(sc, Informe.Tipo.GENERAL);
                                 gestor.agregarInforme(newInforme);
                             }
-                            case 3 -> { gestor.mostrarTodosLosInformes(); pause(); clearScreen(); }
-                            case 4 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL); pause(); clearScreen(); }
+                            case 3 -> { gestor.mostrarTodosLosInformes(); ending();}
+                            case 4 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL); ending();}
                             case 0 -> {
                                 break; // volver al menú principal
                             }

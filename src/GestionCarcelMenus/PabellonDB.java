@@ -9,8 +9,7 @@ import java.util.ArrayList;
 
 public class PabellonDB implements JSONConvertible {
 
-    private  ArrayList<Pabellon> p= new ArrayList<>();
-
+    private  ArrayList<Pabellon> p = new ArrayList<>();
 
     //constructores
     public PabellonDB() {
@@ -26,8 +25,6 @@ public class PabellonDB implements JSONConvertible {
             }
         }
     }
-
-
     //get/set
     public ArrayList<Pabellon> getP() {
         return p;
@@ -39,7 +36,7 @@ public class PabellonDB implements JSONConvertible {
     /// metodos
     public void buscarPorSector(Sector sector) {
         int i;
-        for (i=0;i<p.size();i++) {
+        for (i = 0; i < p.size(); i++) {
             if (p.get(i).getSector().equals(sector)) {
                 System.out.println(p.get(i).toString());
             }
@@ -52,9 +49,8 @@ public class PabellonDB implements JSONConvertible {
     }
 
 
-    public  Pabellon buscarPabellon (String nom){
-        int i;
-        for (i=0;i<p.size();i++) {
+    public Pabellon buscarPabellon (String nom){
+        for (int i = 0; i < p.size(); i++) {
             if(nom.equalsIgnoreCase(p.get(i).getClave())){
                 return p.get(i);
             }
@@ -65,9 +61,8 @@ public class PabellonDB implements JSONConvertible {
 
     //metodos de prisionero
     public Recluso buscarReclusoDB(int id) {
-        int i;
-        for (i=0;i<p.size();i++) {
-            if(p.get(i).getPresos().containsKey(id)){
+        for (int i = 0; i < p.size(); i++) {
+            if (p.get(i).getPresos().containsKey(id)) {
                 return p.get(i).buscarRecluso(id);
             }
         }
@@ -76,9 +71,8 @@ public class PabellonDB implements JSONConvertible {
     }
     public  Pabellon getPabellonDelRecluso(int id)
     {
-        int i;
-        for (i=0;i<p.size();i++) {
-            if(p.get(i).getPresos().containsKey(id)){
+        for (int i = 0; i < p.size(); i++) {
+            if (p.get(i).getPresos().containsKey(id)) {
                 return p.get(i);
             }
         }
@@ -90,36 +84,30 @@ public class PabellonDB implements JSONConvertible {
     //metodos de guardia
     public Guardia buscarGuardiaDB(String id) {
         for (Pabellon pab : p) {
-            Guardia g = pab.buscarGuardia(id);
-            if (g != null) {
-                return g;
+            Guardia guardia = pab.buscarGuardia(id);
+            if (guardia != null) {
+                return guardia;
             }
         }
-
         System.out.println("Guardia no existe");
         return null;
     }
 
     public Pabellon getPabellonDelGuardia(String id) {
         for (Pabellon pab : p) {
-            for (Guardia g : pab.getGuardias()) {
-                if (g.getPlacaPolicial().equals(id)) {
+            for (Guardia guardia : pab.getGuardias()) {
+                if (guardia.getPlacaPolicial().equals(id)) {
                     return pab; // ← este es el pabellón del guardia
                 }
             }
         }
-
         System.out.println("Guardia no existe");
         return null;
     }
 
-
-
     public String toString() {
         return "Pabellones{" + "Pabellones=" + p + '}';
     }
-
-    //toJson
     @Override
     public JSONObject toJSONObject() {
         JSONObject json = new JSONObject();
