@@ -1,10 +1,11 @@
 package PersonasEmpleadoUsuario;
 
 import funcionalidad.JSONConvertible;
+import funcionalidad.Activable;
 import org.json.JSONObject;
 import java.util.Objects;
 
-public class Guardia extends Empleado implements JSONConvertible {
+public class Guardia extends Empleado implements JSONConvertible, Activable {
 
     private String placaPolicial;
     private Cargo rango; // Jerarquía policial: GUARDIA, OFICIAL, etc.
@@ -36,6 +37,8 @@ public class Guardia extends Empleado implements JSONConvertible {
     public Cargo getRango() {
         return rango;
     }
+
+
 
     @Override
     public JSONObject toJSONObject() {

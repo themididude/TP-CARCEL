@@ -3,73 +3,63 @@
         "Sector": "A",
         "Genero": "HOMBRE",
         "id": 1,
-        "Presos": {
-
-            "2": {
-                "Nombre": "Carlos",
-                "ultimoMesVisita": "11/2025",
-                "Genero": "HOMBRE",
-                "prisonerID": 2,
-                "Apellido": "Diaz",
-                "sentencia": 24,
-                "DNI": "111111",
-                "Age": 22,
-                "visitasRestantes": 2
-            },
-            "3": {
-                "Nombre": "Jorge",
-                "ultimoMesVisita": "11/2025",
-                "Genero": "HOMBRE",
-                "prisonerID": 3,
-                "Apellido": "Lopez",
-                "sentencia": 36,
-                "DNI": "222222",
-                "Age": 30,
-                "visitasRestantes": 1
-            }
-        },
+        "Presos": {"3": {
+            "Nombre": "Jorge",
+            "ultimoMesVisita": "11/2025",
+            "Activo": true,
+            "Genero": "HOMBRE",
+            "prisonerID": 3,
+            "Apellido": "Lopez",
+            "sentencia": 36,
+            "DNI": "222222",
+            "Age": 30,
+            "visitasRestantes": 1
+        }},
         "Guardias": [
             {
                 "Nombre": "Alberto",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P001",
                 "EmpleadoID": 1,
                 "diasLibres": 5,
-                "placaPolicial": "P001",
                 "Rango": "GUARDIA",
                 "Genero": "HOMBRE",
                 "Apellido": "Perez",
                 "DNI": "G001",
                 "Age": 35,
                 "Salario": 1500,
-                "activo": true
+                "activo": false
             },
             {
                 "Nombre": "Miguel",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P002",
                 "EmpleadoID": 2,
                 "diasLibres": 4,
-                "placaPolicial": "P002",
                 "Rango": "OFICIAL",
                 "Genero": "HOMBRE",
                 "Apellido": "Santos",
                 "DNI": "G002",
                 "Age": 40,
                 "Salario": 1600,
-                "activo": true
+                "activo": false
             },
             {
                 "Nombre": "Pedro",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P003",
                 "EmpleadoID": 3,
                 "diasLibres": 6,
-                "placaPolicial": "P003",
                 "Rango": "SARGENTO",
                 "Genero": "HOMBRE",
                 "Apellido": "Ruiz",
                 "DNI": "G003",
                 "Age": 38,
                 "Salario": 1550,
-                "activo": true
+                "activo": false
             }
         ]
     },
@@ -81,6 +71,7 @@
             "4": {
                 "Nombre": "Pepe",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "HOMBRE",
                 "prisonerID": 4,
                 "Apellido": "Ramirez",
@@ -92,6 +83,7 @@
             "5": {
                 "Nombre": "Agustin",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "HOMBRE",
                 "prisonerID": 5,
                 "Apellido": "Segundo",
@@ -103,6 +95,7 @@
             "6": {
                 "Nombre": "Juan",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "HOMBRE",
                 "prisonerID": 6,
                 "Apellido": "Troll",
@@ -116,44 +109,47 @@
             {
                 "Nombre": "Hector",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P004",
                 "EmpleadoID": 4,
                 "diasLibres": 5,
-                "placaPolicial": "P004",
                 "Rango": "GUARDIA",
                 "Genero": "HOMBRE",
                 "Apellido": "Lopez",
                 "DNI": "G004",
                 "Age": 36,
                 "Salario": 1500,
-                "activo": true
+                "activo": false
             },
             {
                 "Nombre": "Luis",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P005",
                 "EmpleadoID": 5,
                 "diasLibres": 4,
-                "placaPolicial": "P005",
                 "Rango": "OFICIAL",
                 "Genero": "HOMBRE",
                 "Apellido": "Martinez",
                 "DNI": "G005",
                 "Age": 42,
                 "Salario": 1600,
-                "activo": true
+                "activo": false
             },
             {
                 "Nombre": "Juan",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P006",
                 "EmpleadoID": 6,
                 "diasLibres": 6,
-                "placaPolicial": "P006",
                 "Rango": "SARGENTO",
                 "Genero": "HOMBRE",
                 "Apellido": "Torres",
                 "DNI": "G006",
                 "Age": 39,
                 "Salario": 1550,
-                "activo": true
+                "activo": false
             }
         ]
     },
@@ -162,9 +158,22 @@
         "Genero": "HOMBRE",
         "id": 1,
         "Presos": {
+            "2": {
+                "Nombre": "Carlos",
+                "ultimoMesVisita": "11/2025",
+                "Activo": true,
+                "Genero": "HOMBRE",
+                "prisonerID": 2,
+                "Apellido": "Diaz",
+                "sentencia": 24,
+                "DNI": "111111",
+                "Age": 22,
+                "visitasRestantes": 2
+            },
             "7": {
                 "Nombre": "Gere",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "HOMBRE",
                 "prisonerID": 7,
                 "Apellido": "God",
@@ -176,6 +185,7 @@
             "8": {
                 "Nombre": "Ete",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "HOMBRE",
                 "prisonerID": 8,
                 "Apellido": "Sech",
@@ -187,6 +197,7 @@
             "9": {
                 "Nombre": "Eso",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "HOMBRE",
                 "prisonerID": 9,
                 "Apellido": "Tilin",
@@ -200,44 +211,47 @@
             {
                 "Nombre": "Oscar",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P007",
                 "EmpleadoID": 7,
                 "diasLibres": 5,
-                "placaPolicial": "P007",
                 "Rango": "GUARDIA",
                 "Genero": "HOMBRE",
                 "Apellido": "Vega",
                 "DNI": "G007",
                 "Age": 33,
                 "Salario": 1500,
-                "activo": true
+                "activo": false
             },
             {
                 "Nombre": "Ricardo",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P008",
                 "EmpleadoID": 8,
                 "diasLibres": 4,
-                "placaPolicial": "P008",
                 "Rango": "OFICIAL",
                 "Genero": "HOMBRE",
                 "Apellido": "Diaz",
                 "DNI": "G008",
                 "Age": 37,
                 "Salario": 1600,
-                "activo": true
+                "activo": false
             },
             {
                 "Nombre": "Fernando",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P009",
                 "EmpleadoID": 9,
                 "diasLibres": 6,
-                "placaPolicial": "P009",
                 "Rango": "SARGENTO",
                 "Genero": "HOMBRE",
                 "Apellido": "Lopez",
                 "DNI": "G009",
                 "Age": 41,
                 "Salario": 1550,
-                "activo": true
+                "activo": false
             }
         ]
     },
@@ -249,6 +263,7 @@
             "11": {
                 "Nombre": "Lucia",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "MUJER",
                 "prisonerID": 11,
                 "Apellido": "Martinez",
@@ -260,6 +275,7 @@
             "12": {
                 "Nombre": "Ana",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "MUJER",
                 "prisonerID": 12,
                 "Apellido": "Lopez",
@@ -271,6 +287,7 @@
             "10": {
                 "Nombre": "Maria",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "MUJER",
                 "prisonerID": 10,
                 "Apellido": "Gomez",
@@ -284,44 +301,47 @@
             {
                 "Nombre": "Patricia",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P010",
                 "EmpleadoID": 10,
                 "diasLibres": 5,
-                "placaPolicial": "P010",
                 "Rango": "GUARDIA",
                 "Genero": "MUJER",
                 "Apellido": "Sanchez",
                 "DNI": "G010",
                 "Age": 35,
                 "Salario": 1500,
-                "activo": true
+                "activo": false
             },
             {
                 "Nombre": "Sofia",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P011",
                 "EmpleadoID": 11,
                 "diasLibres": 4,
-                "placaPolicial": "P011",
                 "Rango": "OFICIAL",
                 "Genero": "MUJER",
                 "Apellido": "Diaz",
                 "DNI": "G011",
                 "Age": 32,
                 "Salario": 1600,
-                "activo": true
+                "activo": false
             },
             {
                 "Nombre": "Elena",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P012",
                 "EmpleadoID": 12,
                 "diasLibres": 6,
-                "placaPolicial": "P012",
                 "Rango": "SARGENTO",
                 "Genero": "MUJER",
                 "Apellido": "Ruiz",
                 "DNI": "G012",
                 "Age": 40,
                 "Salario": 1550,
-                "activo": true
+                "activo": false
             }
         ]
     },
@@ -333,6 +353,7 @@
             "13": {
                 "Nombre": "Isabel",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "MUJER",
                 "prisonerID": 13,
                 "Apellido": "Torres",
@@ -344,6 +365,7 @@
             "14": {
                 "Nombre": "Marta",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "MUJER",
                 "prisonerID": 14,
                 "Apellido": "Vega",
@@ -355,6 +377,7 @@
             "15": {
                 "Nombre": "Carmen",
                 "ultimoMesVisita": "11/2025",
+                "Activo": true,
                 "Genero": "MUJER",
                 "prisonerID": 15,
                 "Apellido": "Diaz",
@@ -368,44 +391,47 @@
             {
                 "Nombre": "Ana",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P013",
                 "EmpleadoID": 13,
                 "diasLibres": 5,
-                "placaPolicial": "P013",
                 "Rango": "GUARDIA",
                 "Genero": "MUJER",
                 "Apellido": "Perez",
                 "DNI": "G013",
                 "Age": 35,
                 "Salario": 1500,
-                "activo": true
+                "activo": false
             },
             {
                 "Nombre": "Claudia",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P014",
                 "EmpleadoID": 14,
                 "diasLibres": 4,
-                "placaPolicial": "P014",
                 "Rango": "OFICIAL",
                 "Genero": "MUJER",
                 "Apellido": "Santos",
                 "DNI": "G014",
                 "Age": 38,
                 "Salario": 1600,
-                "activo": true
+                "activo": false
             },
             {
                 "Nombre": "Veronica",
                 "Cargo": "GUARDIA",
+                "Activo": true,
+                "placaPolicial": "P015",
                 "EmpleadoID": 15,
                 "diasLibres": 6,
-                "placaPolicial": "P015",
                 "Rango": "SARGENTO",
                 "Genero": "MUJER",
                 "Apellido": "Torres",
                 "DNI": "G015",
                 "Age": 40,
                 "Salario": 1550,
-                "activo": true
+                "activo": false
             }
         ]
     }

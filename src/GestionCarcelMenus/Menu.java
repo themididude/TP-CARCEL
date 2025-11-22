@@ -7,11 +7,18 @@ import funcionalidad.JsonManager;
 import funcionalidad.Rol;
 import funcionalidad.Tareas.GenerarInforme;
 import funcionalidad.Tareas.LoginInvalidoException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Menu {
+
+
+    public static final String RUTA_JSON = "carcel.json";
 
     private Menu()
     {
@@ -48,9 +55,17 @@ public class Menu {
 
     public static void Welcome(Scanner sc)
     {
-        System.out.println("────────────────────────────────────────────────────────");
-        System.out.println("︶︶︶︶︶︶ BIENVENIDO A LA GESITON CARCELARIA ︶︶︶︶︶︶");
-        System.out.println("────────────────────────────────────────────────────────");
+        try {
+            String contenido = new String(Files.readAllBytes(Paths.get(RUTA_JSON)));
+            JSONObject carcel = new JSONObject(contenido);
+
+            System.out.println("────────────────────────────────────────────────────────");
+            System.out.println("︶︶︶︶︶︶ BIENVENIDO A " + carcel.getString("nombre_carcel") + " ︶︶︶︶︶︶");
+            System.out.println("────────────────────────────────────────────────────────");
+        } catch (IOException e)
+        {
+            System.out.println("IOException . . . . . . . . ");
+        }
 
     }
 
@@ -208,6 +223,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
             System.out.println("1. Manejo de Empleados");
             System.out.println("2. Manejo de Seguridad y Presos");
             System.out.println("3. Informes");
+            System.out.println("4. Editar datos de la Carcel");
             System.out.println("0. Salir");
             System.out.print("Seleccione una categoría: ");
             int categoria = sc.nextInt();
@@ -236,7 +252,17 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                                 System.out.println("==------------- AGREGAR EMPLEADO -------------==");
                                 Empleado nuevo = EmpleadoDB.crearEmpleadoDesdeConsola(sc);
                                 EmpleadoDB.agregarEmpleado(nuevo);
-                                System.out.println("Empleado agregado:\n" + nuevo);
+                                System.out.println("Empleado agregado:\n" + nuevo.getNombre());
+
+                                try {
+                                    JsonManager.guardarLista("empleados.json", EmpleadoDB.getEmpleados());
+                                } catch(JSONException e){
+                                    System.out.println("Ha ocurrido un error JSON: " + e.getMessage());
+
+                                } catch(IOException e) {
+                                    System.out.println("ERROR al guardar empleados.json: " + e.getMessage());
+                                }
+
                                 ending();
                             }
                             case 3 -> {
@@ -304,8 +330,9 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                         System.out.println("---------| INFORMES |---------");
                         System.out.println("1. Generar Informe Financiero");
                         System.out.println("2. Generar Informe General");
-                        System.out.println("3. Mostrar todos los Informes");
-                        System.out.println("4. Mostrar Informes Generales");
+                        System.out.println("3. Generar Informe Policial");
+                        System.out.println("4. Mostrar todos los Informes");
+                        System.out.println("5. Mostrar Informes Generales");
                         System.out.println("0. Volver al menú principal");
                         System.out.print("Seleccione una opción: ");
                         int opcion = sc.nextInt();
@@ -316,13 +343,40 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                             case 1 -> {
                                 newInforme = Paperwork.generarInforme(sc, Informe.Tipo.FINANCIERO);
                                 gestor.agregarInforme(newInforme);
+                                try {
+                                    JsonManager.guardarLista("informes.json", gestor.informes);
+                                } catch(JSONException e){
+                                    System.out.println("JSON EXCEPTION . . . ");
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+
                             }
                             case 2 -> {
                                 newInforme = Paperwork.generarInforme(sc, Informe.Tipo.GENERAL);
                                 gestor.agregarInforme(newInforme);
+                                try {
+                                    JsonManager.guardarLista("informes.json", gestor.informes);
+                                } catch(JSONException e){
+                                    System.out.println("JSON EXCEPTION . . . ");
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+
                             }
-                            case 3 -> { gestor.mostrarTodosLosInformes(); ending();}
-                            case 4 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL); ending();}
+                            case 3 -> {
+                                newInforme = Paperwork.generarInforme(sc, Informe.Tipo.POLICIAL);
+                                gestor.agregarInforme(newInforme);
+                                try {
+                                    JsonManager.guardarLista("informes.json", gestor.informes);
+                                } catch (JSONException e) {
+                                    System.out.println("JSON EXCEPTION . . . ");
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                            case 4 -> { gestor.mostrarTodosLosInformes(); ending();}
+                            case 5 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL); ending();}
                             case 0 -> {
                                 break; // volver al menú principal
                             }
@@ -332,6 +386,11 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                     }
                     break;
 
+                case 4:
+                    ///POR SI QUEREMOS EDITAR LA CARCEL!
+                    Carcel.mostrarMenuEdicion(sc);
+                    ending();
+                    break;
                 case 0: // Salir
                     return;
 

@@ -1,7 +1,7 @@
 package PersonasEmpleadoUsuario;
 
 import funcionalidad.JSONConvertible;
-import funcionalidad.Tareas.Activable;
+import funcionalidad.Activable;
 import org.json.JSONObject;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -3,7 +3,7 @@ package PersonasEmpleadoUsuario;
 import funcionalidad.JSONConvertible;
 import org.json.JSONObject;
 
-public abstract class Persona implements JSONConvertible {
+public abstract class Persona implements JSONConvertible{
 
     private String Nombre;
     private String Apellido;

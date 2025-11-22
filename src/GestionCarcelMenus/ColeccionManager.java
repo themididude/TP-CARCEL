@@ -1,6 +1,6 @@
 package GestionCarcelMenus;
 
-import funcionalidad.Tareas.Activable;
+import funcionalidad.Activable;
 
 import java.util.*;
 
@@ -13,10 +13,10 @@ import java.util.*;
         //--------> crear listas
         public List<T> crearLista() {return new ArrayList<>();
         }
+
         public LinkedList<T> crearLinkedList() {
             return new LinkedList<>();
         }
-
 
         public void agregarALista(List<T> lista, T elemento) {
             lista.add(elemento);

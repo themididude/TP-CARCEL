@@ -1,6 +1,9 @@
 package GestionCarcelMenus;
 
-public class Informe {
+import funcionalidad.JSONConvertible;
+import org.json.JSONObject;
+
+public class Informe implements JSONConvertible {
 
     public enum Tipo
     {
@@ -19,6 +22,25 @@ public class Informe {
         this.Descripcion = Descripcion;
         this.Fecha = Fecha;
         this.tipo = tipo;
+    }
+
+    public JSONObject toJSONObject()
+    {
+        JSONObject json = new JSONObject();
+        json.put("Asunto", Asunto);
+        json.put("Descripcion", Descripcion);
+        json.put("Fecha", Fecha);
+        json.put("tipo", tipo.name());
+        return json;
+    }
+
+    public static Informe fromJSON(JSONObject json) {
+        String Asunto = json.getString("Asunto");
+        String Descripcion = json.getString("Descripcion");
+        String Fecha = json.getString("Fecha");
+        Tipo tipo = Tipo.valueOf(json.getString("tipo"));
+
+        return new Informe(Asunto, Descripcion, Fecha, tipo);
     }
 
     public Tipo getTipo() {

@@ -1,5 +1,6 @@
 package PersonasEmpleadoUsuario;
 
+import GestionCarcelMenus.Informe;
 import org.json.JSONObject;
 
 public class Empleado extends Persona {
@@ -57,6 +58,10 @@ public class Empleado extends Persona {
         return json;
     }
 
+    public static Empleado fromJSON(JSONObject json) {
+        return new Empleado(json);
+    }
+
     // getters
     public int getEmpleadoID() { return empleadoID; }
     public double getSalario() { return salario; }
@@ -68,4 +73,27 @@ public class Empleado extends Persona {
     public void setActivo(boolean activo) {Activo = activo;}
     public void setSalario(double salario) {this.salario = salario;}
     public void setDiasLibres(int diasLibres) {this.diasLibres = diasLibres;}
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Empleado ID: %d\n" +
+                        "Nombre: %s %s\n" +
+                        "DNI: %s\n" +
+                        "Edad: %d años\n" +
+                        "Cargo: %s\n" +
+                        "Salario: $%.2f\n" +
+                        "Días libres: %d\n" +
+                        "Activo: %s\n",
+                empleadoID,
+                getNombre(),
+                getApellido(),
+                getDNI(),
+                getAge(),
+                cargo.name(),
+                salario,
+                diasLibres,
+                Activo ? "Sí" : "No"
+        );
+    }
 }

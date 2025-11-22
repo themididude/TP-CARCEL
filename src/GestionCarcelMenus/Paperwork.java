@@ -1,9 +1,13 @@
 package GestionCarcelMenus;
+import funcionalidad.JSONConvertible;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Paperwork {
+public class Paperwork implements JSONConvertible {
 
     private static Paperwork instancia;
     ArrayList<Informe> informes = new ArrayList<>();
@@ -17,6 +21,30 @@ public class Paperwork {
             instancia = new Paperwork();
         }
         return instancia;
+    }
+
+    public JSONObject toJSONObject()
+    {
+        JSONObject json = new JSONObject();
+        JSONArray arrayInformes = new JSONArray();
+
+        for(Informe inf : informes)
+        {
+            arrayInformes.put(inf.toJSONObject());
+        }
+
+        json.put("Informes", arrayInformes);
+        return json;
+    }
+
+    public void fromJSON(JSONObject json) {
+        informes.clear();
+        JSONArray array = json.getJSONArray("Informes");
+
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject obj = array.getJSONObject(i);
+            informes.add(Informe.fromJSON(obj));
+        }
     }
 
     public static Informe generarInforme(Scanner sc, Informe.Tipo tipo)
