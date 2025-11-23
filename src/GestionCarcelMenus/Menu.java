@@ -1,12 +1,10 @@
 package GestionCarcelMenus;
 import PersonasEmpleadoUsuario.Empleado;
 import PersonasEmpleadoUsuario.EmpleadoDB;
-import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.Autenticacion;
 import funcionalidad.JsonManager;
 import funcionalidad.Rol;
-import funcionalidad.Tareas.GenerarInforme;
-import funcionalidad.Tareas.LoginInvalidoException;
+import funcionalidad.LoginInvalidoException;
 import org.json.JSONException;
 import org.json.JSONObject;
 

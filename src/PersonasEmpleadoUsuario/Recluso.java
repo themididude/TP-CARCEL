@@ -102,15 +102,15 @@ public class Recluso extends Persona implements JSONConvertible, Activable {
       return visitasRestantes;
     }
 
-    public boolean registrarVisita(){
-    if(visitasRestantes  > 0){
-    visitasRestantes--;
-        System.out.println("Visita registada. Visitas restantes:" +visitasRestantes);
-        return true;
-    }else{
-        System.out.println("AVISO: El recluso" + getNombre() + "no tiene visitas disponibles por el resto del mes.") ;
-        return false;
-    }
+    public boolean registrarVisita() {
+        if (visitasRestantes > 0) {
+            visitasRestantes--;
+            System.out.println("Visita registada. Visitas restantes:" + visitasRestantes);
+            return true;
+        } else {
+            System.out.println("AVISO: El recluso" + getNombre() + "no tiene visitas disponibles por el resto del mes.");
+            return false;
+        }
     }
 
     private void actualizarVisitaSiesNuevoMes(){

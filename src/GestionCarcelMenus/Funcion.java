@@ -5,33 +5,26 @@ import PersonasEmpleadoUsuario.Genero;
 import PersonasEmpleadoUsuario.Guardia;
 import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.JsonManager;
+import funcionalidad.ReclusoNoEncontradoException;
 import funcionalidad.WrongGenderException;
+import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Funcion {
 
-   /* private static void pause() {
-        System.out.println("\nPresione ENTER para continuar...");
-        try {
-            System.in.read();
-        } catch (IOException e) {
-        }
-    }*/
-
     public static void ListarPabellonesHombre (Scanner sc){
-        int i=0;
-        System.out.println("\nPabellones Masculinos:");
+        System.out.println("Pabellones Masculinos:");
         for (Pabellon p :Carcel.pdb.getP()){
             if(p.getGenero().equals(Genero.HOMBRE)){
                 System.out.println(p.getClave());
             }
         }
+
     }
     public static void ListarPabellonesMujer (Scanner sc){
-        int i=0;
-        System.out.println("\nPabellones Femeninos:");
+        System.out.println("Pabellones Femeninos:");
         for (Pabellon p :Carcel.pdb.getP()){
             if(p.getGenero().equals(Genero.MUJER)){
                 System.out.println(p.getClave());
@@ -40,27 +33,36 @@ public class Funcion {
     }
 
     public static void ListarPabellones (Scanner sc){
+        System.out.println("===-----------------===");
         Funcion.ListarPabellonesHombre(sc);
+        System.out.println("===-----------------===");
         Funcion.ListarPabellonesMujer(sc);
+        System.out.println("===-----------------===");
     }
     public static void MoverPreso(Scanner sc) {
-        System.out.println("Ingrese el id del prisionero");
+        System.out.println("Ingrese el ID del recluso a mover: ");
         int id = sc.nextInt();
         sc.nextLine();
 
-        Pabellon p = Carcel.pdb.getPabellonDelRecluso(id);
-        Recluso r = Carcel.pdb.buscarReclusoDB(id);
-        System.out.println(r.toString() + "Del " + p.toString());
-
-        System.out.println("A que pabellon se traslada?");
-        Funcion.ListarPabellones(sc);
-        String nom = sc.nextLine();
-        Pabellon p2 = Carcel.pdb.buscarPabellon(nom);
-        p.moverRecluso(r, p2);
-
         try {
+            Pabellon p = Carcel.pdb.getPabellonDelRecluso(id);
+            Recluso r = Carcel.pdb.buscarReclusoDB(id);
+            System.out.println(r.toString() + "Del " + p.toString());
+
+            System.out.println("A que pabellon se traslada?");
+            Funcion.ListarPabellones(sc);
+            String nom = sc.nextLine();
+            Pabellon p2 = Carcel.pdb.buscarPabellon(nom);
+            p.moverRecluso(r, p2);
+
+            /// JSON save
             JsonManager.guardarLista("Pabellones.json", Carcel.pdb.getP());
-        } catch (IOException e) {
+        } catch(ReclusoNoEncontradoException e){
+            System.out.println("Error: recluso no encontrado! " + e.getMessage());
+        } catch(JSONException e){
+            System.out.println("Error: Json Exception catched!" + e.getMessage());
+        }catch (IOException e) {
+            System.out.println("Error: IOException!" + e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -89,9 +91,14 @@ public class Funcion {
         System.out.println("Ingrese el id del prisionero que busca");
         int id = sc.nextInt();
         sc.nextLine();
+        try{
         Pabellon p = Carcel.pdb.getPabellonDelRecluso(id);
         Recluso r = Carcel.pdb.buscarReclusoDB(id);
         System.out.println(r.toString() + "Del Pabellon " + p.toString());
+        } catch(ReclusoNoEncontradoException e )
+        {
+            System.out.println("Error, no encontramos ese recluso! " + e.getMessage());
+        }
 
 
     }
@@ -107,86 +114,70 @@ public class Funcion {
 
     public static void registrarVisita(Scanner sc) {
         System.out.println("--- REGISTRO DE VISITA ---");
-        System.out.println("Ingrese el id del prisionero:");
+        System.out.println("Ingrese el ID del recluso:");
         int id = -1;
-        if (sc.hasNextInt()) {
-            id = sc.nextInt();
-        }
+        if (sc.hasNextInt()) id = sc.nextInt();
         sc.nextLine();
 
         if (id == -1) {
-            System.out.println("Id de prisionero invalido");
-            System.out.println("\n Presiona ENTER para continuar...");
-            sc.nextLine();
+            System.out.println("ID INVALIDO");
             return;
         }
 
-        Recluso recluso = Carcel.pdb.buscarReclusoDB(id);
-        if (recluso != null) {
-            System.out.println("Recluso encontrado: " + recluso.getNombre() + " " + recluso.getApellido() + ".");
-            System.out.println("Visitas restantes ANTES de la visita: " + recluso.getVisitasRestantes());
-
-            System.out.println("\n¿Desea registrar la visita? (S/N)");
-            String confirmar = sc.nextLine().trim().toUpperCase();
-            if (confirmar.equalsIgnoreCase("S")) {
-                if (recluso.registrarVisita()) {
-                    System.out.println("Visita registrada con exito para el ID: " + id);
+        try {
+            Recluso recluso = Carcel.pdb.buscarReclusoDB(id);
+            if (recluso != null) {
+                System.out.println("Recluso " + recluso.getNombre() + " " + recluso.getApellido() + " encontrado.");
+                System.out.println("Desea registrar la una visita? Visitas restantes: " + recluso.getVisitasRestantes());
+                String confirmar = sc.nextLine().trim().toUpperCase();
+                if (confirmar.equalsIgnoreCase("S")) {
+                    recluso.registrarVisita();
+                } else {
+                    System.out.println("Visita no registrada! Saliendo...");
                 }
-
-
-                try {
-                    JsonManager.guardarLista("Pabellones.json", Carcel.pdb.getP());
-                    System.out.println("Cambios de visitas guardados en el sistema (Pabellones.json).");
-                } catch (IOException e) {
-                    System.out.println("Error al guardar la base de datos de pabellones: " + e.getMessage());
-                }
-
-            } else {
-                System.out.println("Registro de visita cancelado.");
             }
-
-        } else {
-            System.out.println("ERROR: Prisionero con ID " + id + "no encontrado en ningun pabellon");
+        } catch (ReclusoNoEncontradoException e) {
+            System.out.println("Error, no encontramos ese recluso! " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error inesperado! " + e.getMessage());
         }
-
-
     }
 
     public static void quitarPreso(Scanner sc) {
-        System.out.println("Ingrese el id del prisionero");
+        System.out.println("Ingrese el ID del recluso");
         int id = sc.nextInt();
         sc.nextLine();
-        if (Carcel.pdb.buscarReclusoDB(id) != null) {
 
+        try {
             Pabellon p = Carcel.pdb.getPabellonDelRecluso(id);
             Recluso r = Carcel.pdb.buscarReclusoDB(id);
 
-            System.out.println(r.toString() + "Del " + p.toString());
-            System.out.println("\nSeguro que quiere quitar al prisionero? S/N");
+            if (r == null || p == null) {
+                throw new ReclusoNoEncontradoException("El recluso con ID " + id + " no existe o no tiene pabellón asignado.");
+            }
+
+            System.out.println(r.toString() + " Del " + p.toString());
+            System.out.println("\nSeguro que quiere quitar al recluso? S/N");
             String confirmar = sc.nextLine().trim().toUpperCase();
 
             if (confirmar.equalsIgnoreCase("S")) {
-
 
                 try {
                     p.quitarRecluso(r);
                     JsonManager.guardarLista("Pabellones.json", Carcel.pdb.getP());
-                    System.out.println("Prisionero quitado");
+                    System.out.println("recluso quitado");
 
                 } catch (IOException e) {
-                    System.out.println("Error al quitar el prisionero: " + e.getMessage());
-                    throw new RuntimeException(e);
+                    System.out.println("Error al guardar la información: " + e.getMessage());
+                    throw new RuntimeException("Fallo al guardar los datos después de quitar el recluso.", e);
                 }
-                return;
             } else {
                 System.out.println("Operacion Cancelada");
-
-                return;
             }
-        } else {
-            System.out.println("El prisionero " + id + " no existe");
 
-            return;
+        } catch (ReclusoNoEncontradoException e) {
+            System.out.println("ERROR: recluso no encontrado!  " + e.getMessage());
+            System.out.println("Por favor, verifique el ID ingresado.");
         }
     }
 
@@ -255,8 +246,6 @@ public class Funcion {
 
             }
         }
-
-
     }
     public static void agregarGuardia (Scanner sc) {
         System.out.print("Nombre: ");
@@ -321,32 +310,21 @@ public class Funcion {
         }
 
         // Crear el objeto Guardia
-        Guardia g = new Guardia(
-                nombre,
-                apellido,
-                dni,
-                edad,
-                salario,
-                diasLibres,
-                activo,
-                placaPolicial,
-                genero,
-                rango
-        );
+        Guardia g = new Guardia(nombre, apellido, dni, edad, salario, diasLibres, activo, placaPolicial, genero, rango);
 
-        System.out.println("\nGuardia creado exitosamente:");
+        System.out.println("Guardia creado exitosamente!");
         System.out.println("Placa policial: " + g.getPlacaPolicial());
 
-        System.out.println("A que Pabellon se agrega el guardia?");
+        System.out.println("Ingrese un Pabellon para" + g.getNombre() + ".");
         Funcion.ListarPabellones(sc);
-        String nom =sc.nextLine();
-        Pabellon p=Carcel.pdb.buscarPabellon(nom);
+        String nom = sc.nextLine();
+        Pabellon p = Carcel.pdb.buscarPabellon(nom);
         try {
             p.agregarGuardia(g);
             JsonManager.guardarLista("Pabellones.json", Carcel.pdb.getP());
-            System.out.println("Guardia agregado");
+            System.out.println("El guardia " + g.getNombre() + "fue guardado en el Pabellon" + p.getClave() + ".");
         } catch (IOException e) {
-            System.out.println("Error al agregar el guardia: " + e.getMessage());
+            System.out.println("Error IOException al agregar al guardia: " + e.getMessage());
             throw new RuntimeException(e);
         }
 

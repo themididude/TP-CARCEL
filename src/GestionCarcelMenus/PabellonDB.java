@@ -2,6 +2,7 @@ package GestionCarcelMenus;
 import PersonasEmpleadoUsuario.Guardia;
 import PersonasEmpleadoUsuario.Recluso;
 import funcionalidad.JSONConvertible;
+import funcionalidad.ReclusoNoEncontradoException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -55,12 +56,12 @@ public class PabellonDB implements JSONConvertible {
                 return p.get(i);
             }
         }
-        System.out.println("No existe el pabellon "+nom);
+        System.out.println("El pabellon " + nom + "no existe.");
         return null;
     }
 
     //metodos de prisionero
-    public Recluso buscarReclusoDB(int id) {
+    public Recluso buscarReclusoDB(int id) throws ReclusoNoEncontradoException{
         for (int i = 0; i < p.size(); i++) {
             if (p.get(i).getPresos().containsKey(id)) {
                 return p.get(i).buscarRecluso(id);

@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Carcel {
 
     public static final String RUTA_JSON = "carcel.json";
-    public static PabellonDB pdb=new PabellonDB();
+    public static PabellonDB pdb = new PabellonDB();
 
 
 

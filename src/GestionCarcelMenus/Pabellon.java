@@ -116,18 +116,18 @@ public class Pabellon implements JSONConvertible {
     }
 
     public void quitarRecluso(Recluso recluso) {
-        this.presos.remove(recluso.getPrisonerID());
+
+        recluso.setActivo(false); ///<- baja logica/soft delete
     }
 
     public void quitarGuardia(Guardia guardia) {
-        this.guardias.remove(guardia);
+        guardia.setActivo(false);
     }
 
     public void moverRecluso(Recluso recluso, Pabellon otroPabellon) {
-        quitarRecluso(recluso);
-
         try {
-            otroPabellon.agregarRecluso(recluso);
+        quitarRecluso(recluso);
+        otroPabellon.agregarRecluso(recluso);
         } catch (WrongGenderException e) {
             System.out.println(e.getMessage());
         }

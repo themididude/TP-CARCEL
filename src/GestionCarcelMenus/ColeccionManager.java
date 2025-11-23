@@ -105,7 +105,10 @@ import java.util.*;
         public void mostrarMapa(Map<K, V> mapa) {
             System.out.println("Elementos en el mapa:\n");
             for (Map.Entry<K, V> entry : mapa.entrySet()) {
-                System.out.println(entry.getKey() + " key-> \n" + entry.getValue());
+                V valor = entry.getValue();
+                if (valor instanceof Activable && ((Activable) valor).isActivo()) {
+                    System.out.println(entry.getKey() + " key -> \n" + valor);
+                }
             }
         }
     }
