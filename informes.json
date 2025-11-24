@@ -1,0 +1,14 @@
+[
+    {
+        "Asunto": "Informe de prueba de json",
+        "tipo": "GENERAL",
+        "Fecha": "24/11/13",
+        "Descripcion": "hola espero que este informe se guarde en json!!"
+    },
+    {
+        "Asunto": "prueba json 2",
+        "tipo": "GENERAL",
+        "Fecha": "24/11/2025",
+        "Descripcion": "espero que este informe se guarde en json!!"
+    }
+]

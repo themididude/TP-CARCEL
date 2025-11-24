@@ -1,0 +1,12 @@
+[{
+    "Nombre": "Geremias",
+    "Cargo": "BASURERO",
+    "EmpleadoID": 17,
+    "diasLibres": 0,
+    "Activo": true,
+    "Genero": "HOMBRE",
+    "Apellido": "Chambero",
+    "DNI": "00001",
+    "Age": 20,
+    "Salario": 2
+}]
