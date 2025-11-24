@@ -30,8 +30,7 @@
         "Genero": "HOMBRE",
         "DNI": "G001",
         "Age": 35,
-        "Salario": 1500,
-        "activo": false
+        "Salario": 1500
       },
       {
         "Nombre": "Miguel",
@@ -45,8 +44,7 @@
         "Genero": "HOMBRE",
         "DNI": "G002",
         "Age": 40,
-        "Salario": 1600,
-        "activo": false
+        "Salario": 1600
       },
       {
         "Nombre": "Pedro",
@@ -60,8 +58,7 @@
         "Genero": "HOMBRE",
         "DNI": "G003",
         "Age": 38,
-        "Salario": 1550,
-        "activo": false
+        "Salario": 1550
       }
     ]
   },
@@ -120,8 +117,7 @@
         "Genero": "HOMBRE",
         "DNI": "G004",
         "Age": 36,
-        "Salario": 1500,
-        "activo": false
+        "Salario": 1500
       },
       {
         "Nombre": "Luis",
@@ -135,8 +131,7 @@
         "Genero": "HOMBRE",
         "DNI": "G005",
         "Age": 42,
-        "Salario": 1600,
-        "activo": false
+        "Salario": 1600
       },
       {
         "Nombre": "Juan",
@@ -150,8 +145,7 @@
         "Genero": "HOMBRE",
         "DNI": "G006",
         "Age": 39,
-        "Salario": 1550,
-        "activo": false
+        "Salario": 1550
       }
     ]
   },
@@ -222,8 +216,7 @@
         "Genero": "HOMBRE",
         "DNI": "G007",
         "Age": 33,
-        "Salario": 1500,
-        "activo": false
+        "Salario": 1500
       },
       {
         "Nombre": "Ricardo",
@@ -237,8 +230,7 @@
         "Genero": "HOMBRE",
         "DNI": "G008",
         "Age": 37,
-        "Salario": 1600,
-        "activo": false
+        "Salario": 1600
       },
       {
         "Nombre": "Fernando",
@@ -252,8 +244,7 @@
         "Genero": "HOMBRE",
         "DNI": "G009",
         "Age": 41,
-        "Salario": 1550,
-        "activo": false
+        "Salario": 1550
       }
     ]
   },
@@ -324,8 +315,7 @@
         "Genero": "MUJER",
         "DNI": "G010",
         "Age": 35,
-        "Salario": 1500,
-        "activo": false
+        "Salario": 1500
       },
       {
         "Nombre": "Sofia",
@@ -339,8 +329,7 @@
         "Genero": "MUJER",
         "DNI": "G011",
         "Age": 32,
-        "Salario": 1600,
-        "activo": false
+        "Salario": 1600
       },
       {
         "Nombre": "Elena",
@@ -354,8 +343,7 @@
         "Genero": "MUJER",
         "DNI": "G012",
         "Age": 40,
-        "Salario": 1550,
-        "activo": false
+        "Salario": 1550
       }
     ]
   },
@@ -414,8 +402,7 @@
         "Genero": "MUJER",
         "DNI": "G013",
         "Age": 35,
-        "Salario": 1500,
-        "activo": false
+        "Salario": 1500
       },
       {
         "Nombre": "Claudia",
@@ -429,8 +416,7 @@
         "Genero": "MUJER",
         "DNI": "G014",
         "Age": 38,
-        "Salario": 1600,
-        "activo": false
+        "Salario": 1600
       },
       {
         "Nombre": "Veronica",
@@ -444,8 +430,7 @@
         "Genero": "MUJER",
         "DNI": "G015",
         "Age": 40,
-        "Salario": 1550,
-        "activo": false
+        "Salario": 1550
       },
       {
         "Nombre": "Beatriz",
@@ -459,8 +444,7 @@
         "Genero": "MUJER",
         "DNI": "G016",
         "Age": 31,
-        "Salario": 1500,
-        "activo": true
+        "Salario": 1500
       }
     ]
   }

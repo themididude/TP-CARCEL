@@ -14,6 +14,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+import static GestionCarcelMenus.Funcion.pedirCambios;
+
 public class Pabellon implements JSONConvertible {
 
     private Sector sector;
@@ -93,11 +95,6 @@ public class Pabellon implements JSONConvertible {
     ///===--------------------------- METODOS ---------------------------===///
 
     ///lil helper ----->
-    private static String pedirCambios(Scanner sc, String campo, String valorActual){
-        System.out.print(campo + " ACTUAL: (" + valorActual + ") -> NUEVO VALOR (Pulsa enter para mantener el valor actual!): ");
-        String input = sc.nextLine().trim();
-        return input.isEmpty() ? valorActual : input;
-    }
 
     ///==================================================================///
     ///===------------- AGREGAR ------------===///
@@ -209,7 +206,7 @@ public class Pabellon implements JSONConvertible {
     }
 
     public void moverGuardia(Guardia guardia, Pabellon otroPabellon) {
-        quitarGuardia(guardia);
+        realRemove(guardia);
         otroPabellon.agregarGuardia(guardia);
     }
 
@@ -245,6 +242,11 @@ public class Pabellon implements JSONConvertible {
 
     public void quitarGuardia(Guardia guardia) {
         guardia.setActivo(false);
+    }
+
+    public void realRemove(Guardia guardia)
+    {
+        guardias.remove(guardia);
     }
 
     ///==================================================================///

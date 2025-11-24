@@ -1,6 +1,5 @@
 package PersonasEmpleadoUsuario;
 
-import GestionCarcelMenus.Informe;
 import funcionalidad.JSONConvertible;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -8,6 +7,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static GestionCarcelMenus.Funcion.pedirCambios;
 
 public class EmpleadoDB implements JSONConvertible {
 
@@ -117,6 +118,11 @@ public class EmpleadoDB implements JSONConvertible {
     }
 
     public static Empleado buscarEmpleadoPorId(int id) {
+        if(empleados.isEmpty()) {
+            System.out.println("ERROR: No hay empleados cargados.");
+            return null;
+        }
+
         for (Empleado e : empleados) {
             if (e.getEmpleadoID() == id) return e;
         }
@@ -136,11 +142,33 @@ public class EmpleadoDB implements JSONConvertible {
                 System.out.println(e.toString());
                 System.out.println("==================");
             }
-
         }
         System.out.println("==-----------....................-----------==");
-
     }
+
+    public static void mostrarEmpleadosPorCargo(Scanner sc) {
+        try {
+            System.out.println("Ingrese el cargo a filtrar (ej... COCINERO, BASURERO, RECEPCIONISTA): ");
+            String cargoStr = sc.nextLine().toUpperCase();
+            Cargo cargo = Enum.valueOf(Cargo.class, cargoStr);
+
+            System.out.println("==----------- LISTA DE EMPLEADOS CON CARGO: " + cargo + " -----------==");
+            for (Empleado e : empleados) {
+                if (e != null && e.isActivo() && e.getCargo() == cargo) {
+                    System.out.println("==================");
+                    System.out.println(e.toString());
+                    System.out.println("==================");
+                }
+            }
+            System.out.println("==-----------....................-----------==");
+        } catch(IllegalArgumentException e) {
+            System.out.println("Cargo inválido." + e.getMessage());
+        } catch(Exception e) {
+            System.out.println("Error inesperado: " + e.getMessage());
+        }
+    }
+
+
     public JSONObject toJSONObject()
     {
         JSONObject json = new JSONObject();
@@ -167,6 +195,34 @@ public class EmpleadoDB implements JSONConvertible {
 
     public static List<Empleado> getEmpleados() {
         return empleados;
+    }
+
+
+    public static Empleado modificarEmpleado(Scanner sc, int id)
+    {
+        Empleado emp = buscarEmpleadoPorId(id);
+        if (emp == null) return null;
+
+        emp.setNombre(pedirCambios(sc, "Nombre", emp.getNombre()));
+        emp.setApellido(pedirCambios(sc, "Apellido", emp.getApellido()));
+        emp.setDNI(pedirCambios(sc, "DNI", emp.getDNI()));
+        emp.setSalario(Double.parseDouble(pedirCambios(sc, "Salario", String.valueOf(emp.getSalario()))));
+        emp.setDiasLibres(Integer.parseInt(pedirCambios(sc, "Dias Libres", String.valueOf(emp.getDiasLibres()))));
+        /// PEDIR ENUM CARGO (quilombete)
+        String cargoStr = pedirCambios(sc, "Rango (ej... COCINERO, BASURERO, RECEPCIONISTA)", emp.getCargo().name());
+        try {
+            if (!cargoStr.isEmpty()) {
+                emp.setCargo(Enum.valueOf(PersonasEmpleadoUsuario.Cargo.class, cargoStr.toUpperCase()));
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Rango invalido. Se mantiene el rango actual: " + emp.getCargo());
+        }
+        /// ACTIVO?
+        String activoStr = pedirCambios(sc, "Activo? (true/false)", String.valueOf(emp.isActivo()));
+        emp.setActivo(Boolean.parseBoolean(activoStr));
+
+        System.out.println("Empleado actualizado correctamente.\n");
+        return emp;
     }
 
 }
