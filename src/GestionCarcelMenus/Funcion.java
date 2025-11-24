@@ -94,13 +94,13 @@ public class Funcion {
     }
 
     public static void MostrarPreso(Scanner sc) {
-        System.out.println("Ingrese el id del prisionero que busca");
+        System.out.println("Ingrese el ID del Recluso que busca");
         int id = sc.nextInt();
         sc.nextLine();
         try{
         Pabellon p = Carcel.pdb.getPabellonDelRecluso(id);
         Recluso r = Carcel.pdb.buscarReclusoDB(id);
-        System.out.println(r.toString() + "Del Pabellon " + p.toString());
+        System.out.println(r.toString() + "De " + p.toString());
         } catch(ReclusoNoEncontradoException e )
         {
             System.out.println("Error, no encontramos ese recluso! " + e.getMessage());
@@ -114,8 +114,9 @@ public class Funcion {
         Pabellon p = Carcel.pdb.getPabellonDelGuardia(placa);
         Guardia g = Carcel.pdb.buscarGuardiaDB(placa);
 
-        System.out.println(g.toString() + "Del Pabellon " + p.toString());
-
+        System.out.println("==------------------------==");
+        System.out.println(g.toString()  + p.toString());
+        System.out.println("==------------------------==");
     }
 
     public static void registrarVisita(Scanner sc) {
