@@ -1,438 +1,467 @@
 [
-    {
-        "Sector": "A",
+  {
+    "Sector": "A",
+    "Genero": "HOMBRE",
+    "id": 1,
+    "Presos": {
+      "3": {
+        "Nombre": "Jorge",
+        "Apellido": "Lopez",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
         "Genero": "HOMBRE",
-        "id": 1,
-        "Presos": {"3": {
-            "Nombre": "Jorge",
-            "ultimoMesVisita": "11/2025",
-            "Activo": true,
-            "Genero": "HOMBRE",
-            "prisonerID": 3,
-            "Apellido": "Lopez",
-            "sentencia": 36,
-            "DNI": "222222",
-            "Age": 30,
-            "visitasRestantes": 1
-        }},
-        "Guardias": [
-            {
-                "Nombre": "Alberto",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P001",
-                "EmpleadoID": 1,
-                "diasLibres": 5,
-                "Rango": "GUARDIA",
-                "Genero": "HOMBRE",
-                "Apellido": "Perez",
-                "DNI": "G001",
-                "Age": 35,
-                "Salario": 1500,
-                "activo": false
-            },
-            {
-                "Nombre": "Miguel",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P002",
-                "EmpleadoID": 2,
-                "diasLibres": 4,
-                "Rango": "OFICIAL",
-                "Genero": "HOMBRE",
-                "Apellido": "Santos",
-                "DNI": "G002",
-                "Age": 40,
-                "Salario": 1600,
-                "activo": false
-            },
-            {
-                "Nombre": "Pedro",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P003",
-                "EmpleadoID": 3,
-                "diasLibres": 6,
-                "Rango": "SARGENTO",
-                "Genero": "HOMBRE",
-                "Apellido": "Ruiz",
-                "DNI": "G003",
-                "Age": 38,
-                "Salario": 1550,
-                "activo": false
-            }
-        ]
+        "prisonerID": 3,
+        "sentencia": 36,
+        "DNI": "222222",
+        "Age": 30,
+        "visitasRestantes": 1
+      }
     },
-    {
-        "Sector": "A",
+    "Guardias": [
+      {
+        "Nombre": "Alberto",
+        "Apellido": "Perez",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P001",
+        "EmpleadoID": 1,
+        "diasLibres": 5,
+        "Rango": "GUARDIA",
         "Genero": "HOMBRE",
-        "id": 2,
-        "Presos": {
-            "4": {
-                "Nombre": "Pepe",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "HOMBRE",
-                "prisonerID": 4,
-                "Apellido": "Ramirez",
-                "sentencia": 18,
-                "DNI": "6742069",
-                "Age": 25,
-                "visitasRestantes": 3
-            },
-            "5": {
-                "Nombre": "Agustin",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "HOMBRE",
-                "prisonerID": 5,
-                "Apellido": "Segundo",
-                "sentencia": 20,
-                "DNI": "123456789",
-                "Age": 28,
-                "visitasRestantes": 3
-            },
-            "6": {
-                "Nombre": "Juan",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "HOMBRE",
-                "prisonerID": 6,
-                "Apellido": "Troll",
-                "sentencia": 9998,
-                "DNI": "123456",
-                "Age": 30,
-                "visitasRestantes": 2
-            }
-        },
-        "Guardias": [
-            {
-                "Nombre": "Hector",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P004",
-                "EmpleadoID": 4,
-                "diasLibres": 5,
-                "Rango": "GUARDIA",
-                "Genero": "HOMBRE",
-                "Apellido": "Lopez",
-                "DNI": "G004",
-                "Age": 36,
-                "Salario": 1500,
-                "activo": false
-            },
-            {
-                "Nombre": "Luis",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P005",
-                "EmpleadoID": 5,
-                "diasLibres": 4,
-                "Rango": "OFICIAL",
-                "Genero": "HOMBRE",
-                "Apellido": "Martinez",
-                "DNI": "G005",
-                "Age": 42,
-                "Salario": 1600,
-                "activo": false
-            },
-            {
-                "Nombre": "Juan",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P006",
-                "EmpleadoID": 6,
-                "diasLibres": 6,
-                "Rango": "SARGENTO",
-                "Genero": "HOMBRE",
-                "Apellido": "Torres",
-                "DNI": "G006",
-                "Age": 39,
-                "Salario": 1550,
-                "activo": false
-            }
-        ]
-    },
-    {
-        "Sector": "B",
+        "DNI": "G001",
+        "Age": 35,
+        "Salario": 1500,
+        "activo": false
+      },
+      {
+        "Nombre": "Miguel",
+        "Apellido": "Santos",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P002",
+        "EmpleadoID": 2,
+        "diasLibres": 4,
+        "Rango": "OFICIAL",
         "Genero": "HOMBRE",
-        "id": 1,
-        "Presos": {
-            "2": {
-                "Nombre": "Carlos",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "HOMBRE",
-                "prisonerID": 2,
-                "Apellido": "Diaz",
-                "sentencia": 24,
-                "DNI": "111111",
-                "Age": 22,
-                "visitasRestantes": 2
-            },
-            "7": {
-                "Nombre": "Gere",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "HOMBRE",
-                "prisonerID": 7,
-                "Apellido": "God",
-                "sentencia": 1,
-                "DNI": "9876",
-                "Age": 420,
-                "visitasRestantes": 2
-            },
-            "8": {
-                "Nombre": "Ete",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "HOMBRE",
-                "prisonerID": 8,
-                "Apellido": "Sech",
-                "sentencia": 1324,
-                "DNI": "673345634577",
-                "Age": 23,
-                "visitasRestantes": 3
-            },
-            "9": {
-                "Nombre": "Eso",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "HOMBRE",
-                "prisonerID": 9,
-                "Apellido": "Tilin",
-                "sentencia": 3123,
-                "DNI": "1241324",
-                "Age": 8,
-                "visitasRestantes": 3
-            }
-        },
-        "Guardias": [
-            {
-                "Nombre": "Oscar",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P007",
-                "EmpleadoID": 7,
-                "diasLibres": 5,
-                "Rango": "GUARDIA",
-                "Genero": "HOMBRE",
-                "Apellido": "Vega",
-                "DNI": "G007",
-                "Age": 33,
-                "Salario": 1500,
-                "activo": false
-            },
-            {
-                "Nombre": "Ricardo",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P008",
-                "EmpleadoID": 8,
-                "diasLibres": 4,
-                "Rango": "OFICIAL",
-                "Genero": "HOMBRE",
-                "Apellido": "Diaz",
-                "DNI": "G008",
-                "Age": 37,
-                "Salario": 1600,
-                "activo": false
-            },
-            {
-                "Nombre": "Fernando",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P009",
-                "EmpleadoID": 9,
-                "diasLibres": 6,
-                "Rango": "SARGENTO",
-                "Genero": "HOMBRE",
-                "Apellido": "Lopez",
-                "DNI": "G009",
-                "Age": 41,
-                "Salario": 1550,
-                "activo": false
-            }
-        ]
+        "DNI": "G002",
+        "Age": 40,
+        "Salario": 1600,
+        "activo": false
+      },
+      {
+        "Nombre": "Pedro",
+        "Apellido": "Ruiz",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P003",
+        "EmpleadoID": 3,
+        "diasLibres": 6,
+        "Rango": "SARGENTO",
+        "Genero": "HOMBRE",
+        "DNI": "G003",
+        "Age": 38,
+        "Salario": 1550,
+        "activo": false
+      }
+    ]
+  },
+  {
+    "Sector": "A",
+    "Genero": "HOMBRE",
+    "id": 2,
+    "Presos": {
+      "4": {
+        "Nombre": "Pepe",
+        "Apellido": "Ramirez",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "HOMBRE",
+        "prisonerID": 4,
+        "sentencia": 18,
+        "DNI": "6742069",
+        "Age": 25,
+        "visitasRestantes": 3
+      },
+      "5": {
+        "Nombre": "Agustin",
+        "Apellido": "Segundo",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "HOMBRE",
+        "prisonerID": 5,
+        "sentencia": 20,
+        "DNI": "123456789",
+        "Age": 28,
+        "visitasRestantes": 3
+      },
+      "6": {
+        "Nombre": "Juan",
+        "Apellido": "Troll",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "HOMBRE",
+        "prisonerID": 6,
+        "sentencia": 9998,
+        "DNI": "123456",
+        "Age": 30,
+        "visitasRestantes": 2
+      }
     },
-    {
-        "Sector": "C",
+    "Guardias": [
+      {
+        "Nombre": "Hector",
+        "Apellido": "Lopez",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P004",
+        "EmpleadoID": 4,
+        "diasLibres": 5,
+        "Rango": "GUARDIA",
+        "Genero": "HOMBRE",
+        "DNI": "G004",
+        "Age": 36,
+        "Salario": 1500,
+        "activo": false
+      },
+      {
+        "Nombre": "Luis",
+        "Apellido": "Martinez",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P005",
+        "EmpleadoID": 5,
+        "diasLibres": 4,
+        "Rango": "OFICIAL",
+        "Genero": "HOMBRE",
+        "DNI": "G005",
+        "Age": 42,
+        "Salario": 1600,
+        "activo": false
+      },
+      {
+        "Nombre": "Juan",
+        "Apellido": "Torres",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P006",
+        "EmpleadoID": 6,
+        "diasLibres": 6,
+        "Rango": "SARGENTO",
+        "Genero": "HOMBRE",
+        "DNI": "G006",
+        "Age": 39,
+        "Salario": 1550,
+        "activo": false
+      }
+    ]
+  },
+  {
+    "Sector": "B",
+    "Genero": "HOMBRE",
+    "id": 1,
+    "Presos": {
+      "2": {
+        "Nombre": "Carlos",
+        "Apellido": "Diaz",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "HOMBRE",
+        "prisonerID": 2,
+        "sentencia": 24,
+        "DNI": "111111",
+        "Age": 22,
+        "visitasRestantes": 2
+      },
+      "7": {
+        "Nombre": "Gere",
+        "Apellido": "God",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "HOMBRE",
+        "prisonerID": 7,
+        "sentencia": 1,
+        "DNI": "9876",
+        "Age": 420,
+        "visitasRestantes": 2
+      },
+      "8": {
+        "Nombre": "Ete",
+        "Apellido": "Sech",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "HOMBRE",
+        "prisonerID": 8,
+        "sentencia": 1324,
+        "DNI": "673345634577",
+        "Age": 23,
+        "visitasRestantes": 3
+      },
+      "9": {
+        "Nombre": "Eso",
+        "Apellido": "Tilin",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "HOMBRE",
+        "prisonerID": 9,
+        "sentencia": 3123,
+        "DNI": "1241324",
+        "Age": 8,
+        "visitasRestantes": 3
+      }
+    },
+    "Guardias": [
+      {
+        "Nombre": "Oscar",
+        "Apellido": "Vega",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P007",
+        "EmpleadoID": 7,
+        "diasLibres": 5,
+        "Rango": "GUARDIA",
+        "Genero": "HOMBRE",
+        "DNI": "G007",
+        "Age": 33,
+        "Salario": 1500,
+        "activo": false
+      },
+      {
+        "Nombre": "Ricardo",
+        "Apellido": "Diaz",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P008",
+        "EmpleadoID": 8,
+        "diasLibres": 4,
+        "Rango": "OFICIAL",
+        "Genero": "HOMBRE",
+        "DNI": "G008",
+        "Age": 37,
+        "Salario": 1600,
+        "activo": false
+      },
+      {
+        "Nombre": "Fernando",
+        "Apellido": "Lopez",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P009",
+        "EmpleadoID": 9,
+        "diasLibres": 6,
+        "Rango": "SARGENTO",
+        "Genero": "HOMBRE",
+        "DNI": "G009",
+        "Age": 41,
+        "Salario": 1550,
+        "activo": false
+      }
+    ]
+  },
+  {
+    "Sector": "C",
+    "Genero": "MUJER",
+    "id": 1,
+    "Presos": {
+      "11": {
+        "Nombre": "Lucia",
+        "Apellido": "Martinez",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
         "Genero": "MUJER",
-        "id": 1,
-        "Presos": {
-            "11": {
-                "Nombre": "Lucia",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "MUJER",
-                "prisonerID": 11,
-                "Apellido": "Martinez",
-                "sentencia": 20,
-                "DNI": "444444",
-                "Age": 27,
-                "visitasRestantes": 3
-            },
-            "12": {
-                "Nombre": "Ana",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "MUJER",
-                "prisonerID": 12,
-                "Apellido": "Lopez",
-                "sentencia": 18,
-                "DNI": "555555",
-                "Age": 22,
-                "visitasRestantes": 2
-            },
-            "10": {
-                "Nombre": "Maria",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "MUJER",
-                "prisonerID": 10,
-                "Apellido": "Gomez",
-                "sentencia": 15,
-                "DNI": "333333",
-                "Age": 25,
-                "visitasRestantes": 3
-            }
-        },
-        "Guardias": [
-            {
-                "Nombre": "Patricia",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P010",
-                "EmpleadoID": 10,
-                "diasLibres": 5,
-                "Rango": "GUARDIA",
-                "Genero": "MUJER",
-                "Apellido": "Sanchez",
-                "DNI": "G010",
-                "Age": 35,
-                "Salario": 1500,
-                "activo": false
-            },
-            {
-                "Nombre": "Sofia",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P011",
-                "EmpleadoID": 11,
-                "diasLibres": 4,
-                "Rango": "OFICIAL",
-                "Genero": "MUJER",
-                "Apellido": "Diaz",
-                "DNI": "G011",
-                "Age": 32,
-                "Salario": 1600,
-                "activo": false
-            },
-            {
-                "Nombre": "Elena",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P012",
-                "EmpleadoID": 12,
-                "diasLibres": 6,
-                "Rango": "SARGENTO",
-                "Genero": "MUJER",
-                "Apellido": "Ruiz",
-                "DNI": "G012",
-                "Age": 40,
-                "Salario": 1550,
-                "activo": false
-            }
-        ]
-    },
-    {
-        "Sector": "D",
+        "prisonerID": 11,
+        "sentencia": 20,
+        "DNI": "444444",
+        "Age": 27,
+        "visitasRestantes": 3
+      },
+      "12": {
+        "Nombre": "Ana",
+        "Apellido": "Lopez",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
         "Genero": "MUJER",
-        "id": 1,
-        "Presos": {
-            "13": {
-                "Nombre": "Isabel",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "MUJER",
-                "prisonerID": 13,
-                "Apellido": "Torres",
-                "sentencia": 25,
-                "DNI": "666666",
-                "Age": 28,
-                "visitasRestantes": 3
-            },
-            "14": {
-                "Nombre": "Marta",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "MUJER",
-                "prisonerID": 14,
-                "Apellido": "Vega",
-                "sentencia": 18,
-                "DNI": "777777",
-                "Age": 26,
-                "visitasRestantes": 3
-            },
-            "15": {
-                "Nombre": "Carmen",
-                "ultimoMesVisita": "11/2025",
-                "Activo": true,
-                "Genero": "MUJER",
-                "prisonerID": 15,
-                "Apellido": "Diaz",
-                "sentencia": 22,
-                "DNI": "888888",
-                "Age": 30,
-                "visitasRestantes": 2
-            }
-        },
-        "Guardias": [
-            {
-                "Nombre": "Ana",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P013",
-                "EmpleadoID": 13,
-                "diasLibres": 5,
-                "Rango": "GUARDIA",
-                "Genero": "MUJER",
-                "Apellido": "Perez",
-                "DNI": "G013",
-                "Age": 35,
-                "Salario": 1500,
-                "activo": false
-            },
-            {
-                "Nombre": "Claudia",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P014",
-                "EmpleadoID": 14,
-                "diasLibres": 4,
-                "Rango": "OFICIAL",
-                "Genero": "MUJER",
-                "Apellido": "Santos",
-                "DNI": "G014",
-                "Age": 38,
-                "Salario": 1600,
-                "activo": false
-            },
-            {
-                "Nombre": "Veronica",
-                "Cargo": "GUARDIA",
-                "Activo": true,
-                "placaPolicial": "P015",
-                "EmpleadoID": 15,
-                "diasLibres": 6,
-                "Rango": "SARGENTO",
-                "Genero": "MUJER",
-                "Apellido": "Torres",
-                "DNI": "G015",
-                "Age": 40,
-                "Salario": 1550,
-                "activo": false
-            }
-        ]
-    }
+        "prisonerID": 12,
+        "sentencia": 18,
+        "DNI": "555555",
+        "Age": 22,
+        "visitasRestantes": 2
+      },
+      "10": {
+        "Nombre": "Maria",
+        "Apellido": "Gomez",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "MUJER",
+        "prisonerID": 10,
+        "sentencia": 15,
+        "DNI": "333333",
+        "Age": 25,
+        "visitasRestantes": 3
+      },
+      "16": {
+        "Nombre": "Elena",
+        "Apellido": "Perez",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "MUJER",
+        "prisonerID": 16,
+        "sentencia": 30,
+        "DNI": "999999",
+        "Age": 33,
+        "visitasRestantes": 1
+      }
+    },
+    "Guardias": [
+      {
+        "Nombre": "Patricia",
+        "Apellido": "Sanchez",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P010",
+        "EmpleadoID": 10,
+        "diasLibres": 5,
+        "Rango": "GUARDIA",
+        "Genero": "MUJER",
+        "DNI": "G010",
+        "Age": 35,
+        "Salario": 1500,
+        "activo": false
+      },
+      {
+        "Nombre": "Sofia",
+        "Apellido": "Diaz",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P011",
+        "EmpleadoID": 11,
+        "diasLibres": 4,
+        "Rango": "OFICIAL",
+        "Genero": "MUJER",
+        "DNI": "G011",
+        "Age": 32,
+        "Salario": 1600,
+        "activo": false
+      },
+      {
+        "Nombre": "Elena",
+        "Apellido": "Ruiz",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P012",
+        "EmpleadoID": 12,
+        "diasLibres": 6,
+        "Rango": "SARGENTO",
+        "Genero": "MUJER",
+        "DNI": "G012",
+        "Age": 40,
+        "Salario": 1550,
+        "activo": false
+      }
+    ]
+  },
+  {
+    "Sector": "D",
+    "Genero": "MUJER",
+    "id": 1,
+    "Presos": {
+      "13": {
+        "Nombre": "Isabel",
+        "Apellido": "Torres",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "MUJER",
+        "prisonerID": 13,
+        "sentencia": 25,
+        "DNI": "666666",
+        "Age": 28,
+        "visitasRestantes": 3
+      },
+      "14": {
+        "Nombre": "Marta",
+        "Apellido": "Vega",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "MUJER",
+        "prisonerID": 14,
+        "sentencia": 18,
+        "DNI": "777777",
+        "Age": 26,
+        "visitasRestantes": 3
+      },
+      "15": {
+        "Nombre": "Carmen",
+        "Apellido": "Diaz",
+        "ultimoMesVisita": "11/2025",
+        "Activo": true,
+        "Genero": "MUJER",
+        "prisonerID": 15,
+        "sentencia": 22,
+        "DNI": "888888",
+        "Age": 30,
+        "visitasRestantes": 2
+      }
+    },
+    "Guardias": [
+      {
+        "Nombre": "Ana",
+        "Apellido": "Perez",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P013",
+        "EmpleadoID": 13,
+        "diasLibres": 5,
+        "Rango": "GUARDIA",
+        "Genero": "MUJER",
+        "DNI": "G013",
+        "Age": 35,
+        "Salario": 1500,
+        "activo": false
+      },
+      {
+        "Nombre": "Claudia",
+        "Apellido": "Santos",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P014",
+        "EmpleadoID": 14,
+        "diasLibres": 4,
+        "Rango": "OFICIAL",
+        "Genero": "MUJER",
+        "DNI": "G014",
+        "Age": 38,
+        "Salario": 1600,
+        "activo": false
+      },
+      {
+        "Nombre": "Veronica",
+        "Apellido": "Torres",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P015",
+        "EmpleadoID": 15,
+        "diasLibres": 6,
+        "Rango": "SARGENTO",
+        "Genero": "MUJER",
+        "DNI": "G015",
+        "Age": 40,
+        "Salario": 1550,
+        "activo": false
+      },
+      {
+        "Nombre": "Beatriz",
+        "Apellido": "Gomez",
+        "Cargo": "GUARDIA",
+        "Activo": true,
+        "placaPolicial": "P016",
+        "EmpleadoID": 16,
+        "diasLibres": 5,
+        "Rango": "GUARDIA",
+        "Genero": "MUJER",
+        "DNI": "G016",
+        "Age": 31,
+        "Salario": 1500,
+        "activo": true
+      }
+    ]
+  }
 ]

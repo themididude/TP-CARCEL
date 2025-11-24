@@ -2,7 +2,7 @@ package funcionalidad;
 
 public class WrongGenderException extends Exception {
     public WrongGenderException() {
-        super("El genero del recluso no corresponde al del pabellon");
+        super("ERROR: LOS GENEROS NO COINCIDEN");
     }
     public WrongGenderException(String mensaje) {
         super(mensaje);

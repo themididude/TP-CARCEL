@@ -44,7 +44,21 @@ public abstract class Persona implements JSONConvertible{
         return Genero;
     }
 
-
+    public void setNombre(String nombre) {
+        Nombre = nombre;
+    }
+    public void setApellido(String apellido) {
+        Apellido = apellido;
+    }
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
+    public void setAge(int age) {
+        Age = age;
+    }
+    public void setGenero(Genero genero) {
+        Genero = genero;
+    }
     public JSONObject toJSONObject() {
         JSONObject json = new JSONObject();
         json.put("Nombre", Nombre);

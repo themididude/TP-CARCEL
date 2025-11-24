@@ -186,6 +186,4 @@ public class Carcel {
     public static void mostrarMenuEdicion(Scanner sc) {
         editarCarcel(sc);
     }
-
 }
-

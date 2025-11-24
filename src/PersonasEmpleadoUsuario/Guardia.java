@@ -33,13 +33,20 @@ public class Guardia extends Empleado implements JSONConvertible, Activable {
     public String getPlacaPolicial() {
         return placaPolicial;
     }
-
     public Cargo getRango() {
         return rango;
     }
 
-
-
+    public void setPlacaPolicial(String placaPolicial) {
+        this.placaPolicial = placaPolicial;
+    }
+    public void setRango(Cargo rango) {
+        this.rango = rango;
+    }
+    @Override
+    public void setActivo(boolean activo) {
+        Activo = activo;
+    }
     @Override
     public JSONObject toJSONObject() {
         JSONObject json = super.toJSONObject();

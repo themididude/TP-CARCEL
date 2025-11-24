@@ -70,24 +70,23 @@ import java.util.*;
             }
         }
 
-        // Crear un LinkedHashSet
-        public LinkedHashSet<T> crearLinkedHashSet() {
-            return new LinkedHashSet<>();
+        // Crear un HashSet
+        public HashSet<T> crearHashSet() {
+            return new HashSet<>();
         }
 
-        // Agregar un elemento al LinkedHashSet
-        public void agregarALinkedHashSet(LinkedHashSet<T> conjunto, T elemento) {
+        // Agregar un elemento al HashSet
+        public void agregarAHashSet(HashSet<T> conjunto, T elemento) {
             conjunto.add(elemento);
         }
 
-        // Mostrar los elementos del LinkedHashSet
-        public void mostrarLinkedHashSet(LinkedHashSet<T> conjunto) {
-            System.out.println("Elementos en el LinkedHashSet:");
+        // Mostrar los elementos del HashSet
+        public void mostrarHashSet(HashSet<T> conjunto) {
+            System.out.println("Elementos en el HashSet:");
             for (T elem : conjunto) {
                 System.out.println("- " + elem);
             }
         }
-
 
 
         ///  MAP

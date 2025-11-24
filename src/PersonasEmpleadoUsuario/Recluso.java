@@ -48,6 +48,9 @@ public class Recluso extends Persona implements JSONConvertible, Activable {
     public int getSentencia() {return sentencia;}
     public String getUltimoMesVisita() {return ultimoMesVisita;}
     public static int getNextId() {return nextId;}
+    public void setSentencia(int sentencia) {
+        this.sentencia = sentencia;
+    }
 
     @Override
     public boolean isActivo() {
@@ -58,6 +61,9 @@ public class Recluso extends Persona implements JSONConvertible, Activable {
     public void setActivo(boolean Activo) {
     this.Activo = Activo;
     }
+
+
+
 
     //otros metodos
     public String toString (){

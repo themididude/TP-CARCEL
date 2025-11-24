@@ -1,6 +1,8 @@
 package GestionCarcelMenus;
 import PersonasEmpleadoUsuario.Empleado;
 import PersonasEmpleadoUsuario.EmpleadoDB;
+import PersonasEmpleadoUsuario.Recluso;
+import PersonasEmpleadoUsuario.Guardia;
 import funcionalidad.Autenticacion;
 import funcionalidad.JsonManager;
 import funcionalidad.Rol;
@@ -12,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
+
 
 public class Menu {
 
@@ -68,57 +71,57 @@ public class Menu {
     }
 
 
-public static void showLoginMenu(Scanner sc){
-    try {
-        System.out.println("Escriba su rol: ");
-        System.out.println("> USER");
-        System.out.println("> SEGURIDAD");
-        System.out.println("> ADMIN");
-        String opcionUsuario = sc.nextLine();
+    public static void showLoginMenu(Scanner sc){
+        try {
+            System.out.println("Escriba su rol: ");
+            System.out.println("> USER");
+            System.out.println("> SEGURIDAD");
+            System.out.println("> ADMIN");
+            String opcionUsuario = sc.nextLine();
 
-        Rol rolElegido = Rol.fromString(opcionUsuario);
-        if (rolElegido != null) {
+            Rol rolElegido = Rol.fromString(opcionUsuario);
+            if (rolElegido != null) {
 
-            if (rolElegido.equals(Rol.USER)) {
-                Autenticacion.Login(Rol.USER, null);
-                showMenu(sc, Rol.USER);
-            } else {
-
-                System.out.println(">Ingrese su contraseña: ");
-                String password = sc.nextLine();
-
-                if (Autenticacion.Login(rolElegido, password)) {
-                    Autenticacion.LoginExitoso(rolElegido);
-                    showMenu(sc, rolElegido);
+                if (rolElegido.equals(Rol.USER)) {
+                    Autenticacion.Login(Rol.USER, null);
+                    showMenu(sc, Rol.USER);
                 } else {
-                    System.out.println("ERROR: CONTRASEÑA INCORRECTA.");
+
+                    System.out.println(">Ingrese su contraseña: ");
+                    String password = sc.nextLine();
+
+                    if (Autenticacion.Login(rolElegido, password)) {
+                        Autenticacion.LoginExitoso(rolElegido);
+                        showMenu(sc, rolElegido);
+                    } else {
+                        System.out.println("ERROR: CONTRASEÑA INCORRECTA.");
+                    }
                 }
             }
+        } catch (LoginInvalidoException e) {
+            System.out.println("Error: Opcion de rol no reconocida o no valida.");
+        } catch (Exception e) {
+            System.out.println("Ha ocurrido un error inesperado. Saliendo del Menu..." + e.getMessage());
         }
-    } catch (LoginInvalidoException e) {
-        System.out.println("Error: Opcion de rol no reconocida o no valida.");
-    } catch (Exception e) {
-        System.out.println("Ha ocurrido un error inesperado. Saliendo del Menu..." + e.getMessage());
     }
-}
 
 
-public static void showMenu(Scanner sc, Rol rolElegido) {
+    public static void showMenu(Scanner sc, Rol rolElegido) {
 
-   switch (rolElegido){
-       case Rol.USER:
-           MenuUsuario(sc);
-           break;
-       case Rol.SEGURIDAD:
-           MenuSeguridad(sc);
-           break;
-       case Rol.ADMIN:
-           MenuAdmin(sc);
-           break;
-   }
+        switch (rolElegido){
+            case Rol.USER:
+                MenuUsuario(sc);
+                break;
+            case Rol.SEGURIDAD:
+                MenuSeguridad(sc);
+                break;
+            case Rol.ADMIN:
+                MenuAdmin(sc);
+                break;
+        }
 
-}
-///==------------------------------------------------------------------------------------------==////
+    }
+    ///==------------------------------------------------------------------------------------------==////
 
     public static void MenuUsuario(Scanner sc)
     {
@@ -127,9 +130,8 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
 
         System.out.println("─────────== BIENVENIDO, User ==────────");
         while(true){
-
-            System.out.println("1. Mostrar Presos");
-            System.out.println("2. Buscar Preso (y mostrar)");
+            System.out.println("1. Listar Reclusos");
+            System.out.println("2. Buscar Recluso");
             System.out.println("3. Generar Reporte General");
             System.out.println("4. Mostrar Informes Generales");
             System.out.println("0. Salir");
@@ -177,8 +179,8 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
         {
             System.out.println("1. Registrar Incidente Policial");
             System.out.println("2. Registrar Visita");
-            System.out.println("3. Trasladar Preso (Cambio de Pabellon)");
-            System.out.println("4. Mostrar informes de tipo POLICIAL)");
+            System.out.println("3. Transladar Recluso");
+            System.out.println("4. Mostrar informes de tipo POLICIAL");
             System.out.println("0. Salir");
 
             int opcion = sc.nextInt();
@@ -219,7 +221,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
         while (true) {
             System.out.println("─────────== BIENVENIDO, ADMIN ==────────");
             System.out.println("1. Manejo de Empleados");
-            System.out.println("2. Manejo de Seguridad y Presos");
+            System.out.println("2. Manejo de Seguridad y Reclusos");
             System.out.println("3. Informes");
             System.out.println("4. Editar datos de la Carcel");
             System.out.println("0. Salir");
@@ -232,12 +234,13 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 1: // Manejo de Empleados
                     while (true) {
                         System.out.println("---------| MANEJO DE EMPLEADOS | ---------");
-                        System.out.println("1. Mostrar Empleados");
+                        System.out.println("1. Listar Empleados");
                         System.out.println("2. Agregar Empleados");
                         System.out.println("3. Despedir Empleados");
                         System.out.println("4. Agregar Guardia");
-                        System.out.println("5. Buscar y mostrar Guardia");
-                        System.out.println("6. Mostrar Guardias");
+                        System.out.println("5. Listar Guardias");
+                        System.out.println("6. Modificar Guardia");
+                        System.out.println("7. Buscar Guardia");
                         System.out.println("0. Volver al menú principal");
                         System.out.print("Seleccione una opción: ");
                         int opcion = sc.nextInt();
@@ -271,13 +274,45 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                                 ending();
                             }
                             case 4 -> Funcion.agregarGuardia(sc);
-                            case 5 -> Funcion.mostrarGuardia(sc);
-                            case 6 -> Funcion.MostrarGuardias(sc);
+                            case 5 -> Funcion.MostrarGuardias(sc);
+                            case 6 -> {
+                                try {
+                                    System.out.print("Ingrese la placa policial de la guardia a modificar: ");
+                                    String placa = sc.nextLine().trim();
+                                    boolean encontrado = false;
+
+                                    for (Pabellon p : Carcel.pdb.getP()) {
+                                        Guardia g = p.buscarGuardia(placa);
+
+                                        if (g != null) {
+                                            p.modificarGuardia(sc, g);
+                                            System.out.println("Guardia modificada correctamente.");
+                                            encontrado = true;
+
+                                            /// guardamos en el JSON
+                                            try {
+                                                JsonManager.guardarLista("Pabellones.json", Carcel.pdb.getP());
+                                            } catch (JSONException e) {
+                                                System.out.println("Ha ocurrido un error JSON: " + e.getMessage());
+                                            }
+                                            break;
+                                        }
+                                    }
+                                    if (!encontrado) {
+                                        System.out.println("No se encontro guardia con placa: " + placa);
+                                    }
+
+                                } catch (Exception e) {
+                                    System.out.println("No se pudo modificar el guardia: " + e.getMessage());
+                                }
+
+                                ending();
+                            }
+                            case 7 -> Funcion.mostrarGuardia(sc);
                             case 0 -> {
                                 ending();
-                                break; // salir al menú principal
                             }
-                            default -> System.out.println("Opción inválida.");
+                            default -> System.out.println("Opción invalida.");
                         }
                         if (opcion == 0) break;
                     }
@@ -285,16 +320,18 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
 
                 case 2: // Manejo de Seguridad y Presos
                     while (true) {
-                        System.out.println("---------| MANEJO DE SEGURIDAD Y PRESOS |---------");
-                        System.out.println("1. Agregar Preso");
-                        System.out.println("2. Eliminar Preso");
-                        System.out.println("3. Registrar Incidente Policial");
-                        System.out.println("4. Registrar Visita");
-                        System.out.println("5. Trasladar Preso (Cambio de Pabellón)");
-                        System.out.println("6. Mostrar informes de tipo POLICIAL");
-                        System.out.println("7. Mostrar Presos");
-                        System.out.println("8. Buscar Preso (y mostrar)");
+                        System.out.println("---------| MANEJO DE SEGURIDAD Y RECLUSOS |---------");
+                        System.out.println("1. Agregar Recluso");
+                        System.out.println("2. Modificar Recluso");
+                        System.out.println("3. Eliminar Recluso");
+                        System.out.println("4. Listar Reclusos");
+                        System.out.println("5. Buscar Recluso");
+                        System.out.println("6. Trasladar Recluso");
+                        System.out.println("7. Registrar Visita de Recluso");
+                        System.out.println("8. Registrar Incidente Policial");
+                        System.out.println("9. Mostrar informes de tipo POLICIAL");
                         System.out.println("0. Volver al menú principal");
+                        System.out.println("----------------------------------------------");
                         System.out.print("Seleccione una opción: ");
                         int opcion = sc.nextInt();
                         sc.nextLine();
@@ -302,20 +339,50 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
 
                         switch (opcion) {
                             case 1 -> { Funcion.agregarPreso(sc); ending(); }
-                            case 2 -> { Funcion.quitarPreso(sc); ending(); }
-                            case 3 -> {
+                            case 2 -> {
+                                try {
+                                    System.out.print("Ingrese ID del recluso a modificar: ");
+                                    int idPreso = Integer.parseInt(sc.nextLine().trim());
+                                    boolean encontrado = false;
+
+                                    /// buscar entre tooodos los pabellones
+                                    for (Pabellon pab : Carcel.pdb.getP()) {
+                                        Recluso r = pab.buscarRecluso(idPreso);
+                                        if (r != null) {
+                                            pab.modificarRecluso(sc, r);
+                                            System.out.println("Preso modificado correctamente.");
+                                            encontrado = true;
+
+                                            /// guardamos en el JSON
+                                            try {
+                                                JsonManager.guardarLista("Pabellones.json", Carcel.pdb.getP());
+                                            } catch (JSONException e) {
+                                                System.out.println("Ha ocurrido un error JSON: " + e.getMessage());
+                                            }
+                                            break;
+                                        }
+                                    }
+                                    if (!encontrado) {
+                                        System.out.println("No se encontró un preso con ID: " + idPreso);
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("No se pudo modificar el preso (verifique la existencia de PabellonDB o la entrada): " + e.getMessage());
+                                }
+                                ending();
+                            }
+                            case 3 -> { Funcion.quitarPreso(sc); ending(); }
+                            case 4 -> { Funcion.MostrarPresos(sc); ending(); }
+                            case 5 -> { Funcion.MostrarPreso(sc); ending(); }
+                            case 6 -> { Funcion.MoverPreso(sc); ending(); }
+                            case 7 -> { Funcion.registrarVisita(sc); ending(); }
+                            case 8 -> {
                                 newInforme = Paperwork.generarInforme(sc, Informe.Tipo.POLICIAL);
                                 gestor.agregarInforme(newInforme);
                                 ending();
                             }
-                            case 4 -> { Funcion.registrarVisita(sc); ending(); }
-                            case 5 -> { Funcion.MoverPreso(sc); ending(); }
-                            case 6 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.POLICIAL); ending(); }
-                            case 7 -> { Funcion.MostrarPresos(sc); ending(); }
-                            case 8 -> { Funcion.MostrarPreso(sc); ending(); }
+                            case 9 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.POLICIAL); ending(); }
                             case 0 -> {
                                 ending();
-                                break; // volver al menú principal
                             }
                             default -> System.out.println("Opción inválida.");
                         }
@@ -326,11 +393,11 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                 case 3: // Informes
                     while (true) {
                         System.out.println("---------| INFORMES |---------");
-                        System.out.println("1. Generar Informe Financiero");
-                        System.out.println("2. Generar Informe General");
-                        System.out.println("3. Generar Informe Policial");
-                        System.out.println("4. Mostrar todos los Informes");
-                        System.out.println("5. Mostrar Informes Generales");
+                        System.out.println("1. Generar Informe General");
+                        System.out.println("2. Generar Informe Policial");
+                        System.out.println("3. Generar Informe Financiero");
+                        System.out.println("4. Mostrar Informes Generales");
+                        System.out.println("5. Mostrar todos los Informes");
                         System.out.println("0. Volver al menú principal");
                         System.out.print("Seleccione una opción: ");
                         int opcion = sc.nextInt();
@@ -339,18 +406,6 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
 
                         switch (opcion) {
                             case 1 -> {
-                                newInforme = Paperwork.generarInforme(sc, Informe.Tipo.FINANCIERO);
-                                gestor.agregarInforme(newInforme);
-                                try {
-                                    JsonManager.guardarLista("informes.json", gestor.informes);
-                                } catch(JSONException e){
-                                    System.out.println("JSON EXCEPTION . . . ");
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
-
-                            }
-                            case 2 -> {
                                 newInforme = Paperwork.generarInforme(sc, Informe.Tipo.GENERAL);
                                 gestor.agregarInforme(newInforme);
                                 try {
@@ -362,7 +417,7 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                                 }
 
                             }
-                            case 3 -> {
+                            case 2 -> {
                                 newInforme = Paperwork.generarInforme(sc, Informe.Tipo.POLICIAL);
                                 gestor.agregarInforme(newInforme);
                                 try {
@@ -373,8 +428,20 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
                                     throw new RuntimeException(e);
                                 }
                             }
-                            case 4 -> { gestor.mostrarTodosLosInformes(); ending();}
-                            case 5 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL); ending();}
+                            case 3 -> {
+                                newInforme = Paperwork.generarInforme(sc, Informe.Tipo.FINANCIERO);
+                                gestor.agregarInforme(newInforme);
+                                try {
+                                    JsonManager.guardarLista("informes.json", gestor.informes);
+                                } catch(JSONException e){
+                                    System.out.println("JSON EXCEPTION . . . ");
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+
+                            }
+                            case 4 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL); ending();}
+                            case 5 -> { gestor.mostrarTodosLosInformes(); ending();}
                             case 0 -> {
                                 break; // volver al menú principal
                             }
@@ -398,146 +465,4 @@ public static void showMenu(Scanner sc, Rol rolElegido) {
         }
     }
 
-    /// MENU ADMIN VIEJO (backup)
-   /* public static void MenuAdminVIEJO(Scanner sc)
-    {
-        Paperwork gestor = Paperwork.getInstancia();
-        Informe newInforme = null;
-
-        System.out.println("─────────== BIENVENIDO, ADMIN ==────────");
-        while(true){
-            System.out.println("---------| MANEJO DE USUARIOS | ---------");
-            System.out.println("1. Mostrar Empleados");
-            System.out.println("2. Agregar Empleados");
-            System.out.println("3. Despedir Empleados");
-            System.out.println("4. Agregar Reclusos");
-            System.out.println("5. Eliminar Reclusos");
-            System.out.println("6. Generar Informe Financiero");
-            System.out.println("7. Mostrar todos los Informes");
-
-            System.out.println("8. Agregar Guardia");
-            System.out.println("9. Buscar y mostrar Guardia");
-            System.out.println("10. Mostrar Guardias");
-
-            System.out.println("---------| MANEJO DE SEGURIDAD |---------");
-            System.out.println("11. Registrar Incidente Policial");
-            System.out.println("12. Registrar Visita");
-            System.out.println("13. Trasladar Preso (Cambio de Pabellon)");
-            System.out.println("14. Mostrar informes de tipo POLICIAL)");
-
-            System.out.println("---------| TAREAS DE USUARIO |---------");
-            System.out.println("15. Mostrar Presos");
-            System.out.println("16. Buscar Preso (y mostrar)");
-            System.out.println("17. Generar Reporte General");
-            System.out.println("18. Mostrar Informes Generales");
-            System.out.println("19. Salir");
-
-            int opcion = sc.nextInt();
-            sc.nextLine();
-
-            switch (opcion) {
-                case 1:
-                    EmpleadoDB.mostrarEmpleados();
-                    pause();
-                    clearScreen();
-                    break;
-                case 2:
-                    System.out.println("==------------- AGREGAR EMPLEADO -------------==");
-                    Empleado nuevo = EmpleadoDB.crearEmpleadoDesdeConsola(sc);
-                    EmpleadoDB.agregarEmpleado(nuevo);
-                    System.out.println("Empleado agregado:");
-                    System.out.println(nuevo);
-                    pause();
-                    clearScreen();
-                    break;
-                case 3:
-                    System.out.println("Ingrese el ID del Empleado a despedir");
-                    int id = sc.nextInt();
-                    sc.nextLine();
-                    EmpleadoDB.eliminarEmpleado(id);
-                    pause();
-                    clearScreen();
-                    break;
-                case 4:
-                    Funcion.agregarPreso(sc);
-                    pause();
-                    clearScreen();
-                    break;
-                case 5:
-                    Funcion.quitarPreso(sc);
-                    pause();
-                    clearScreen();
-                    break;
-                case 6:
-                    newInforme = Paperwork.generarInforme(sc, Informe.Tipo.FINANCIERO);
-                    gestor.agregarInforme(newInforme);
-                    break;
-                case 7:
-                    gestor.mostrarTodosLosInformes();
-                    pause();
-                    clearScreen();
-                    break;
-                case 8:
-                    Funcion.agregarGuardia(sc);
-                    break;
-                case 9:
-                    Funcion.mostrarGuardia(sc);
-                    break;
-                case 10:
-                    Funcion.MostrarGuardias(sc);
-
-                case 11:
-                    newInforme = Paperwork.generarInforme(sc, Informe.Tipo.POLICIAL);
-                    gestor.agregarInforme(newInforme);
-                    pause();
-                    clearScreen();
-                    break;
-                case 12:
-                    Funcion.registrarVisita(sc);
-                    pause();
-                    clearScreen();
-                    break;
-                case 13:
-                    Funcion.MoverPreso(sc);
-                    pause();
-                    clearScreen();
-                    break;
-                case 14:
-                    gestor.mostrarInformesPorTipo(Informe.Tipo.POLICIAL);
-                    pause();
-                    clearScreen();
-                    break;
-                case 15:
-                    Funcion.MostrarPresos(sc);
-                    pause();
-                    clearScreen();
-                    break;
-                case 16:
-                    Funcion.MostrarPreso(sc);
-                    pause();
-                    clearScreen();
-                    break;
-                case 17:
-                    newInforme = Paperwork.generarInforme(sc, Informe.Tipo.GENERAL);
-                    gestor.agregarInforme(newInforme);
-                    pause();
-                    clearScreen();
-                    break;
-                case 18:
-                    gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL);
-                    pause();
-                    clearScreen();
-                    break;
-                case 19:
-                    return;
-                default:
-                    System.out.println("Opcion invalida.");
-                    break;
-            }
-        }
-    }
-*/
 }
-
-
-

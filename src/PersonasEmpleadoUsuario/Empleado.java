@@ -2,8 +2,9 @@ package PersonasEmpleadoUsuario;
 
 import GestionCarcelMenus.Informe;
 import org.json.JSONObject;
+import funcionalidad.Activable;
 
-public class Empleado extends Persona {
+public class Empleado extends Persona implements Activable {
 
     private static int nextID = 1;
     private int empleadoID;
