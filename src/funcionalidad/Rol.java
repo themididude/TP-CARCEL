@@ -22,7 +22,7 @@ package funcionalidad;
                 return Rol.valueOf(nombre.toUpperCase());
             } catch (IllegalArgumentException e) {
 
-                System.err.println("Rol" + nombre + " no existe.");
+                System.err.println("Rol " + nombre + " no existe.");
                 return null;
             }
         }

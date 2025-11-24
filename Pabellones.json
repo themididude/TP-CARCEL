@@ -31,20 +31,6 @@
         },
         "Guardias": [
             {
-                "Nombre": "Alberto",
-                "Cargo": "GUARDIA",
-                "EmpleadoID": 1,
-                "diasLibres": 5,
-                "Activo": true,
-                "placaPolicial": "P001",
-                "Rango": "GUARDIA",
-                "Genero": "HOMBRE",
-                "Apellido": "Perez",
-                "DNI": "G001",
-                "Age": 35,
-                "Salario": 1500
-            },
-            {
                 "Nombre": "Miguel",
                 "Cargo": "GUARDIA",
                 "EmpleadoID": 2,
@@ -57,6 +43,20 @@
                 "DNI": "G002",
                 "Age": 40,
                 "Salario": 1600
+            },
+            {
+                "Nombre": "Alberto",
+                "Cargo": "GUARDIA",
+                "EmpleadoID": 1,
+                "diasLibres": 5,
+                "Activo": true,
+                "placaPolicial": "P001",
+                "Rango": "GUARDIA",
+                "Genero": "HOMBRE",
+                "Apellido": "Perez",
+                "DNI": "G001",
+                "Age": 35,
+                "Salario": 1500
             },
             {
                 "Nombre": "Pedro",
@@ -217,20 +217,6 @@
         },
         "Guardias": [
             {
-                "Nombre": "Ricardo",
-                "Cargo": "GUARDIA",
-                "EmpleadoID": 8,
-                "diasLibres": 4,
-                "Activo": true,
-                "placaPolicial": "P008",
-                "Rango": "OFICIAL",
-                "Genero": "HOMBRE",
-                "Apellido": "Diaz",
-                "DNI": "G008",
-                "Age": 37,
-                "Salario": 1600
-            },
-            {
                 "Nombre": "OSCAR",
                 "Cargo": "GUARDIA",
                 "EmpleadoID": 7,
@@ -257,6 +243,20 @@
                 "DNI": "G009",
                 "Age": 41,
                 "Salario": 1550
+            },
+            {
+                "Nombre": "Ricardo",
+                "Cargo": "GUARDIA",
+                "EmpleadoID": 8,
+                "diasLibres": 4,
+                "Activo": true,
+                "placaPolicial": "P008",
+                "Rango": "OFICIAL",
+                "Genero": "HOMBRE",
+                "Apellido": "Diaz",
+                "DNI": "G008",
+                "Age": 37,
+                "Salario": 1600
             }
         ]
     },
@@ -316,20 +316,6 @@
         },
         "Guardias": [
             {
-                "Nombre": "Sofia",
-                "Cargo": "GUARDIA",
-                "EmpleadoID": 11,
-                "diasLibres": 4,
-                "Activo": true,
-                "placaPolicial": "P011",
-                "Rango": "OFICIAL",
-                "Genero": "MUJER",
-                "Apellido": "Diaz",
-                "DNI": "G011",
-                "Age": 32,
-                "Salario": 1600
-            },
-            {
                 "Nombre": "Patricia",
                 "Cargo": "GUARDIA",
                 "EmpleadoID": 10,
@@ -356,6 +342,20 @@
                 "DNI": "G012",
                 "Age": 40,
                 "Salario": 1550
+            },
+            {
+                "Nombre": "Sofia",
+                "Cargo": "GUARDIA",
+                "EmpleadoID": 11,
+                "diasLibres": 4,
+                "Activo": true,
+                "placaPolicial": "P011",
+                "Rango": "OFICIAL",
+                "Genero": "MUJER",
+                "Apellido": "Diaz",
+                "DNI": "G011",
+                "Age": 32,
+                "Salario": 1600
             }
         ]
     },
@@ -417,20 +417,6 @@
                 "Salario": 1500
             },
             {
-                "Nombre": "Ana",
-                "Cargo": "GUARDIA",
-                "EmpleadoID": 13,
-                "diasLibres": 5,
-                "Activo": true,
-                "placaPolicial": "P013",
-                "Rango": "GUARDIA",
-                "Genero": "MUJER",
-                "Apellido": "Perez",
-                "DNI": "G013",
-                "Age": 35,
-                "Salario": 1500
-            },
-            {
                 "Nombre": "Claudia",
                 "Cargo": "GUARDIA",
                 "EmpleadoID": 14,
@@ -443,6 +429,20 @@
                 "DNI": "G014",
                 "Age": 38,
                 "Salario": 1600
+            },
+            {
+                "Nombre": "Ana",
+                "Cargo": "GUARDIA",
+                "EmpleadoID": 13,
+                "diasLibres": 5,
+                "Activo": true,
+                "placaPolicial": "P013",
+                "Rango": "GUARDIA",
+                "Genero": "MUJER",
+                "Apellido": "Perez",
+                "DNI": "G013",
+                "Age": 35,
+                "Salario": 1500
             },
             {
                 "Nombre": "Veronica",
