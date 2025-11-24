@@ -15,7 +15,7 @@ public class Guardia extends Empleado implements JSONConvertible, Activable {
     // Constructor desde JSON
     public Guardia(JSONObject json) {
         super(json);
-        this.Activo = json.optBoolean("activo");
+        this.Activo = json.optBoolean("Activo");
         this.placaPolicial = json.optString("placaPolicial");
         this.rango = json.getEnum(Cargo.class, "Rango");  // Esto ya falla solo si no existe o es inválido
     }
@@ -52,7 +52,7 @@ public class Guardia extends Empleado implements JSONConvertible, Activable {
         JSONObject json = super.toJSONObject();
         json.put("placaPolicial", placaPolicial);
         json.put("Rango", rango.name());
-        json.put("activo", Activo);
+        json.put("Activo", Activo);
         return json;
     }
 

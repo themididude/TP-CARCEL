@@ -29,7 +29,7 @@ public class Carcel {
         Scanner sc = new Scanner(System.in);
         //--------------------------------------------------------------------------------------------------------------//
 
-        /// ----> Leer pabellones y tal
+        /// ----> Leer pabellones y tal  (que incluye guardias y reclusos)
         try {
             pdb.setP((ArrayList<Pabellon>) JsonManager.leerLista("Pabellones.json", Pabellon::new));
             System.out.println(pdb.toString());

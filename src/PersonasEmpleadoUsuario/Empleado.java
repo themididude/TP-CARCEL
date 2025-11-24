@@ -55,7 +55,6 @@ public class Empleado extends Persona implements Activable {
         json.put("diasLibres", diasLibres);
         json.put("Cargo", cargo.name());
         json.put("Activo", Activo);
-
         return json;
     }
 
@@ -74,6 +73,7 @@ public class Empleado extends Persona implements Activable {
     public void setActivo(boolean activo) {Activo = activo;}
     public void setSalario(double salario) {this.salario = salario;}
     public void setDiasLibres(int diasLibres) {this.diasLibres = diasLibres;}
+    public void setCargo(Cargo cargo) {this.cargo = cargo;}
 
     @Override
     public String toString() {

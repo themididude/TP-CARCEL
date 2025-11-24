@@ -67,6 +67,12 @@ public class Funcion {
         }
     }
 
+    public static String pedirCambios(Scanner sc, String campo, String valorActual){
+        System.out.print(campo + " ACTUAL: (" + valorActual + ") -> NUEVO VALOR (Pulsa enter para mantener el valor actual!): ");
+        String input = sc.nextLine().trim();
+        return input.isEmpty() ? valorActual : input;
+    }
+
     public static Pabellon BuscarPab(Scanner sc) {
         System.out.println("Que Pabellon desea mostrar?");
         Funcion.ListarPabellones(sc);

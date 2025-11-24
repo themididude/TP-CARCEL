@@ -234,13 +234,17 @@ public class Menu {
                 case 1: // Manejo de Empleados
                     while (true) {
                         System.out.println("---------| MANEJO DE EMPLEADOS | ---------");
-                        System.out.println("1. Listar Empleados");
-                        System.out.println("2. Agregar Empleados");
-                        System.out.println("3. Despedir Empleados");
-                        System.out.println("4. Agregar Guardia");
-                        System.out.println("5. Listar Guardias");
-                        System.out.println("6. Modificar Guardia");
-                        System.out.println("7. Buscar Guardia");
+                        System.out.println("1. Agregar Empleados");
+                        System.out.println("2. Despedir Empleados");
+                        System.out.println("3. Modificar Empleados");
+                        System.out.println("4. Buscar Empleados");
+                        System.out.println("5. Listar Empleados");
+                        System.out.println("6. Listar Empleados por cargo");
+                        System.out.println("7. Agregar Guardia");
+                        System.out.println("8. Eliminar Guardia");
+                        System.out.println("9. Modificar Guardia");
+                        System.out.println("10. Buscar Guardia");
+                        System.out.println("11. Listar Guardias");
                         System.out.println("0. Volver al menú principal");
                         System.out.print("Seleccione una opción: ");
                         int opcion = sc.nextInt();
@@ -248,8 +252,7 @@ public class Menu {
                         ending();
 
                         switch (opcion) {
-                            case 1 -> { EmpleadoDB.mostrarEmpleados(); ending();}
-                            case 2 -> {
+                            case 1 -> {
                                 System.out.println("==------------- AGREGAR EMPLEADO -------------==");
                                 Empleado nuevo = EmpleadoDB.crearEmpleadoDesdeConsola(sc);
                                 EmpleadoDB.agregarEmpleado(nuevo);
@@ -266,16 +269,83 @@ public class Menu {
 
                                 ending();
                             }
-                            case 3 -> {
+                            case 2 -> {
                                 System.out.print("Ingrese el ID del Empleado a despedir: ");
                                 int id = sc.nextInt();
                                 sc.nextLine();
                                 EmpleadoDB.eliminarEmpleado(id);
                                 ending();
                             }
-                            case 4 -> Funcion.agregarGuardia(sc);
-                            case 5 -> Funcion.MostrarGuardias(sc);
-                            case 6 -> {
+                            case 3 -> {
+                                System.out.println("Ingrese el ID del Empleado a modificar: ");
+                                int id = sc.nextInt();
+                                sc.nextLine();
+                                EmpleadoDB.modificarEmpleado(sc, id);
+
+                                try {
+                                    JsonManager.guardarLista("empleados.json", EmpleadoDB.getEmpleados());
+                                } catch(JSONException e){
+                                    System.out.println("JSON EXCEPTION . . . ");
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                } catch (Exception e){
+                                    System.out.println("Ha ocurrido un error inesperado.");
+                                }
+
+                                ending();
+                            }
+                            case 4 -> {
+                                System.out.print("Ingrese el ID del Empleado a buscar: ");
+                                int id = sc.nextInt();
+                                sc.nextLine();
+
+                                try{
+                                Empleado found = EmpleadoDB.buscarEmpleadoPorId(id);
+                                    System.out.println("==================");
+                                    System.out.println(found.toString());
+                                    System.out.println("==================");
+                                } catch (NullPointerException e){
+                                    System.out.println("Empleado no encontrado.");
+                                } catch (IllegalArgumentException e){
+                                    System.out.println("ID invalido.");
+                                } catch (Exception e){
+                                    System.out.println("Ha ocurrido un error inesperado.");
+                                }
+                                ending();
+                            }
+                            case 5 -> { EmpleadoDB.mostrarEmpleados(); ending();}
+                            case 6 -> { EmpleadoDB.mostrarEmpleadosPorCargo(sc); ending();}
+                            case 7 -> Funcion.agregarGuardia(sc);
+                            case 8 -> {
+                                boolean encontrado = false;
+                                System.out.print("Ingrese la placa policial de la guardia a modificar: ");
+                                String placa = sc.nextLine().trim();
+
+                                for (Pabellon p : Carcel.pdb.getP()) {
+                                    Guardia g = p.buscarGuardia(placa);
+                                    if (g != null) {
+                                        p.quitarGuardia(g);
+                                        encontrado = true;
+                                        System.out.println("Guardia eliminado correctamente.");
+                                    }
+                                }
+                                if (encontrado) {
+                                    System.out.println("Guardia eliminado correctamente.");
+
+                                    try {
+                                        JsonManager.guardarLista("Pabellones.json", Carcel.pdb.getP());
+                                    } catch (JSONException e) {
+                                        System.out.println("Error JSON: " + e.getMessage());
+                                    } catch (IOException e) {
+                                        System.out.println("Error al guardar archivo: " + e.getMessage());
+                                    }
+
+                                } else {
+                                    System.out.println("No se encontro guardia con esa placa.");
+                                }
+                                ending();
+                            }
+                            case 9 -> {
                                 try {
                                     System.out.print("Ingrese la placa policial de la guardia a modificar: ");
                                     String placa = sc.nextLine().trim();
@@ -308,7 +378,8 @@ public class Menu {
 
                                 ending();
                             }
-                            case 7 -> Funcion.mostrarGuardia(sc);
+                            case 10 -> Funcion.mostrarGuardia(sc);
+                            case 11 -> Funcion.MostrarGuardias(sc);
                             case 0 -> {
                                 ending();
                             }
@@ -398,6 +469,9 @@ public class Menu {
                         System.out.println("3. Generar Informe Financiero");
                         System.out.println("4. Mostrar Informes Generales");
                         System.out.println("5. Mostrar todos los Informes");
+                        System.out.println("6. Buscar un informe");
+                        System.out.println("7. Modificar un informe");
+                        System.out.println("6. Eliminar un informe");
                         System.out.println("0. Volver al menú principal");
                         System.out.print("Seleccione una opción: ");
                         int opcion = sc.nextInt();
@@ -442,6 +516,36 @@ public class Menu {
                             }
                             case 4 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.GENERAL); ending();}
                             case 5 -> { gestor.mostrarTodosLosInformes(); ending();}
+                            case 6 -> {
+                                System.out.println("Ingrese la ID del informe buscado . . .");
+                                int id = sc.nextInt();
+                                Informe inf = gestor.buscarInforme(id);
+                                gestor.mostrarInforme(inf);
+                                ending();
+                            }
+                            case 7 -> {
+                                System.out.println("Ingrese la ID del informe a modificar . . .");
+                                int id = sc.nextInt();
+                                sc.nextLine();
+                                gestor.modificarInforme(sc, id);
+                                try {
+                                    JsonManager.guardarLista("informes.json", gestor.informes);
+                                } catch(JSONException e){
+                                    System.out.println("JSON EXCEPTION . . . ");
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                } catch (Exception e){
+                                    System.out.println("Ha ocurrido un error inesperado.");
+                                }
+                                ending();
+                            }
+                            case 8 -> {
+                                System.out.println("Ingrese la ID del informe a eliminar . . .");
+                                int id = sc.nextInt();
+                                sc.nextLine();
+                                gestor.eliminarInforme(id);
+                                ending();
+                            }
                             case 0 -> {
                                 break; // volver al menú principal
                             }
@@ -450,7 +554,6 @@ public class Menu {
                         if (opcion == 0) break;
                     }
                     break;
-
                 case 4:
                     ///POR SI QUEREMOS EDITAR LA CARCEL!
                     Carcel.mostrarMenuEdicion(sc);

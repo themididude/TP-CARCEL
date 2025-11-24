@@ -31,7 +31,7 @@
         "DNI": "G001",
         "Age": 35,
         "Salario": 1500,
-        "activo": false
+        "Activo": false
       },
       {
         "Nombre": "Miguel",
@@ -46,7 +46,7 @@
         "DNI": "G002",
         "Age": 40,
         "Salario": 1600,
-        "activo": false
+        "Activo": false
       },
       {
         "Nombre": "Pedro",
@@ -61,7 +61,7 @@
         "DNI": "G003",
         "Age": 38,
         "Salario": 1550,
-        "activo": false
+        "Activo": false
       }
     ]
   },
@@ -121,7 +121,7 @@
         "DNI": "G004",
         "Age": 36,
         "Salario": 1500,
-        "activo": false
+        "Activo": false
       },
       {
         "Nombre": "Luis",
@@ -136,7 +136,7 @@
         "DNI": "G005",
         "Age": 42,
         "Salario": 1600,
-        "activo": false
+        "Activo": false
       },
       {
         "Nombre": "Juan",
@@ -151,7 +151,7 @@
         "DNI": "G006",
         "Age": 39,
         "Salario": 1550,
-        "activo": false
+        "Activo": false
       }
     ]
   },
@@ -223,7 +223,7 @@
         "DNI": "G007",
         "Age": 33,
         "Salario": 1500,
-        "activo": false
+        "Activo": false
       },
       {
         "Nombre": "Ricardo",
@@ -238,7 +238,7 @@
         "DNI": "G008",
         "Age": 37,
         "Salario": 1600,
-        "activo": false
+        "Activo": false
       },
       {
         "Nombre": "Fernando",
@@ -253,7 +253,7 @@
         "DNI": "G009",
         "Age": 41,
         "Salario": 1550,
-        "activo": false
+        "Activo": false
       }
     ]
   },
@@ -325,7 +325,7 @@
         "DNI": "G010",
         "Age": 35,
         "Salario": 1500,
-        "activo": false
+        "Activo": false
       },
       {
         "Nombre": "Sofia",
@@ -340,7 +340,7 @@
         "DNI": "G011",
         "Age": 32,
         "Salario": 1600,
-        "activo": false
+        "Activo": false
       },
       {
         "Nombre": "Elena",
@@ -355,7 +355,7 @@
         "DNI": "G012",
         "Age": 40,
         "Salario": 1550,
-        "activo": false
+        "Activo": false
       }
     ]
   },
@@ -415,7 +415,7 @@
         "DNI": "G013",
         "Age": 35,
         "Salario": 1500,
-        "activo": false
+        "Activo": false
       },
       {
         "Nombre": "Claudia",
@@ -430,7 +430,7 @@
         "DNI": "G014",
         "Age": 38,
         "Salario": 1600,
-        "activo": false
+        "Activo": false
       },
       {
         "Nombre": "Veronica",
@@ -445,7 +445,7 @@
         "DNI": "G015",
         "Age": 40,
         "Salario": 1550,
-        "activo": false
+        "Activo": false
       },
       {
         "Nombre": "Beatriz",
@@ -460,7 +460,7 @@
         "DNI": "G016",
         "Age": 31,
         "Salario": 1500,
-        "activo": true
+        "Activo": true
       }
     ]
   }
