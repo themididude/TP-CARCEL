@@ -17,8 +17,11 @@ public class Funcion {
     public static void ListarPabellonesHombre (Scanner sc){
         System.out.println("Pabellones Masculinos:");
         for (Pabellon p :Carcel.pdb.getP()){
-            if(p.getGenero().equals(Genero.HOMBRE)){
-                System.out.println(p.getClave());
+            if (p.isActivo()==true){
+
+                if(p.getGenero().equals(Genero.HOMBRE)){
+                    System.out.println(p.getClave());
+                }
             }
         }
 
@@ -26,8 +29,11 @@ public class Funcion {
     public static void ListarPabellonesMujer (Scanner sc){
         System.out.println("Pabellones Femeninos:");
         for (Pabellon p :Carcel.pdb.getP()){
-            if(p.getGenero().equals(Genero.MUJER)){
-                System.out.println(p.getClave());
+            if (p.isActivo()==true){
+
+                if(p.getGenero().equals(Genero.MUJER)){
+                    System.out.println(p.getClave());
+                }
             }
         }
     }
@@ -74,7 +80,7 @@ public class Funcion {
     }
 
     public static Pabellon BuscarPab(Scanner sc) {
-        System.out.println("Que Pabellon desea mostrar?");
+        System.out.println("Que Pabellon desea buscar?");
         Funcion.ListarPabellones(sc);
         String nom = sc.nextLine();
         return Carcel.pdb.buscarPabellon(nom);
@@ -396,7 +402,16 @@ public class Funcion {
     }
 
 
+    public static void quitarPabellon(Scanner sc) {
+        Pabellon p = Funcion.BuscarPab(sc);
+        p.quitarPabellon();
 
+    }
+
+    public static void activarPabellon(Scanner sc) {
+        Pabellon p = Funcion.BuscarPab(sc);
+        p.reactivarPabellon();
+    }
 
 
 

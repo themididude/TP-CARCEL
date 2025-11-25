@@ -402,7 +402,8 @@ public class Menu {
                         System.out.println("8. Registrar Incidente Policial");
                         System.out.println("9. Mostrar informes de tipo POLICIAL");
                         System.out.println("10. Agregar Nuevo Pabellon");
-                        System.out.println("11. Modificar Nuevo Pabellon");
+                        System.out.println("11. Quitar Pabellon");
+                        System.out.println("12. Reactivar Pabellon");
                         System.out.println("0. Volver al menú principal");
                         System.out.println("----------------------------------------------");
                         System.out.print("Seleccione una opción: ");
@@ -455,7 +456,8 @@ public class Menu {
                             }
                             case 9 -> { gestor.mostrarInformesPorTipo(Informe.Tipo.POLICIAL); ending(); }
                             case 10 -> { Funcion.crearPabellon(sc); ending();}
-
+                            case 11 -> {Funcion.quitarPabellon(sc); ending();}
+                            case 12 -> {Funcion.activarPabellon(sc); ending();}
                             case 0 -> {
                                 ending();
                             }
