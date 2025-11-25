@@ -118,6 +118,8 @@ public class Pabellon implements JSONConvertible {
     public void agregarGuardia(Guardia guardia) {
         this.guardias.add(guardia);
     }
+
+
     ///==================================================================///
     ///===------------ MODIFICAR ------------===///
     public Recluso modificarRecluso(Scanner sc, Recluso recluso) {
@@ -267,7 +269,7 @@ public class Pabellon implements JSONConvertible {
                 return g;
             }
         }
-        System.out.println("Guardia no encontrado en este pabellon");
+        System.out.println("Guardia no encontrado en el pabellon "+getClave());
         return null;
     }
     ///==================================================================///

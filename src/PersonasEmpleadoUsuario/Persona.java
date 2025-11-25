@@ -19,6 +19,9 @@ public abstract class Persona implements JSONConvertible{
         this.Genero = genero;
     }
 
+    public Persona() {
+    }
+
     public Persona(JSONObject json) {
         this.Nombre = json.getString("Nombre");
         this.Apellido = json.getString("Apellido");

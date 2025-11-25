@@ -26,6 +26,10 @@ public class Empleado extends Persona implements Activable {
         this.cargo = cargo;
         this.Activo = Activo;
     }
+
+    public Empleado() {
+    }
+
     public Empleado(JSONObject json) {
         super(json);
         if (json.has("EmpleadoID")) {

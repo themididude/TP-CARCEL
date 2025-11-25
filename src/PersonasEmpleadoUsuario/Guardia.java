@@ -30,6 +30,9 @@ public class Guardia extends Empleado implements JSONConvertible, Activable {
         this.rango = rango;
     }
 
+    public Guardia() {
+    }
+
     public String getPlacaPolicial() {
         return placaPolicial;
     }

@@ -220,7 +220,7 @@ public class Menu {
 
         while (true) {
             System.out.println("─────────== BIENVENIDO, ADMIN ==────────");
-            System.out.println("1. Manejo de Empleados");
+            System.out.println("1. Manejo de Empleados y Guardias");
             System.out.println("2. Manejo de Seguridad y Reclusos");
             System.out.println("3. Informes");
             System.out.println("4. Editar datos de la Carcel");

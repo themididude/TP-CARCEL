@@ -84,8 +84,9 @@ public class PabellonDB implements JSONConvertible {
 
     //metodos de guardia
     public Guardia buscarGuardiaDB(String id) {
+        Guardia guardia=new Guardia();
         for (Pabellon pab : p) {
-            Guardia guardia = pab.buscarGuardia(id);
+            guardia = pab.buscarGuardia(id);
             if (guardia != null) {
                 return guardia;
             }

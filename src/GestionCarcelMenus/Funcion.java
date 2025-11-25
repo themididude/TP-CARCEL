@@ -99,7 +99,13 @@ public class Funcion {
         sc.nextLine();
         try{
         Pabellon p = Carcel.pdb.getPabellonDelRecluso(id);
+        if (p==null){
+            return;
+        }
         Recluso r = Carcel.pdb.buscarReclusoDB(id);
+        if (r==null){
+            return;
+        }
         System.out.println(r.toString() + "De " + p.toString());
         } catch(ReclusoNoEncontradoException e )
         {
@@ -112,7 +118,13 @@ public class Funcion {
         System.out.println("Ingrese la placa policial del guardia");
         String placa = sc.nextLine();
         Pabellon p = Carcel.pdb.getPabellonDelGuardia(placa);
+        if (p == null) {
+            return;
+        }
         Guardia g = Carcel.pdb.buscarGuardiaDB(placa);
+        if (g == null) {
+            return;
+        }
 
         System.out.println("==------------------------==");
         System.out.println(g.toString()  + p.toString());
