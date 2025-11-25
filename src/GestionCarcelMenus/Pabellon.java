@@ -23,6 +23,8 @@ public class Pabellon implements JSONConvertible {
     private HashSet<Guardia> guardias;
     private Genero genero;
     private int id;
+    private boolean activo = true;
+
 
     // Contador independiente por sector
     private static EnumMap<Sector, Integer> contadoresPorSector = new EnumMap<>(Sector.class);
@@ -62,6 +64,12 @@ public class Pabellon implements JSONConvertible {
             contadoresPorSector.put(this.sector, this.id + 1);
         }
 
+        if (json.has("Activo")) {
+            this.activo = json.getBoolean("Activo");
+        } else {
+            this.activo = true; // por defecto
+        }
+
         // Inicializar presos
         this.presos = new HashMap<>();
         JSONObject presosJson = json.getJSONObject("Presos");
@@ -70,7 +78,6 @@ public class Pabellon implements JSONConvertible {
             Recluso r = new Recluso(presosJson.getJSONObject(key));
             this.presos.put(id, r);
         }
-
         // Inicializar guardias
         this.guardias = new HashSet<>();
         JSONArray guardiasArray = json.getJSONArray("Guardias");
@@ -91,6 +98,9 @@ public class Pabellon implements JSONConvertible {
     public Genero getGenero() {
         return genero;
     }
+    public boolean isActivo() {return activo;}
+    public void setActivo(boolean activo) {this.activo = activo;}
+
 
     ///===--------------------------- METODOS ---------------------------===///
 
@@ -212,6 +222,35 @@ public class Pabellon implements JSONConvertible {
         otroPabellon.agregarGuardia(guardia);
     }
 
+    //activar, desactivar
+    public void quitarPabellon() {
+        this.activo = false;
+        System.out.println("Pabellón " + getClave() + " dado de baja (lógica).");
+        // Desactivar todos los reclusos
+        for (Recluso r : presos.values()) {
+            r.setActivo(false);
+        }
+        // Desactivar todos los guardias
+        for (Guardia g : guardias) {
+            g.setActivo(false);
+        }
+    }
+
+    public void reactivarPabellon() {
+        this.activo = true;
+        System.out.println("Pabellón " + getClave() + " reactivado.");
+        // Reactivar todos los reclusos
+        for (Recluso r : presos.values()) {
+            r.setActivo(true);
+        }
+        // Reactivar todos los guardias
+        for (Guardia g : guardias) {
+            g.setActivo(true);
+        }
+    }
+
+
+
     ///==================================================================///
     ///===------------ MOSTRAR ------------===///
 
@@ -290,6 +329,8 @@ public class Pabellon implements JSONConvertible {
 
         // Guardamos el id del pabellón
         json.put("id", id);
+        json.put("Activo", activo);
+
 
         return json;
     }

@@ -348,4 +348,56 @@ public class Funcion {
         }
 
     }
+
+    public static Pabellon crearPabellon(Scanner sc) {
+        System.out.println("======== CREAR PABELLÓN ========");
+
+        // Elegir Sector
+        Sector sector = null;
+        while (sector == null) {
+            System.out.println("Seleccione sector:");
+            for (Sector s : Sector.values()) {
+                System.out.println("- " + s);
+            }
+            System.out.print("Sector: ");
+            String input = sc.nextLine().trim().toUpperCase();
+
+            try {
+                sector = Sector.valueOf(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Sector inválido. Intente nuevamente.");
+            }
+        }
+
+        // Elegir Género
+        Genero genero = null;
+        while (genero == null) {
+            System.out.println("Seleccione género del pabellón:");
+            for (Genero g : Genero.values()) {
+                System.out.println("- " + g);
+            }
+            System.out.print("Género: ");
+            String input = sc.nextLine().trim().toUpperCase();
+
+            try {
+                genero = Genero.valueOf(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Género inválido. Intente nuevamente.");
+            }
+        }
+
+        // Crear el pabellón
+        Pabellon nuevo = new Pabellon(sector, genero);
+
+        System.out.println("\n✔ Pabellón creado exitosamente:");
+        System.out.println("→ " + nuevo);
+
+        return nuevo;
+    }
+
+
+
+
+
+
 }
