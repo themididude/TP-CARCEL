@@ -1,0 +1,122 @@
+[
+  {
+    "informeID": 1,
+    "Asunto": "ASUNTO: GRAN IMPACTO",
+    "tipo": "GENERAL",
+    "Fecha": "03/04/05",
+    "Descripcion": "NACIMIENTO DEL GOAT",
+    "Activo": true
+  },
+  {
+    "informeID": 2,
+    "Asunto": "CARCEL DE AUTISTAS",
+    "tipo": "POLICIAL",
+    "Fecha": "20/10/2025",
+    "Descripcion": "SE LES ESCAPO UNO ",
+    "Activo": true
+  },
+  {
+    "informeID": 3,
+    "Asunto": "Incidente 3",
+    "tipo": "POLICIAL",
+    "Fecha": "03/11/2025",
+    "Descripcion": "Aumento en las llamadas de emergencia en el Sector A.",
+    "Activo": true
+  },
+  {
+    "informeID": 4,
+    "Asunto": "Balance de Gastos Mensual",
+    "tipo": "FINANCIERO",
+    "Fecha": "31/10/2025",
+    "Descripcion": "Informe de gastos operativos y presupuesto de suministros para el mes de octubre.",
+    "Activo": true
+  },
+  {
+    "informeID": 5,
+    "Asunto": "Revisión de Seguridad Perimetral",
+    "tipo": "GENERAL",
+    "Fecha": "05/11/2025",
+    "Descripcion": "Inspección de las vallas y muros exteriores. Se recomienda mantenimiento urgente.",
+    "Activo": true
+  },
+  {
+    "informeID": 6,
+    "Asunto": "Asignación de Personal 2026",
+    "tipo": "FINANCIERO",
+    "Fecha": "15/11/2025",
+    "Descripcion": "Propuesta de presupuesto para nuevas contrataciones de guardia en el próximo año fiscal.",
+    "Activo": true
+  },
+  {
+    "informeID": 7,
+    "Asunto": "Pelea en Pabellón B1",
+    "tipo": "POLICIAL",
+    "Fecha": "18/11/2025",
+    "Descripcion": "Dos reclusos involucrados. Uno trasladado a enfermería por heridas menores.",
+    "Activo": true
+  },
+  {
+    "informeID": 8,
+    "Asunto": "Necesidad de Repuestos",
+    "tipo": "GENERAL",
+    "Fecha": "20/11/2025",
+    "Descripcion": "Solicitud de compra de filtros de aire para el sistema de ventilación central.",
+    "Activo": true
+  },
+  {
+    "informeID": 9,
+    "Asunto": "Auditoría de Fondos de Reclusos",
+    "tipo": "FINANCIERO",
+    "Fecha": "22/11/2025",
+    "Descripcion": "Revisión trimestral de las cuentas de los presos.",
+    "Activo": true
+  },
+  {
+    "informeID": 10,
+    "Asunto": "Intento de Fuga Fallido",
+    "tipo": "POLICIAL",
+    "Fecha": "23/11/2025",
+    "Descripcion": "Detectado y frustrado en el túnel de lavandería por la guardia nocturna.",
+    "Activo": true
+  },
+  {
+    "informeID": 11,
+    "Asunto": "Capacitación de Empleados",
+    "tipo": "GENERAL",
+    "Fecha": "24/11/2025",
+    "Descripcion": "Programación de curso obligatorio sobre manejo de emergencias para el personal.",
+    "Activo": true
+  },
+  {
+    "informeID": 12,
+    "Asunto": "Consumo Eléctrico",
+    "tipo": "FINANCIERO",
+    "Fecha": "25/11/2025",
+    "Descripcion": "Análisis comparativo del consumo de energía versus el mes anterior.",
+    "Activo": true
+  },
+  {
+    "informeID": 13,
+    "Asunto": "Incidente con Drones",
+    "tipo": "POLICIAL",
+    "Fecha": "26/11/2025",
+    "Descripcion": "Reporte de objetos voladores no identificados sobre el Sector D. Se inició investigación.",
+    "Activo": true
+  },
+  {
+    "informeID": 14,
+    "Asunto": "Revisión de Protocolos",
+    "tipo": "GENERAL",
+    "Fecha": "27/11/2025",
+    "Descripcion": "Actualización de los manuales de procedimiento de ingreso y egreso.",
+    "Activo": true
+  },
+  {
+    "informeID": 15,
+    "Asunto": "Proyección Anual",
+    "tipo": "FINANCIERO",
+    "Fecha": "30/11/2025",
+    "Descripcion": "Estimación de ingresos y egresos para el próximo año fiscal completo.",
+    "Activo": true
+  }
+]
